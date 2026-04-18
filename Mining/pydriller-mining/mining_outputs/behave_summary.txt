@@ -1,0 +1,1024 @@
+================================================================================
+PyDriller BDD Feature Mining Report
+================================================================================
+
+Repository: behave
+URL: https://github.com/behave/behave
+Branch: master
+Commits analyzed: 1967
+Commits with features: 1104
+Feature files: 249
+Scenarios: 2476
+Languages: Python
+First commit: 2011-10-25T22:03:19+11:00
+Last commit: 2026-03-05T02:32:16+01:00
+
+Feature Files:
+  - background.feature
+    Scenarios: 42
+    Modified in 9 commits
+    By 2 authors
+  - outline.feature
+    Scenarios: 7
+    Modified in 7 commits
+    By 2 authors
+  - step-data.feature
+    Scenarios: 9
+    Modified in 4 commits
+    By 2 authors
+  - tags.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - parse.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - issue0030.feature
+    Scenarios: 2
+    Modified in 2 commits
+    By 1 authors
+  - issue0031.feature
+    Scenarios: 1
+    Modified in 7 commits
+    By 1 authors
+  - issue0032.feature
+    Scenarios: 3
+    Modified in 3 commits
+    By 1 authors
+  - issue0035.feature
+    Scenarios: 5
+    Modified in 4 commits
+    By 1 authors
+  - issue0040.feature
+    Scenarios: 13
+    Modified in 5 commits
+    By 1 authors
+  - issue0041.feature
+    Scenarios: 7
+    Modified in 9 commits
+    By 2 authors
+  - issue0044.feature
+    Scenarios: 2
+    Modified in 5 commits
+    By 1 authors
+  - issue0046.feature
+    Scenarios: 7
+    Modified in 7 commits
+    By 1 authors
+  - issue0052.feature
+    Scenarios: 8
+    Modified in 4 commits
+    By 1 authors
+  - issue0059.feature
+    Scenarios: 3
+    Modified in 2 commits
+    By 1 authors
+  - issue0063.feature
+    Scenarios: 6
+    Modified in 7 commits
+    By 1 authors
+  - issue0064.feature
+    Scenarios: 9
+    Modified in 2 commits
+    By 1 authors
+  - issue0065.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - issue0066.feature
+    Scenarios: 5
+    Modified in 6 commits
+    By 1 authors
+  - issue0067.feature
+    Scenarios: 8
+    Modified in 4 commits
+    By 1 authors
+  - issue0069.feature
+    Scenarios: 4
+    Modified in 5 commits
+    By 1 authors
+  - issue0072.feature
+    Scenarios: 1
+    Modified in 2 commits
+    By 1 authors
+  - issue0073.feature
+    Scenarios: 12
+    Modified in 9 commits
+    By 1 authors
+  - issue0075.feature
+    Scenarios: 11
+    Modified in 6 commits
+    By 1 authors
+  - issue0077.feature
+    Scenarios: 5
+    Modified in 5 commits
+    By 1 authors
+  - issue0080.feature
+    Scenarios: 4
+    Modified in 5 commits
+    By 1 authors
+  - issue0081.feature
+    Scenarios: 8
+    Modified in 7 commits
+    By 1 authors
+  - issue0083.feature
+    Scenarios: 6
+    Modified in 8 commits
+    By 1 authors
+  - issue0084.feature
+    Scenarios: 7
+    Modified in 4 commits
+    By 1 authors
+  - issue0085.feature
+    Scenarios: 8
+    Modified in 8 commits
+    By 1 authors
+  - issue0092.feature
+    Scenarios: 9
+    Modified in 6 commits
+    By 1 authors
+  - issue0096.feature
+    Scenarios: 11
+    Modified in 13 commits
+    By 2 authors
+  - issue0099.feature
+    Scenarios: 8
+    Modified in 6 commits
+    By 1 authors
+  - issue0109.feature
+    Scenarios: 3
+    Modified in 6 commits
+    By 1 authors
+  - issue0112.feature
+    Scenarios: 4
+    Modified in 9 commits
+    By 2 authors
+  - issue0114.feature
+    Scenarios: 10
+    Modified in 8 commits
+    By 2 authors
+  - issue0116.feature
+    Scenarios: 8
+    Modified in 4 commits
+    By 1 authors
+  - issue0111.feature
+    Scenarios: 10
+    Modified in 4 commits
+    By 1 authors
+  - issue0127.feature
+    Scenarios: 3
+    Modified in 8 commits
+    By 1 authors
+  - context.global_params.feature
+    Scenarios: 6
+    Modified in 2 commits
+    By 1 authors
+  - context.local_params.feature
+    Scenarios: 3
+    Modified in 2 commits
+    By 1 authors
+  - parser.file_without_feature.feature
+    Scenarios: 8
+    Modified in 1 commits
+    By 1 authors
+  - issue0042.feature
+    Scenarios: 23
+    Modified in 8 commits
+    By 2 authors
+  - step.execute_steps.feature
+    Scenarios: 5
+    Modified in 4 commits
+    By 1 authors
+  - step.execute_steps.with_table.feature
+    Scenarios: 3
+    Modified in 5 commits
+    By 1 authors
+  - step.use_step_library.feature
+    Scenarios: 3
+    Modified in 3 commits
+    By 1 authors
+  - issue0139.feature
+    Scenarios: 5
+    Modified in 4 commits
+    By 1 authors
+  - issue0142.feature
+    Scenarios: 2
+    Modified in 3 commits
+    By 1 authors
+  - issue0148.feature
+    Scenarios: 5
+    Modified in 11 commits
+    By 1 authors
+  - issue0145.feature
+    Scenarios: 7
+    Modified in 7 commits
+    By 1 authors
+  - step.undefined_steps.feature
+    Scenarios: 38
+    Modified in 9 commits
+    By 1 authors
+  - summary.undefined_steps.feature
+    Scenarios: 13
+    Modified in 3 commits
+    By 1 authors
+  - issue0125.feature
+    Scenarios: 4
+    Modified in 7 commits
+    By 1 authors
+  - runner.stop_after_failure.feature
+    Scenarios: 14
+    Modified in 4 commits
+    By 1 authors
+  - capture_stderr.feature
+    Scenarios: 12
+    Modified in 3 commits
+    By 1 authors
+  - capture_stdout.feature
+    Scenarios: 10
+    Modified in 3 commits
+    By 1 authors
+  - runner.dry_run.feature
+    Scenarios: 23
+    Modified in 9 commits
+    By 1 authors
+  - runner.feature_configfile.feature
+    Scenarios: 19
+    Modified in 5 commits
+    By 1 authors
+  - runner.named_scenarios.feature
+    Scenarios: 21
+    Modified in 2 commits
+    By 1 authors
+  - formatter.default_format.feature
+    Scenarios: 10
+    Modified in 1 commits
+    By 1 authors
+  - formatter.multiple_formatters.feature
+    Scenarios: 13
+    Modified in 1 commits
+    By 1 authors
+  - issue0159.feature
+    Scenarios: 8
+    Modified in 3 commits
+    By 1 authors
+  - issue0152.feature
+    Scenarios: 2
+    Modified in 4 commits
+    By 1 authors
+  - exploratory_testing.with_table.feature
+    Scenarios: 6
+    Modified in 6 commits
+    By 1 authors
+  - parser.file_with_many_features.feature
+    Scenarios: 4
+    Modified in 2 commits
+    By 1 authors
+  - scenario.description.feature
+    Scenarios: 30
+    Modified in 6 commits
+    By 1 authors
+  - parser.background.sad_cases.feature
+    Scenarios: 14
+    Modified in 5 commits
+    By 1 authors
+  - parser.feature.sad_cases.feature
+    Scenarios: 14
+    Modified in 5 commits
+    By 1 authors
+  - formatter.rerun.feature
+    Scenarios: 13
+    Modified in 5 commits
+    By 2 authors
+  - formatter.tag_count.feature
+    Scenarios: 11
+    Modified in 1 commits
+    By 1 authors
+  - formatter.tag_location.feature
+    Scenarios: 10
+    Modified in 1 commits
+    By 1 authors
+  - runner.select_scenarios_by_file_location.feature
+    Scenarios: 46
+    Modified in 6 commits
+    By 1 authors
+  - step.duplicated_step.feature
+    Scenarios: 5
+    Modified in 9 commits
+    By 1 authors
+  - formatter.json.feature
+    Scenarios: 36
+    Modified in 9 commits
+    By 5 authors
+  - formatter.json.validate_output.feature
+    Scenarios: 5
+    Modified in 3 commits
+    By 1 authors
+  - step_dialect.basic_steps.feature
+    Scenarios: 11
+    Modified in 1 commits
+    By 1 authors
+  - step_dialect.given_when_then.feature
+    Scenarios: 6
+    Modified in 2 commits
+    By 1 authors
+  - issue0162.feature
+    Scenarios: 7
+    Modified in 5 commits
+    By 1 authors
+  - runner.unknown_formatter.feature
+    Scenarios: 8
+    Modified in 3 commits
+    By 1 authors
+  - formatter.help.feature
+    Scenarios: 7
+    Modified in 13 commits
+    By 4 authors
+  - formatter.steps.feature
+    Scenarios: 5
+    Modified in 2 commits
+    By 1 authors
+  - formatter.steps_doc.feature
+    Scenarios: 3
+    Modified in 2 commits
+    By 1 authors
+  - formatter.steps_usage.feature
+    Scenarios: 19
+    Modified in 5 commits
+    By 1 authors
+  - formatter.tags.feature
+    Scenarios: 14
+    Modified in 3 commits
+    By 1 authors
+  - formatter.tags_location.feature
+    Scenarios: 13
+    Modified in 3 commits
+    By 1 authors
+  - step_dialect.generic_steps.feature
+    Scenarios: 12
+    Modified in 5 commits
+    By 1 authors
+  - runner.select_scenarios_by_tag.feature
+    Scenarios: 17
+    Modified in 7 commits
+    By 1 authors
+  - directory_layout.advanced.feature
+    Scenarios: 12
+    Modified in 5 commits
+    By 2 authors
+  - directory_layout.basic.feature
+    Scenarios: 7
+    Modified in 4 commits
+    By 2 authors
+  - directory_layout.basic2.feature
+    Scenarios: 8
+    Modified in 5 commits
+    By 2 authors
+  - formatter.progress.feature
+    Scenarios: 30
+    Modified in 1 commits
+    By 1 authors
+  - formatter.progress3.feature
+    Scenarios: 30
+    Modified in 5 commits
+    By 1 authors
+  - step_param.builtin_types.with_float.feature
+    Scenarios: 9
+    Modified in 4 commits
+    By 2 authors
+  - step_param.builtin_types.with_integer.feature
+    Scenarios: 14
+    Modified in 5 commits
+    By 2 authors
+  - step.import_other_step_module.feature
+    Scenarios: 7
+    Modified in 6 commits
+    By 1 authors
+  - issue0171.feature
+    Scenarios: 1
+    Modified in 3 commits
+    By 1 authors
+  - issue0172.feature
+    Scenarios: 5
+    Modified in 3 commits
+    By 2 authors
+  - runner.feature_listfile.feature
+    Scenarios: 16
+    Modified in 6 commits
+    By 1 authors
+  - scenario_outline.basics.feature
+    Scenarios: 10
+    Modified in 1 commits
+    By 1 authors
+  - issue0186.feature
+    Scenarios: 2
+    Modified in 3 commits
+    By 1 authors
+  - issue0188.feature
+    Scenarios: 4
+    Modified in 6 commits
+    By 1 authors
+  - runner.abort_by_user.feature
+    Scenarios: 34
+    Modified in 9 commits
+    By 1 authors
+  - runner.select_files_by_regexp.example.feature
+    Scenarios: 7
+    Modified in 1 commits
+    By 1 authors
+  - runner.select_files_by_regexp.feature
+    Scenarios: 6
+    Modified in 2 commits
+    By 1 authors
+  - issue0184.feature
+    Scenarios: 13
+    Modified in 3 commits
+    By 1 authors
+  - issue0191.feature
+    Scenarios: 7
+    Modified in 5 commits
+    By 1 authors
+  - logcapture.clear_handlers.feature
+    Scenarios: 5
+    Modified in 3 commits
+    By 1 authors
+  - logcapture.feature
+    Scenarios: 13
+    Modified in 5 commits
+    By 1 authors
+  - logcapture.filter.feature
+    Scenarios: 8
+    Modified in 3 commits
+    By 1 authors
+  - logging.no_capture.feature
+    Scenarios: 5
+    Modified in 3 commits
+    By 1 authors
+  - logging.setup_format.feature
+    Scenarios: 10
+    Modified in 5 commits
+    By 1 authors
+  - logging.setup_level.feature
+    Scenarios: 15
+    Modified in 5 commits
+    By 1 authors
+  - logging.setup_with_configfile.feature
+    Scenarios: 5
+    Modified in 5 commits
+    By 1 authors
+  - issue0143.feature
+    Scenarios: 4
+    Modified in 3 commits
+    By 1 authors
+  - issue0177.feature
+    Scenarios: 2
+    Modified in 2 commits
+    By 1 authors
+  - issue0175.feature
+    Scenarios: 9
+    Modified in 4 commits
+    By 1 authors
+  - issue0194.feature
+    Scenarios: 12
+    Modified in 6 commits
+    By 1 authors
+  - issue0181.feature
+    Scenarios: 2
+    Modified in 7 commits
+    By 1 authors
+  - runner.tag_logic.feature
+    Scenarios: 14
+    Modified in 4 commits
+    By 1 authors
+  - tag_expression.feature
+    Scenarios: 4
+    Modified in 2 commits
+    By 1 authors
+  - issue0197.feature
+    Scenarios: 19
+    Modified in 3 commits
+    By 2 authors
+  - scenario_outline.improved.feature
+    Scenarios: 39
+    Modified in 5 commits
+    By 1 authors
+  - scenario_outline.name_annotation.feature
+    Scenarios: 39
+    Modified in 2 commits
+    By 1 authors
+  - scenario_outline.parametrized.feature
+    Scenarios: 83
+    Modified in 9 commits
+    By 1 authors
+  - issue0216.feature
+    Scenarios: 8
+    Modified in 6 commits
+    By 1 authors
+  - issue0228.feature
+    Scenarios: 7
+    Modified in 3 commits
+    By 2 authors
+  - tutorial.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - feature.exclude_from_run.feature
+    Scenarios: 6
+    Modified in 7 commits
+    By 1 authors
+  - scenario.exclude_from_run.feature
+    Scenarios: 33
+    Modified in 7 commits
+    By 1 authors
+  - issue0238.feature
+    Scenarios: 13
+    Modified in 4 commits
+    By 2 authors
+  - active_tags.feature
+    Scenarios: 28
+    Modified in 5 commits
+    By 1 authors
+  - step.alternate_step_implementations.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+  - runner.use_stage_implementations.feature
+    Scenarios: 8
+    Modified in 5 commits
+    By 1 authors
+  - issue0231.feature
+    Scenarios: 7
+    Modified in 7 commits
+    By 1 authors
+  - formatter.steps_catalog.feature
+    Scenarios: 3
+    Modified in 5 commits
+    By 3 authors
+  - userdata.feature
+    Scenarios: 14
+    Modified in 8 commits
+    By 2 authors
+  - step.pending_steps.feature
+    Scenarios: 24
+    Modified in 6 commits
+    By 1 authors
+  - i18n.unicode_problems.feature
+    Scenarios: 38
+    Modified in 10 commits
+    By 1 authors
+  - issue0226.feature
+    Scenarios: 4
+    Modified in 8 commits
+    By 1 authors
+  - issue0230.feature
+    Scenarios: 4
+    Modified in 5 commits
+    By 1 authors
+  - issue0251.feature
+    Scenarios: 1
+    Modified in 3 commits
+    By 1 authors
+  - issue0280.feature
+    Scenarios: 10
+    Modified in 6 commits
+    By 3 authors
+  - formatter.user_defined.feature
+    Scenarios: 14
+    Modified in 6 commits
+    By 2 authors
+  - issue0288.feature
+    Scenarios: 13
+    Modified in 5 commits
+    By 1 authors
+  - runner.default_format.feature
+    Scenarios: 10
+    Modified in 3 commits
+    By 1 authors
+  - runner.multiple_formatters.feature
+    Scenarios: 13
+    Modified in 3 commits
+    By 1 authors
+  - runner.select_scenarios_by_name.feature
+    Scenarios: 27
+    Modified in 8 commits
+    By 1 authors
+  - tags.default_tags.feature
+    Scenarios: 10
+    Modified in 1 commits
+    By 1 authors
+  - cmdline.lang_list.feature
+    Scenarios: 1
+    Modified in 10 commits
+    By 1 authors
+  - issue0309.feature
+    Scenarios: 1
+    Modified in 9 commits
+    By 1 authors
+  - runner.continue_after_failed_step.feature
+    Scenarios: 11
+    Modified in 3 commits
+    By 1 authors
+  - issue0330.feature
+    Scenarios: 19
+    Modified in 12 commits
+    By 2 authors
+  - issue0302.feature
+    Scenarios: 7
+    Modified in 3 commits
+    By 2 authors
+  - issue0349.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - tags.active_tags.feature
+    Scenarios: 49
+    Modified in 13 commits
+    By 1 authors
+  - issue0384.feature
+    Scenarios: 13
+    Modified in 8 commits
+    By 1 authors
+  - step_param.custom_types.feature
+    Scenarios: 9
+    Modified in 5 commits
+    By 2 authors
+  - issue0383.feature
+    Scenarios: 5
+    Modified in 6 commits
+    By 1 authors
+  - issue0361.feature
+    Scenarios: 7
+    Modified in 9 commits
+    By 1 authors
+  - runner.scenario_autoretry.feature
+    Scenarios: 10
+    Modified in 4 commits
+    By 1 authors
+  - scenario_outline.tagged_examples.feature
+    Scenarios: 14
+    Modified in 2 commits
+    By 1 authors
+  - async_dispatch.feature
+    Scenarios: 1
+    Modified in 6 commits
+    By 1 authors
+  - async_run.feature
+    Scenarios: 1
+    Modified in 6 commits
+    By 1 authors
+  - step.async_steps.feature
+    Scenarios: 29
+    Modified in 15 commits
+    By 2 authors
+  - issue0462.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - issue0476.feature
+    Scenarios: 5
+    Modified in 1 commits
+    By 1 authors
+  - env_var.feature
+    Scenarios: 1
+    Modified in 2 commits
+    By 1 authors
+  - issue0457.feature
+    Scenarios: 11
+    Modified in 9 commits
+    By 1 authors
+  - issue0300.feature
+    Scenarios: 3
+    Modified in 3 commits
+    By 1 authors
+  - runner.hook_errors.feature
+    Scenarios: 48
+    Modified in 15 commits
+    By 1 authors
+  - issue0446.feature
+    Scenarios: 22
+    Modified in 13 commits
+    By 1 authors
+  - issue0424.feature
+    Scenarios: 3
+    Modified in 5 commits
+    By 1 authors
+  - issue0449.feature
+    Scenarios: 3
+    Modified in 5 commits
+    By 1 authors
+  - issue0453.feature
+    Scenarios: 4
+    Modified in 3 commits
+    By 1 authors
+  - issue0487.feature
+    Scenarios: 11
+    Modified in 8 commits
+    By 1 authors
+  - issue0385.feature
+    Scenarios: 15
+    Modified in 4 commits
+    By 1 authors
+  - issue0506.feature
+    Scenarios: 2
+    Modified in 4 commits
+    By 1 authors
+  - issue0510.feature
+    Scenarios: 6
+    Modified in 5 commits
+    By 2 authors
+  - issue0547.feature
+    Scenarios: 3
+    Modified in 4 commits
+    By 2 authors
+  - issue0573.feature
+    Scenarios: 7
+    Modified in 3 commits
+    By 1 authors
+  - issue0597.feature
+    Scenarios: 6
+    Modified in 7 commits
+    By 1 authors
+  - fixture.feature
+    Scenarios: 32
+    Modified in 7 commits
+    By 1 authors
+  - runner.context_cleanup.feature
+    Scenarios: 41
+    Modified in 8 commits
+    By 2 authors
+  - runner.use_substep_dirs.feature
+    Scenarios: 8
+    Modified in 3 commits
+    By 1 authors
+  - issue0606.feature
+    Scenarios: 4
+    Modified in 3 commits
+    By 1 authors
+  - issue0631.feature
+    Scenarios: 11
+    Modified in 5 commits
+    By 2 authors
+  - issue0643.feature
+    Scenarios: 4
+    Modified in 3 commits
+    By 1 authors
+  - issue0657.feature
+    Scenarios: 3
+    Modified in 6 commits
+    By 1 authors
+  - issue0673.feature
+    Scenarios: 3
+    Modified in 3 commits
+    By 1 authors
+  - outline_tags.feature
+    Scenarios: 6
+    Modified in 4 commits
+    By 1 authors
+  - issue0678.feature
+    Scenarios: 13
+    Modified in 2 commits
+    By 2 authors
+  - issue0675.feature
+    Scenarios: 6
+    Modified in 4 commits
+    By 2 authors
+  - issue0713.feature
+    Scenarios: 4
+    Modified in 2 commits
+    By 1 authors
+  - tags.default_tags_v1.feature
+    Scenarios: 10
+    Modified in 2 commits
+    By 1 authors
+  - tags.default_tags_v2.feature
+    Scenarios: 10
+    Modified in 2 commits
+    By 1 authors
+  - tags.tag_expression_v1.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - tags.tag_expression_v2.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - rule_1.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - rule_2.feature
+    Scenarios: 1
+    Modified in 2 commits
+    By 1 authors
+  - rule_fails.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - example.feature
+    Scenarios: 3
+    Modified in 2 commits
+    By 1 authors
+  - run_examples.feature
+    Scenarios: 6
+    Modified in 3 commits
+    By 1 authors
+  - issue0766.feature
+    Scenarios: 5
+    Modified in 3 commits
+    By 1 authors
+  - issue0772.feature
+    Scenarios: 3
+    Modified in 2 commits
+    By 1 authors
+  - tags.tag_expression_v2.wildcards.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - issue1020.feature
+    Scenarios: 3
+    Modified in 3 commits
+    By 1 authors
+  - issue1061.feature
+    Scenarios: 5
+    Modified in 1 commits
+    By 1 authors
+  - issue1068.feature
+    Scenarios: 17
+    Modified in 4 commits
+    By 1 authors
+  - runner.use_runner_class.feature
+    Scenarios: 26
+    Modified in 8 commits
+    By 2 authors
+  - runner.help.feature
+    Scenarios: 4
+    Modified in 4 commits
+    By 2 authors
+  - soft_asserts.feature
+    Scenarios: 7
+    Modified in 2 commits
+    By 1 authors
+  - issue1002.feature
+    Scenarios: 7
+    Modified in 4 commits
+    By 1 authors
+  - tags.help.feature
+    Scenarios: 6
+    Modified in 6 commits
+    By 1 authors
+  - issue1116.feature
+    Scenarios: 6
+    Modified in 4 commits
+    By 1 authors
+  - issue1120.feature
+    Scenarios: 3
+    Modified in 4 commits
+    By 1 authors
+  - issue1158.feature
+    Scenarios: 3
+    Modified in 4 commits
+    By 1 authors
+  - issue1170.feature
+    Scenarios: 10
+    Modified in 5 commits
+    By 1 authors
+  - formatter.bad_steps.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - runner.bad_steps.feature
+    Scenarios: 8
+    Modified in 4 commits
+    By 1 authors
+  - step_matcher.cucumber_expressions.feature
+    Scenarios: 11
+    Modified in 3 commits
+    By 1 authors
+  - issue1180.feature
+    Scenarios: 4
+    Modified in 5 commits
+    By 1 authors
+  - formatter.steps_code.feature
+    Scenarios: 17
+    Modified in 5 commits
+    By 2 authors
+  - formatter.steps_bad.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - issue1181.feature
+    Scenarios: 3
+    Modified in 3 commits
+    By 1 authors
+  - configuration.default_paths.feature
+    Scenarios: 8
+    Modified in 1 commits
+    By 1 authors
+  - cucumber_expression.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - many_colors.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - issue1202.feature
+    Scenarios: 4
+    Modified in 3 commits
+    By 1 authors
+  - fixture.use_async_resource.feature
+    Scenarios: 3
+    Modified in 3 commits
+    By 1 authors
+  - step.nested_folders.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - issue1213.feature
+    Scenarios: 10
+    Modified in 1 commits
+    By 1 authors
+  - issue1231.feature
+    Scenarios: 4
+    Modified in 2 commits
+    By 1 authors
+  - logging.to_file.feature
+    Scenarios: 11
+    Modified in 4 commits
+    By 1 authors
+  - issue0948.feature
+    Scenarios: 4
+    Modified in 2 commits
+    By 1 authors
+  - capture.on_hooks.feature
+    Scenarios: 12
+    Modified in 1 commits
+    By 1 authors
+  - capture.on_hooks.using_capture_output.feature
+    Scenarios: 9
+    Modified in 1 commits
+    By 1 authors
+  - capture_log.clear_handlers.feature
+    Scenarios: 5
+    Modified in 1 commits
+    By 1 authors
+  - capture_log.feature
+    Scenarios: 12
+    Modified in 1 commits
+    By 1 authors
+  - capture_log.filter.feature
+    Scenarios: 8
+    Modified in 1 commits
+    By 1 authors
+  - capture_log.on_hooks.using_capture.feature
+    Scenarios: 8
+    Modified in 1 commits
+    By 1 authors
+  - logging.on_hooks.without_capture.feature
+    Scenarios: 10
+    Modified in 1 commits
+    By 1 authors
+  - step.async_steps.step_decorator.feature
+    Scenarios: 10
+    Modified in 2 commits
+    By 1 authors
+  - step.async_steps.use_async_context.feature
+    Scenarios: 3
+    Modified in 2 commits
+    By 1 authors
+  - issue1252.feature
+    Scenarios: 5
+    Modified in 2 commits
+    By 1 authors
+  - issue1239.feature
+    Scenarios: 5
+    Modified in 2 commits
+    By 1 authors
+  - issue1262.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - runner.use_nested_step_modules.feature
+    Scenarios: 9
+    Modified in 2 commits
+    By 1 authors
+  - f1.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - issue1284.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+OVERALL STATISTICS
+================================================================================
+total_repositories: 1
+total_commits_analyzed: 1967
+total_feature_files_found: 249
+total_scenarios_extracted: 2476
+total_commits_with_features: 1104

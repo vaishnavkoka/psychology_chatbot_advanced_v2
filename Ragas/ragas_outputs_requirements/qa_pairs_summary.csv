@@ -1,0 +1,33 @@
+Idx,Feature,Scenario,Question_Preview,Reference_Preview
+1,User Authentication,User login with valid credentials,"Feature: User Authentication
+Scenario: User login with valid credentials
+Given A...","Then: The system should authenticate the user and redirect to the dashboard
+Acce..."
+2,User Authentication,User login with invalid password,"Feature: User Authentication
+Scenario: User login with invalid password
+Given A ...","Then: The system should display an error message and deny access
+Acceptance Crit..."
+3,Password Reset,User resets forgotten password via email,"Feature: Password Reset
+Scenario: User resets forgotten password via email
+Given...",Then: The system should send a password reset link to the email and show a confi...
+4,User Profile Management,User updates profile information,"Feature: User Profile Management
+Scenario: User updates profile information
+Give...",Then: The system should update the profile information and display a success not...
+5,Data Validation,System validates email format during registration,"Feature: Data Validation
+Scenario: System validates email format during registra...","Then: The system should display a validation error and prevent form submission
+A..."
+6,Role-Based Access Control,Admin user accesses admin panel,"Feature: Role-Based Access Control
+Scenario: Admin user accesses admin panel
+Giv...","Then: The system should grant access to admin panel and display admin controls
+A..."
+7,Role-Based Access Control,Regular user cannot access admin panel,"Feature: Role-Based Access Control
+Scenario: Regular user cannot access admin pa...","Then: The system should deny access and redirect to the home page
+Acceptance Cri..."
+8,Search Functionality,User searches for requirements by title,"Feature: Search Functionality
+Scenario: User searches for requirements by title
+...",Then: The system should filter and display only requirements containing 'authent...
+9,Requirement Versioning,User views requirement version history,"Feature: Requirement Versioning
+Scenario: User views requirement version history...",Then: The system should display all versions with timestamps and change descript...
+10,Requirement Tracking,User marks requirement as completed,"Feature: Requirement Tracking
+Scenario: User marks requirement as completed
+Give...",Then: The system should update the requirement status to 'Completed' and record ...

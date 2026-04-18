@@ -1,0 +1,244 @@
+{
+  "coping_strategies": [
+    {
+      "id": "strategy_001",
+      "name": "Physical Activity",
+      "category": "behavioral",
+      "description": "Exercise to improve mood and physical health",
+      "techniques": [
+        "Walking - 30 minutes daily",
+        "Running or jogging - improves mood significantly",
+        "Yoga - combines exercise with mindfulness",
+        "Swimming - full-body workout, low impact",
+        "Dancing - fun and therapeutic",
+        "Strength training - builds confidence",
+        "Cycling - cardiovascular and meditative"
+      ],
+      "frequency": "Daily or at least 3-4 times per week",
+      "benefits": [
+        "Reduces anxiety and depression",
+        "Improves sleep quality",
+        "Increases energy levels",
+        "Builds self-confidence",
+        "Improves focus"
+      ],
+      "time_commitment": "20-60 minutes"
+    },
+    {
+      "id": "strategy_002",
+      "name": "Creative Expression",
+      "category": "therapeutic",
+      "description": "Use creativity to process emotions",
+      "techniques": [
+        "Journaling - write thoughts and feelings",
+        "Art - painting, drawing, sculpture",
+        "Music - listening, playing, singing",
+        "Writing - poetry, stories, letters",
+        "Photography - capturing moments",
+        "Crafting - creating with hands",
+        "Dance/Movement - physical expression"
+      ],
+      "frequency": "Regular, as desired",
+      "benefits": [
+        "Processes emotions",
+        "Reduces stress",
+        "Increases self-awareness",
+        "Provides outlet for feelings",
+        "Improves mood"
+      ],
+      "time_commitment": "15 minutes to several hours"
+    },
+    {
+      "id": "strategy_003",
+      "name": "Social Connection",
+      "category": "relational",
+      "description": "Build and maintain healthy relationships",
+      "techniques": [
+        "Spend time with friends",
+        "Join groups or clubs",
+        "Volunteer and help others",
+        "Phone calls or video chats",
+        "Support groups",
+        "Family gatherings",
+        "Community events"
+      ],
+      "frequency": "Weekly or as much as possible",
+      "benefits": [
+        "Reduces loneliness",
+        "Provides support",
+        "Increases sense of belonging",
+        "Improves mental health",
+        "Provides accountability"
+      ],
+      "time_commitment": "Variable"
+    },
+    {
+      "id": "strategy_004",
+      "name": "Self-Care Routine",
+      "category": "behavioral",
+      "description": "Daily habits to care for yourself",
+      "techniques": [
+        "Adequate sleep (7-9 hours)",
+        "Healthy eating",
+        "Hydration (drink water)",
+        "Hygiene and grooming",
+        "Skincare routine",
+        "Relaxing bath or shower",
+        "Comfortable clothing"
+      ],
+      "frequency": "Daily",
+      "benefits": [
+        "Improves physical health",
+        "Increases self-respect",
+        "Reduces stress",
+        "Improves mood",
+        "Prevents burnout"
+      ],
+      "time_commitment": "1-2 hours daily"
+    },
+    {
+      "id": "strategy_005",
+      "name": "Cognitive Strategies",
+      "category": "cognitive",
+      "description": "Challenge and reframe negative thoughts",
+      "techniques": [
+        "Journaling thoughts",
+        "Thought records",
+        "Challenging catastrophizing",
+        "Setting realistic expectations",
+        "Positive affirmations",
+        "Reframing situations",
+        "Gratitude practice"
+      ],
+      "frequency": "Daily",
+      "benefits": [
+        "Reduces anxiety",
+        "Improves resilience",
+        "Increases positivity",
+        "Develops perspective",
+        "Prevents depression"
+      ],
+      "time_commitment": "10-20 minutes daily"
+    },
+    {
+      "id": "strategy_006",
+      "name": "Boundary Setting",
+      "category": "relational",
+      "description": "Establish healthy boundaries",
+      "techniques": [
+        "Learn to say 'no'",
+        "Communicate limits clearly",
+        "Protect personal time",
+        "Limit toxic relationships",
+        "Set work-life boundaries",
+        "Ask for what you need",
+        "Remove yourself from harmful situations"
+      ],
+      "frequency": "Ongoing",
+      "benefits": [
+        "Reduces stress",
+        "Improves relationships",
+        "Increases self-esteem",
+        "Prevents resentment",
+        "Protects mental health"
+      ],
+      "time_commitment": "Variable"
+    },
+    {
+      "id": "strategy_007",
+      "name": "Learning and Growth",
+      "category": "behavioral",
+      "description": "Pursue personal development",
+      "techniques": [
+        "Read books",
+        "Take courses",
+        "Learn new skills",
+        "Attend workshops",
+        "Listen to podcasts",
+        "Watch educational videos",
+        "Join learning communities"
+      ],
+      "frequency": "Regular",
+      "benefits": [
+        "Increases confidence",
+        "Provides purpose",
+        "Improves focus",
+        "Reduces symptoms",
+        "Builds resilience"
+      ],
+      "time_commitment": "As desired"
+    },
+    {
+      "id": "strategy_008",
+      "name": "Nature and Outdoor Time",
+      "category": "behavioral",
+      "description": "Spend time in nature",
+      "techniques": [
+        "Walking in parks or trails",
+        "Gardening",
+        "Hiking",
+        "Beach or water activities",
+        "Forest bathing",
+        "Stargazing",
+        "Sitting outdoors"
+      ],
+      "frequency": "At least weekly",
+      "benefits": [
+        "Reduces stress",
+        "Improves mood",
+        "Increases vitamin D",
+        "Provides perspective",
+        "Promotes relaxation"
+      ],
+      "time_commitment": "30 minutes to several hours"
+    },
+    {
+      "id": "strategy_009",
+      "name": "Professional Support",
+      "category": "professional",
+      "description": "Seek help from mental health professionals",
+      "techniques": [
+        "Individual therapy",
+        "Group therapy",
+        "Psychiatry for medication",
+        "Crisis hotlines",
+        "Support groups",
+        "Life coaching",
+        "Career counseling"
+      ],
+      "frequency": "Weekly or as needed",
+      "benefits": [
+        "Professional guidance",
+        "Reduces symptoms",
+        "Develops skills",
+        "Provides support",
+        "Prevents crisis"
+      ],
+      "time_commitment": "Varies"
+    },
+    {
+      "id": "strategy_010",
+      "name": "Spirituality and Meaning",
+      "category": "spiritual",
+      "description": "Connect with meaning and purpose",
+      "techniques": [
+        "Meditation or prayer",
+        "Spiritual community",
+        "Volunteer work",
+        "Values alignment",
+        "Life purpose exploration",
+        "Philosophical reading",
+        "Mindfulness practice"
+      ],
+      "frequency": "Regular",
+      "benefits": [
+        "Increases meaning",
+        "Reduces existential anxiety",
+        "Improves resilience",
+        "Connects to community",
+        "Promotes peace"
+      ],
+      "time_commitment": "As desired"
+    }
+  ]
+}

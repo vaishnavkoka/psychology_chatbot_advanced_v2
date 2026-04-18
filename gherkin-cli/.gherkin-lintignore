@@ -1,0 +1,5 @@
+node_modules/
+features/gherkin-lint/
+features/node_modules/
+features/*.json
+*.backup

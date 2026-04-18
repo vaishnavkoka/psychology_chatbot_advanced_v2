@@ -1,0 +1,13 @@
+{
+  "name": "gherkin-cli",
+  "version": "1.0.0",
+  "description": "Gherkin BDD feature files with linting",
+  "scripts": {
+    "lint": "gherkin-lint gherkin-lint-features/",
+    "lint:report": "gherkin-lint gherkin-lint-features/ > reports/gherkin_lint_report.txt 2>&1",
+    "lint:fix": "gherkin-lint gherkin-lint-features/ --list-all"
+  },
+  "devDependencies": {
+    "gherkin-lint": "^4.2.4"
+  }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Selenium Automation Suite" parallel="false" verbose="2">
+    <test name="Cucumber BDD Tests">
+        <!-- Run only Cucumber test runners -->
+        <classes>
+            <class name="com.selenium.CucumberTestNGRunner" />
+        </classes>
+    </test>
+    
+    <test name="FirstTest Suite" enabled="true">
+        <!-- Original TestNG tests -->
+        <classes>
+            <class name="com.selenium.tests.FirstTest" />
+        </classes>
+    </test>
+</suite>

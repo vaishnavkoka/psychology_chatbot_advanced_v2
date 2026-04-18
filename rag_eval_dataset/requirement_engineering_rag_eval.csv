@@ -1,0 +1,31 @@
+id,question,answer,ground_truth_doc,document_title,question_type,difficulty
+REQ-001-Q1,What authentication methods are supported?,"The system supports email/password, OAuth 2.0 (Google, GitHub), and multi-factor authentication via email or authenticator app.",REQ-001,User Authentication System Requirements,factual,hard
+REQ-001-Q2,What are the password requirements?,"Passwords must be at least 12 characters and contain uppercase, lowercase, numbers, and special characters.",REQ-001,User Authentication System Requirements,specific,hard
+REQ-001-Q3,What is the session timeout policy?,Sessions have a configurable timeout with a default of 24 hours. Tokens are refreshed every 15 minutes of activity.,REQ-001,User Authentication System Requirements,specific,medium
+REQ-001-Q4,How are users protected against brute force attacks?,"The system locks accounts after 5 failed login attempts for 30 minutes, and logs all failed attempts for security auditing.",REQ-001,User Authentication System Requirements,security,easy
+REQ-001-Q5,Can users recover forgotten passwords?,"Yes, users can recover their password through email verification.",REQ-001,User Authentication System Requirements,process,easy
+REQ-002-Q6,What search operators are supported?,"The system supports Boolean operators including AND, OR, and NOT for advanced searches.",REQ-002,Search and Filtering Capabilities,feature,medium
+REQ-002-Q7,What is the expected search response time?,"Search results must return within 500ms, while autocomplete suggestions must respond within 100ms.",REQ-002,Search and Filtering Capabilities,performance,easy
+REQ-002-Q8,Does the system handle spelling mistakes in searches?,"Yes, fuzzy matching is supported for typos with up to 2 character edit distance.",REQ-002,Search and Filtering Capabilities,feature,easy
+REQ-002-Q9,How many documents can the search system handle?,The system supports searching across 1 million documents.,REQ-002,Search and Filtering Capabilities,scalability,easy
+REQ-002-Q10,Can users save their searches?,"Yes, authenticated users can save searches for future use.",REQ-002,Search and Filtering Capabilities,feature,hard
+REQ-003-Q1,What export formats are supported?,"The system supports CSV, PDF, Excel, and JSON export formats, with scheduled email delivery.",REQ-003,Data Export and Reporting,feature,medium
+REQ-003-Q2,What is the maximum export size?,"The maximum export size is 100,000 records.",REQ-003,Data Export and Reporting,constraint,medium
+REQ-003-Q3,How many predefined report templates are available?,"There are three predefined templates: Summary, Detailed, and Executive.",REQ-003,Data Export and Reporting,feature,hard
+REQ-003-Q4,Can exports be scheduled and emailed automatically?,"Yes, users can schedule daily, weekly, or monthly reports with email delivery.",REQ-003,Data Export and Reporting,process,medium
+REQ-003-Q5,Are exported records encrypted?,"Yes, all exports must be encrypted at rest.",REQ-003,Data Export and Reporting,security,hard
+REQ-004-Q6,What are the rate limits for different user tiers?,"Free tier: 1000 requests/hour, Premium tier: 10,000 requests/hour, Anonymous: 100 requests/minute per IP.",REQ-004,API Rate Limiting and Quotas,specific,hard
+REQ-004-Q7,What HTTP status code is returned for rate limit violations?,HTTP 429 (Too Many Requests) is returned with a Retry-After header.,REQ-004,API Rate Limiting and Quotas,technical,easy
+REQ-004-Q8,When do quota counters reset?,Daily API quotas reset at UTC midnight.,REQ-004,API Rate Limiting and Quotas,process,easy
+REQ-004-Q9,Can users increase their API quotas?,"Yes, users can increase quotas through billing upgrades.",REQ-004,API Rate Limiting and Quotas,process,hard
+REQ-004-Q10,Is there a burst allowance above the rate limit?,"Yes, there is a 20% burst allowance above the limit for 5 minutes.",REQ-004,API Rate Limiting and Quotas,feature,medium
+REQ-005-Q1,What compliance standards are required?,"The system must comply with GDPR, CCPA, SOC 2 Type II, PCI DSS, and HIPAA.",REQ-005,Data Privacy and Security,compliance,medium
+REQ-005-Q2,How is sensitive data encrypted?,Sensitive data uses end-to-end encryption and all communications use SSL/TLS 1.3.,REQ-005,Data Privacy and Security,security,medium
+REQ-005-Q3,What access control models are supported?,The system supports Role-Based Access Control (5 default roles) and Attribute-Based Access Control for fine-grained permissions.,REQ-005,Data Privacy and Security,feature,easy
+REQ-005-Q4,How are audit logs maintained?,All data access is logged in audit trails for security and compliance purposes.,REQ-005,Data Privacy and Security,security,easy
+REQ-005-Q5,Is multi-tenant data isolation provided?,"Yes, the system enforces multi-tenant data isolation.",REQ-005,Data Privacy and Security,architecture,easy
+REQ-006-Q6,What notification channels are available?,"In-app (WebSocket), email, SMS, and push notifications.",REQ-006,Notification System Requirements,feature,easy
+REQ-006-Q7,Can users customize notification frequency?,"Yes, users can set frequency to real-time, hourly, daily, or disable specific notification types.",REQ-006,Notification System Requirements,feature,easy
+REQ-006-Q8,What types of notifications are sent?,"System, user activity, alert, task, and promotional notifications.",REQ-006,Notification System Requirements,information,medium
+REQ-006-Q9,Can users set do-not-disturb hours?,"Yes, users can configure do-not-disturb hours when notifications are suppressed.",REQ-006,Notification System Requirements,feature,medium
+REQ-006-Q10,Is there a notification history feature?,"Yes, users can view, search, and archive their notification history.",REQ-006,Notification System Requirements,feature,easy

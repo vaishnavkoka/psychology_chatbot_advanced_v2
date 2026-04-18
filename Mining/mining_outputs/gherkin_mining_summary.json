@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-03-16T19:28:51.226609",
+  "total_scenarios": 4,
+  "total_projects": 3,
+  "languages": [
+    "JavaScript",
+    "Python"
+  ],
+  "domains": [
+    "checkout",
+    "api",
+    "dashboard",
+    "authentication"
+  ],
+  "projects": [
+    {
+      "name": "behave",
+      "scenarios": 1,
+      "language": "Python"
+    },
+    {
+      "name": "robotframework",
+      "scenarios": 1,
+      "language": "Python"
+    },
+    {
+      "name": "cucumber-js",
+      "scenarios": 2,
+      "language": "JavaScript"
+    }
+  ]
+}

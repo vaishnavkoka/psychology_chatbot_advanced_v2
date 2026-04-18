@@ -1,0 +1,17 @@
+FeatureFileWithMismatchedNameLinter
+  Feature file name does not match feature name.
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/authentication.feature
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/payment.feature
+TestShouldUseBackgroundLinter
+  Test shares steps with all other tests in feature. Use a background.
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/authentication.feature:8
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/authentication.feature:15
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/authentication.feature:22
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/authentication.feature:29
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/payment.feature:7
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/payment.feature:17
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/payment.feature:26
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/payment.feature:34
+    /home/vaishnavkoka/RE4BDD/gherkin-cli/features/payment.feature:43
+
+11 issues found

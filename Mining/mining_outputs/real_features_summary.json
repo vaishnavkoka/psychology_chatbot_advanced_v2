@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-03-16T19:20:30.675344",
+  "total_projects": 3,
+  "total_features": 12,
+  "total_scenarios": 24,
+  "average_scenarios_per_feature": 2.0,
+  "total_lines_of_code": 185,
+  "total_size_bytes": 4225,
+  "feature_files_directory": "mining_outputs/feature_files",
+  "projects": [
+    {
+      "name": "cucumber-js",
+      "features": 4,
+      "language": "JavaScript",
+      "stars": 2500
+    },
+    {
+      "name": "cucumber-js",
+      "features": 4,
+      "language": "JavaScript",
+      "stars": 2500
+    },
+    {
+      "name": "cucumber-js",
+      "features": 4,
+      "language": "JavaScript",
+      "stars": 2500
+    }
+  ]
+}

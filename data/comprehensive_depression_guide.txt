@@ -1,0 +1,220 @@
+# Understanding Depression: A Comprehensive Clinical Guide
+
+## Definition
+Major Depressive Disorder (MDD) is a serious medical condition characterized by persistent depressed mood, loss of interest or pleasure in activities, and a cluster of associated symptoms that significantly impair functioning. It affects how a person thinks, feels, and functions in daily life.
+
+## Diagnostic Criteria (DSM-5)
+Presence of 5+ symptoms for 2+ weeks:
+1. Depressed mood most of the day
+2. Markedly diminished interest or pleasure in activities
+3. Significant weight loss/gain or appetite changes
+4. Insomnia or hypersomnia
+5. Psychomotor agitation or retardation
+6. Fatigue or loss of energy
+7. Feelings of worthlessness or excessive guilt
+8. Diminished concentration or decisiveness
+9. Recurrent thoughts of death or suicidal ideation
+
+## Clinical Subtypes
+
+### Persistent Depressive Disorder (Dysthymia)
+Chronic depression lasting 2+ years with less severe symptoms but greater chronicity.
+
+### Bipolar Disorder
+Depression alternating with periods of elevated mood (mania or hypomania). Requires different treatment (mood stabilizers).
+
+### Psychotic Depression
+Depression accompanied by delusions or hallucinations (often guilt-related or somatic).
+
+### Peripartum Depression
+Onset during pregnancy or within 4 weeks postpartum. Medical risk factors present.
+
+### Seasonal Affective Disorder (SAD)
+Recurrent depression coinciding with reduced daylight exposure, typically fall/winter.
+
+### Treatment-Resistant Depression
+Failure to respond to 2+ adequate antidepressant trials.
+
+## Neurobiological Factors
+
+### Neurotransmitter Dysregulation
+- Serotonin: Decreased levels associated with mood regulation problems
+- Norepinephrine: Low levels linked to fatigue and anhedonia
+- Dopamine: Reduced activity in reward pathways
+- GABA: Decreased inhibitory neurotransmission
+- Glutamate: Excessive excitatory activity
+
+### Brain Imaging Findings
+- Reduced hippocampal volume (memory and emotion)
+- Decreased prefrontal cortex activity (executive function)
+- Altered amygdala response (emotional processing)
+- Reduced gray matter volume in multiple regions
+- Abnormal functional connectivity
+
+### Inflammatory Markers
+- Elevated cytokines (IL-6, TNF-alpha)
+- Increased C-reactive protein
+- HPA axis dysregulation
+- Immune system activation
+
+## Risk Factors
+
+### Genetic
+- Family history (40-50% heritability)
+- Twin studies confirm genetic component
+- Specific gene variants (serotonin transporter gene)
+
+### Environmental
+- Childhood trauma or abuse
+- Chronic stress
+- Major life losses
+- Chronic medical conditions
+- Substance abuse
+- Sleep deprivation
+
+### Psychological
+- Negative thought patterns (cognitive distortion)
+- Learned helplessness
+- Low self-efficacy
+- Perfectionism
+- Rumination
+
+### Biological
+- Hormonal changes (postpartum, thyroid)
+- Chronic pain conditions
+- Neurological disorders
+- Metabolic syndrome
+- Sleep disorders
+
+## Evidence-Based Treatments
+
+### Psychotherapy
+
+#### Cognitive Behavioral Therapy (CBT)
+Gold standard psychotherapy. Focuses on identifying and changing negative thoughts and increasing behavioral activation.
+
+Components:
+- Cognitive restructuring
+- Behavioral activation
+- Behavioral experiments
+- Problem-solving skills
+- Activity scheduling
+- Sleep hygiene training
+
+#### Interpersonal Therapy (IPT)
+Addresses interpersonal relationships and life roles to improve mood.
+
+Focus Areas:
+- Grief and loss
+- Interpersonal disputes
+- Role transitions
+- Interpersonal deficits
+
+#### Psychodynamic Therapy
+Explores unconscious patterns and childhood experiences affecting current mood.
+
+#### Acceptance and Commitment Therapy (ACT)
+Emphasizes acceptance of difficult thoughts/feelings while committing to valued living.
+
+#### Behavioral Activation
+Increases engagement in positive, meaningful activities despite low motivation.
+
+### Pharmacotherapy
+
+#### First-Line Medications (SSRIs)
+- Fluoxetine (Prozac)
+- Sertraline (Zoloft)
+- Paroxetine (Paxil)
+- Citalopram (Celexa)
+- Escitalopram (Lexapro)
+
+Response Timeline: 2-4 weeks for initial effects, 6-8 weeks for full effect
+
+#### Alternative Medications
+- SNRIs (Venlafaxine, Duloxetine)
+- NDRIs (Bupropion) - good for fatigue and sexual dysfunction
+- Atypical antipsychotics (augmentation)
+- Mood stabilizers (Lithium)
+
+#### Side Effects Management
+Common temporary side effects:
+- Gastrointestinal distress (usually resolves)
+- Initial energy decrease
+- Sleep disturbance
+- Sexual dysfunction
+- Weight changes
+
+### Somatic Treatments
+
+#### Transcranial Magnetic Stimulation (TMS)
+Non-invasive brain stimulation for treatment-resistant depression. 30+ sessions over 6+ weeks.
+
+#### Ketamine/Esketamine
+Rapidly acting (hours to days) for severe, suicidal depression. Requires monitoring.
+
+#### Electroconvulsive Therapy (ECT)
+Most effective treatment, typically for severe catatonia or when medicated ineffective. General anesthesia required.
+
+#### Light Therapy
+30 minutes daily exposure to 10,000 lux light, especially effective for SAD.
+
+### Lifestyle Interventions
+
+#### Exercise
+30+ minutes moderate aerobic exercise 5x/week. Comparable to medication for mild-moderate depression.
+
+#### Sleep
+Consistent 7-9 hour sleep schedule. Sleep deprivation worsens depression.
+
+#### Nutrition
+- Mediterranean diet associated with lower depression rates
+- Omega-3 fatty acids
+- B vitamins and folate
+- Complex carbohydrates
+- Adequate protein
+
+#### Social Connection
+- Regular contact with supportive people
+- Group activities
+- Support groups
+- Volunteering
+- Reducing isolation
+
+#### Stress Management
+- Meditation and mindfulness
+- Yoga
+- Progressive muscle relaxation
+- Time in nature
+- Limit caffeine and alcohol
+
+## Suicidal Risk Assessment
+Screen for suicidal ideation at every visit. Risk increases with:
+- Hopelessness
+- Social isolation
+- Access to means
+- Previous attempts
+- Family history of suicide
+- Recent loss
+- Substance abuse
+
+## Prognosis
+- 80% of people with depression improve with treatment
+- First episode: 50% will have future episodes
+- Average duration untreated: 12+ months
+- With treatment: Average 3-6 months recovery
+- Maintenance treatment reduces relapse risk significantly
+
+## When to Seek Help
+- Persistent depressed mood 2+ weeks
+- Loss of interest in activities
+- Suicidal thoughts
+- Difficulty functioning at work/school/home
+- Changes in sleep/appetite/energy
+- Feelings of worthlessness
+- Substance use to cope
+
+## Resources
+- NAMI: https://www.nami.org
+- DBSA: https://www.dbsalliance.org
+- Crisis Text Line: Text HOME to 741741
+- National Suicide Prevention Lifeline: 988

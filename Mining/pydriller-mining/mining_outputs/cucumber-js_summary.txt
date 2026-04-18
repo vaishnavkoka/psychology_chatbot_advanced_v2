@@ -1,0 +1,472 @@
+================================================================================
+PyDriller BDD Feature Mining Report
+================================================================================
+
+Repository: cucumber-js
+URL: https://github.com/cucumber/cucumber-js
+Branch: main
+Commits analyzed: 2132
+Commits with features: 851
+Feature files: 111
+Scenarios: 1076
+Languages: JavaScript
+First commit: 2011-05-28T00:03:05+02:00
+Last commit: 2026-03-12T00:28:35+01:00
+
+Feature Files:
+  - basic.feature
+    Scenarios: 4
+    Modified in 2 commits
+    By 1 authors
+  - issue001-async_stepdef_callbacks.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - asynchronous_step_definitions-issue_01.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - core.feature
+    Scenarios: 17
+    Modified in 9 commits
+    By 5 authors
+  - progress_formatter.feature
+    Scenarios: 11
+    Modified in 1 commits
+    By 1 authors
+  - cli.feature
+    Scenarios: 22
+    Modified in 29 commits
+    By 10 authors
+  - background.feature
+    Scenarios: 21
+    Modified in 7 commits
+    By 5 authors
+  - coffeescript_support.feature
+    Scenarios: 2
+    Modified in 2 commits
+    By 1 authors
+  - world_constructor_callback.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - step_definition_snippets.feature
+    Scenarios: 18
+    Modified in 14 commits
+    By 8 authors
+  - asynchronous_pending_step.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+  - asynchronous_failing_steps.feature
+    Scenarios: 5
+    Modified in 2 commits
+    By 1 authors
+  - hooks.feature
+    Scenarios: 21
+    Modified in 22 commits
+    By 6 authors
+  - world_constructor_callback_with_object.feature
+    Scenarios: 5
+    Modified in 2 commits
+    By 2 authors
+  - step_definition_string_pattern.feature
+    Scenarios: 11
+    Modified in 4 commits
+    By 3 authors
+  - json_formatter.feature
+    Scenarios: 74
+    Modified in 18 commits
+    By 8 authors
+  - nodejs_style_callback_failure.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+  - data_table_rows.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - pogoscript_support.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - scenario_outlines.feature
+    Scenarios: 49
+    Modified in 10 commits
+    By 7 authors
+  - attachments.feature
+    Scenarios: 17
+    Modified in 25 commits
+    By 7 authors
+  - pretty_formatter.feature
+    Scenarios: 18
+    Modified in 26 commits
+    By 6 authors
+  - scenario_statuses.feature
+    Scenarios: 11
+    Modified in 9 commits
+    By 5 authors
+  - summary_formatter.feature
+    Scenarios: 8
+    Modified in 12 commits
+    By 6 authors
+  - strict_mode.feature
+    Scenarios: 13
+    Modified in 15 commits
+    By 7 authors
+  - with_bom.feature
+    Scenarios: 6
+    Modified in 1 commits
+    By 1 authors
+  - synchronous_callbacks.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+  - step_definition_callbacks.feature
+    Scenarios: 10
+    Modified in 4 commits
+    By 3 authors
+  - data_tables.feature
+    Scenarios: 7
+    Modified in 10 commits
+    By 6 authors
+  - profiles.feature
+    Scenarios: 17
+    Modified in 22 commits
+    By 7 authors
+  - failed_scenarios.feature
+    Scenarios: 8
+    Modified in 7 commits
+    By 3 authors
+  - dryrun_mode.feature
+    Scenarios: 21
+    Modified in 17 commits
+    By 6 authors
+  - compiler.feature
+    Scenarios: 10
+    Modified in 7 commits
+    By 4 authors
+  - doc_string.feature
+    Scenarios: 3
+    Modified in 6 commits
+    By 4 authors
+  - failing_steps.feature
+    Scenarios: 13
+    Modified in 17 commits
+    By 5 authors
+  - passing_steps.feature
+    Scenarios: 5
+    Modified in 11 commits
+    By 4 authors
+  - pending_steps.feature
+    Scenarios: 6
+    Modified in 10 commits
+    By 4 authors
+  - step_definition_timeouts.feature
+    Scenarios: 11
+    Modified in 14 commits
+    By 5 authors
+  - after_hook_interface.feature
+    Scenarios: 12
+    Modified in 6 commits
+    By 1 authors
+  - around_hook_interface.feature
+    Scenarios: 12
+    Modified in 1 commits
+    By 1 authors
+  - before_hook_interface.feature
+    Scenarios: 12
+    Modified in 5 commits
+    By 1 authors
+  - fail_fast.feature
+    Scenarios: 8
+    Modified in 15 commits
+    By 5 authors
+  - multiple_formatters.feature
+    Scenarios: 6
+    Modified in 14 commits
+    By 6 authors
+  - target_specific_scenarios.feature
+    Scenarios: 17
+    Modified in 2 commits
+    By 1 authors
+  - step_definition_snippets_custom_syntax.feature
+    Scenarios: 10
+    Modified in 14 commits
+    By 6 authors
+  - ambiguous_step.feature
+    Scenarios: 6
+    Modified in 11 commits
+    By 5 authors
+  - rerun_formatter.feature
+    Scenarios: 29
+    Modified in 16 commits
+    By 7 authors
+  - target_specific_scenarios_by_line.feature
+    Scenarios: 29
+    Modified in 11 commits
+    By 6 authors
+  - target_specific_scenarios_by_tag.feature
+    Scenarios: 27
+    Modified in 17 commits
+    By 7 authors
+  - target_specific_scenarios_by_name.feature
+    Scenarios: 6
+    Modified in 4 commits
+    By 3 authors
+  - rerun_formatter_subfolder.feature
+    Scenarios: 6
+    Modified in 9 commits
+    By 4 authors
+  - hook_timeouts.feature
+    Scenarios: 5
+    Modified in 12 commits
+    By 5 authors
+  - es6.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - handling_step_errors.feature
+    Scenarios: 4
+    Modified in 9 commits
+    By 4 authors
+  - fake_time.feature
+    Scenarios: 2
+    Modified in 7 commits
+    By 4 authors
+  - register_handler.feature
+    Scenarios: 11
+    Modified in 8 commits
+    By 3 authors
+  - register_handler_timeouts.feature
+    Scenarios: 3
+    Modified in 7 commits
+    By 2 authors
+  - tagged_hooks.feature
+    Scenarios: 10
+    Modified in 10 commits
+    By 4 authors
+  - step_definition_snippets_interfaces.feature
+    Scenarios: 6
+    Modified in 10 commits
+    By 5 authors
+  - step_definition_snippets_i18n.feature
+    Scenarios: 5
+    Modified in 7 commits
+    By 3 authors
+  - snippets_formatter.feature
+    Scenarios: 2
+    Modified in 5 commits
+    By 3 authors
+  - world_parameters.feature
+    Scenarios: 10
+    Modified in 15 commits
+    By 6 authors
+  - custom_stack_trace.feature
+    Scenarios: 3
+    Modified in 11 commits
+    By 5 authors
+  - custom_formatter.feature
+    Scenarios: 11
+    Modified in 17 commits
+    By 6 authors
+  - generator_step_definitions.feature
+    Scenarios: 3
+    Modified in 12 commits
+    By 5 authors
+  - nested_features.feature
+    Scenarios: 2
+    Modified in 8 commits
+    By 3 authors
+  - hook_interface.feature
+    Scenarios: 23
+    Modified in 11 commits
+    By 4 authors
+  - usage_formatter.feature
+    Scenarios: 4
+    Modified in 5 commits
+    By 4 authors
+  - usage_json_formatter.feature
+    Scenarios: 2
+    Modified in 5 commits
+    By 3 authors
+  - multiple_hooks.feature
+    Scenarios: 2
+    Modified in 5 commits
+    By 3 authors
+  - custom_parameter.feature
+    Scenarios: 5
+    Modified in 2 commits
+    By 1 authors
+  - parameter_types.feature
+    Scenarios: 12
+    Modified in 16 commits
+    By 6 authors
+  - global_install.feature
+    Scenarios: 2
+    Modified in 7 commits
+    By 4 authors
+  - core_with_direct_imports.feature
+    Scenarios: 11
+    Modified in 1 commits
+    By 1 authors
+  - step_wrapper_with_options.feature
+    Scenarios: 2
+    Modified in 6 commits
+    By 5 authors
+  - i18n.feature
+    Scenarios: 6
+    Modified in 5 commits
+    By 4 authors
+  - error_formatting.feature
+    Scenarios: 8
+    Modified in 8 commits
+    By 4 authors
+  - before_after_all_hook_interfaces.feature
+    Scenarios: 22
+    Modified in 7 commits
+    By 3 authors
+  - before_after_all_hooks.feature
+    Scenarios: 5
+    Modified in 6 commits
+    By 3 authors
+  - direct_imports.feature
+    Scenarios: 8
+    Modified in 6 commits
+    By 4 authors
+  - event_protocol_formatter.feature
+    Scenarios: 5
+    Modified in 3 commits
+    By 1 authors
+  - before_after_all_hook_timeouts.feature
+    Scenarios: 7
+    Modified in 7 commits
+    By 4 authors
+  - formatter_paths.feature
+    Scenarios: 6
+    Modified in 7 commits
+    By 5 authors
+  - hook_parameter.feature
+    Scenarios: 5
+    Modified in 7 commits
+    By 3 authors
+  - skipped_steps.feature
+    Scenarios: 13
+    Modified in 8 commits
+    By 5 authors
+  - language.feature
+    Scenarios: 2
+    Modified in 5 commits
+    By 2 authors
+  - exit.feature
+    Scenarios: 4
+    Modified in 6 commits
+    By 2 authors
+  - require_module.feature
+    Scenarios: 3
+    Modified in 5 commits
+    By 3 authors
+  - order.feature
+    Scenarios: 9
+    Modified in 3 commits
+    By 2 authors
+  - gherkin_parse_failure.feature
+    Scenarios: 5
+    Modified in 3 commits
+    By 2 authors
+  - parallel.feature
+    Scenarios: 11
+    Modified in 10 commits
+    By 7 authors
+  - formatters.feature
+    Scenarios: 11
+    Modified in 9 commits
+    By 5 authors
+  - retry.feature
+    Scenarios: 56
+    Modified in 10 commits
+    By 4 authors
+  - rule.feature
+    Scenarios: 6
+    Modified in 3 commits
+    By 1 authors
+  - publish.feature
+    Scenarios: 12
+    Modified in 8 commits
+    By 4 authors
+  - before_after_step_hooks.feature
+    Scenarios: 6
+    Modified in 1 commits
+    By 1 authors
+  - world_in_hooks.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - esm.feature
+    Scenarios: 14
+    Modified in 5 commits
+    By 3 authors
+  - parallel_custom_assign.feature
+    Scenarios: 9
+    Modified in 1 commits
+    By 1 authors
+  - named_hooks.feature
+    Scenarios: 2
+    Modified in 1 commits
+    By 1 authors
+  - colors.feature
+    Scenarios: 5
+    Modified in 2 commits
+    By 1 authors
+  - invalid_installation.feature
+    Scenarios: 2
+    Modified in 2 commits
+    By 1 authors
+  - debug.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+  - stack_traces.feature
+    Scenarios: 3
+    Modified in 2 commits
+    By 1 authors
+  - before_after_all_hooks_context.feature
+    Scenarios: 5
+    Modified in 1 commits
+    By 1 authors
+  - loaders.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - scope_proxies.feature
+    Scenarios: 4
+    Modified in 2 commits
+    By 2 authors
+  - html_formatter.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+  - sharding.feature
+    Scenarios: 14
+    Modified in 1 commits
+    By 1 authors
+  - plugins.feature
+    Scenarios: 8
+    Modified in 1 commits
+    By 1 authors
+  - paths.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+OVERALL STATISTICS
+================================================================================
+total_repositories: 1
+total_commits_analyzed: 2132
+total_feature_files_found: 111
+total_scenarios_extracted: 1076
+total_commits_with_features: 851

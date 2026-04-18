@@ -1,0 +1,227 @@
+{
+  "mindfulness_exercises": [
+    {
+      "id": "mindfulness_001",
+      "name": "5-Minute Breathing Exercise",
+      "duration": "5 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Sit comfortably with your back straight",
+        "Close your eyes or lower your gaze",
+        "Breathe in slowly through your nose for 4 counts",
+        "Hold your breath for 4 counts",
+        "Exhale slowly through your mouth for 6 counts",
+        "Repeat 10-15 times",
+        "Notice how you feel"
+      ],
+      "benefits": [
+        "Reduces anxiety",
+        "Lowers blood pressure",
+        "Improves focus",
+        "Calms nervous system"
+      ],
+      "best_time": "Anytime, especially when stressed"
+    },
+    {
+      "id": "mindfulness_002",
+      "name": "Body Scan Meditation",
+      "duration": "15 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Lie on your back in a comfortable position",
+        "Close your eyes",
+        "Start at the top of your head",
+        "Slowly scan down through your body",
+        "Notice any tension or sensations",
+        "Breathe into areas of tension",
+        "Release and move to next body part",
+        "End with deep gratitude breath"
+      ],
+      "benefits": [
+        "Increases body awareness",
+        "Releases physical tension",
+        "Promotes relaxation",
+        "Improves sleep"
+      ],
+      "best_time": "Evening or before sleep"
+    },
+    {
+      "id": "mindfulness_003",
+      "name": "Loving-Kindness Meditation",
+      "duration": "10 minutes",
+      "difficulty": "intermediate",
+      "instructions": [
+        "Sit comfortably",
+        "Start by directing kindness toward yourself",
+        "Repeat: 'May I be happy, may I be healthy, may I be safe, may I be at peace'",
+        "Extend this to someone you love",
+        "Then to a neutral person",
+        "Then to someone difficult",
+        "Finally, extend to all beings",
+        "End with a moment of stillness"
+      ],
+      "benefits": [
+        "Increases compassion",
+        "Reduces anger and resentment",
+        "Improves relationships",
+        "Promotes emotional healing"
+      ],
+      "best_time": "Morning or when feeling disconnected"
+    },
+    {
+      "id": "mindfulness_004",
+      "name": "Mindful Walking",
+      "duration": "10-20 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Choose a quiet space to walk",
+        "Walk slowly and deliberately",
+        "Feel each step on the ground",
+        "Notice the movement of your legs",
+        "Be aware of your surroundings",
+        "If your mind wanders, gently bring it back",
+        "Continue for 10-20 minutes"
+      ],
+      "benefits": [
+        "Combines movement and mindfulness",
+        "Improves focus",
+        "Reduces stress",
+        "Connects you with nature"
+      ],
+      "best_time": "Outdoors in nature"
+    },
+    {
+      "id": "mindfulness_005",
+      "name": "Mindful Eating",
+      "duration": "15-30 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Choose a healthy snack",
+        "Eat without distractions",
+        "Notice the color, smell, and texture",
+        "Take a small bite",
+        "Notice the taste and flavor",
+        "Chew slowly (at least 30 times)",
+        "Notice the sensations and gratitude"
+      ],
+      "benefits": [
+        "Improves digestion",
+        "Enhances enjoyment of food",
+        "Promotes healthy eating",
+        "Increases awareness"
+      ],
+      "best_time": "Meals when not rushed"
+    },
+    {
+      "id": "mindfulness_006",
+      "name": "Visualization Exercise",
+      "duration": "10 minutes",
+      "difficulty": "intermediate",
+      "instructions": [
+        "Sit comfortably and close your eyes",
+        "Visualize a calm, peaceful place",
+        "Engage all your senses",
+        "See the colors, hear the sounds",
+        "Feel the temperature and textures",
+        "Smell the scents around you",
+        "Spend a few minutes here",
+        "Slowly return to awareness"
+      ],
+      "benefits": [
+        "Reduces anxiety and stress",
+        "Improves mental clarity",
+        "Enhances creativity",
+        "Promotes relaxation"
+      ],
+      "best_time": "When needing stress relief"
+    },
+    {
+      "id": "mindfulness_007",
+      "name": "5-4-3-2-1 Grounding Technique",
+      "duration": "5 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Notice 5 things you can see",
+        "Notice 4 things you can touch",
+        "Notice 3 things you can hear",
+        "Notice 2 things you can smell",
+        "Notice 1 thing you can taste",
+        "Take a few deep breaths"
+      ],
+      "benefits": [
+        "Brings you to present moment",
+        "Reduces anxiety and panic",
+        "Grounding during crisis",
+        "Increases present awareness"
+      ],
+      "best_time": "During anxiety or panic attacks"
+    },
+    {
+      "id": "mindfulness_008",
+      "name": "Self-Compassion Break",
+      "duration": "5 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Notice that you're struggling",
+        "Acknowledge: 'This is a moment of suffering'",
+        "Recognize: 'Struggle is part of life'",
+        "Say to yourself: 'May I be kind to myself'",
+        "Place hand on heart",
+        "Take three deep breaths",
+        "Offer yourself compassion"
+      ],
+      "benefits": [
+        "Reduces self-criticism",
+        "Increases self-compassion",
+        "Improves emotional regulation",
+        "Promotes self-acceptance"
+      ],
+      "best_time": "When struggling or criticizing yourself"
+    },
+    {
+      "id": "mindfulness_009",
+      "name": "Progressive Muscle Relaxation Meditation",
+      "duration": "20 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Lie down comfortably",
+        "Take three deep breaths",
+        "Tense your shoulders for 5 seconds",
+        "Release and notice the difference",
+        "Move through each muscle group",
+        "Tense and release arms, legs, face",
+        "End with full body relaxation",
+        "Rest for 2-3 minutes"
+      ],
+      "benefits": [
+        "Releases physical tension",
+        "Reduces anxiety",
+        "Improves sleep",
+        "Increases body awareness"
+      ],
+      "best_time": "Before sleep or when tense"
+    },
+    {
+      "id": "mindfulness_010",
+      "name": "Gratitude Meditation",
+      "duration": "10 minutes",
+      "difficulty": "beginner",
+      "instructions": [
+        "Sit comfortably",
+        "Think of three things you're grateful for",
+        "For each, remember why you're grateful",
+        "Feel the gratitude in your body",
+        "Expand to small appreciations",
+        "Notice joy and contentment",
+        "End with a gratitude affirmation"
+      ],
+      "benefits": [
+        "Increases happiness",
+        "Improves mood",
+        "Promotes positivity",
+        "Reduces negative thinking"
+      ],
+      "best_time": "Morning or before sleep"
+    }
+  ]
+}

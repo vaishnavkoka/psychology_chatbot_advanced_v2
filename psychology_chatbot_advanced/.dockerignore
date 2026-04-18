@@ -1,0 +1,105 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.python-version
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# Testing
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.sublime-project
+.sublime-workspace
+
+# Docker
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+# Documentation
+docs/
+*.md
+README*
+LICENSE
+CHANGELOG*
+
+# Development
+.env
+.env.example
+logs/
+*.log
+streamlit.pid
+
+# Node (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Temporary files
+.tmp/
+tmp/
+*.tmp
+*.bak
+*.backup
+*.swp
+
+# OS
+*.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Project specific
+.development/
+experiments/
+notebooks/
+*.ipynb

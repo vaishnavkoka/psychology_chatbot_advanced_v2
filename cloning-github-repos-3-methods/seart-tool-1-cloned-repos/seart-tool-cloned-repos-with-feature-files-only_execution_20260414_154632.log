@@ -1,0 +1,153 @@
+2026-04-14 15:46:32,768 - INFO - ======================================================================
+2026-04-14 15:46:32,768 - INFO - 🚀 BDD Repository Cloner started
+2026-04-14 15:46:32,768 - INFO - ======================================================================
+2026-04-14 15:46:32,768 - INFO - 🔍 Checking connection to GitHub...
+2026-04-14 15:46:32,799 - INFO - ✅ Connection to GitHub established successfully
+2026-04-14 15:46:32,800 - INFO - ✅ Created/verified output directory: seart-tool-cloned-repos-with-feature-files-only
+2026-04-14 15:46:32,818 - INFO - 📖 CSV file loaded: 1628 total repositories
+2026-04-14 15:46:32,818 - INFO - 📋 No previous checkpoint found, starting fresh
+2026-04-14 15:46:32,818 - INFO - 📊 Processing flow: Total=1628, Resume from=0
+2026-04-14 15:46:32,818 - INFO - ======================================================================
+2026-04-14 15:46:48,180 - INFO - ✅ Successfully cloned: cucumber-school/bdd-with-cucumber
+2026-04-14 15:46:48,231 - INFO - ✅ Validated: ✓ 534/538 file(s) with valid Gherkin keywords
+2026-04-14 15:46:49,879 - INFO - ✅ Successfully cloned: vitalets/playwright-bdd
+2026-04-14 15:46:49,889 - INFO - ✅ Validated: ✓ 181/182 file(s) with valid Gherkin keywords
+2026-04-14 15:46:51,509 - INFO - ✅ Successfully cloned: gherkin-lint/gherkin-lint
+2026-04-14 15:46:51,516 - INFO - ✅ Validated: ✓ 121/135 file(s) with valid Gherkin keywords
+2026-04-14 15:46:53,015 - INFO - ✅ Successfully cloned: vsiakka/gherkin-lint
+2026-04-14 15:46:53,017 - INFO - ✅ Validated: ✓ 121/135 file(s) with valid Gherkin keywords
+2026-04-14 15:46:54,973 - INFO - ✅ Successfully cloned: cucumber/gherkin
+2026-04-14 15:46:54,979 - INFO - ✅ Validated: ✓ 78/105 file(s) with valid Gherkin keywords
+2026-04-14 15:46:57,664 - INFO - ✅ Successfully cloned: buildingSMART/ifc-gherkin-rules
+2026-04-14 15:46:57,669 - INFO - ✅ Validated: ✓ 100/100 file(s) with valid Gherkin keywords
+2026-04-14 15:46:59,328 - INFO - ✅ Successfully cloned: thebrainfamily/cypress-cucumber-preprocessor
+2026-04-14 15:46:59,332 - INFO - ✅ Validated: ✓ 91/91 file(s) with valid Gherkin keywords
+2026-04-14 15:47:09,491 - INFO - ✅ Successfully cloned: cucumber-rs/cucumber
+2026-04-14 15:47:09,493 - INFO - ✅ Validated: ✓ 65/68 file(s) with valid Gherkin keywords
+2026-04-14 15:47:42,609 - INFO - ✅ Successfully cloned: philips-software/amp-cucumber-cpp-runner
+2026-04-14 15:47:42,612 - INFO - ✅ Validated: ✓ 68/68 file(s) with valid Gherkin keywords
+2026-04-14 15:47:43,591 - INFO - ✅ Successfully cloned: cucumber-rs/gherkin
+2026-04-14 15:47:43,592 - INFO - ✅ Validated: ✓ 36/52 file(s) with valid Gherkin keywords
+2026-04-14 15:47:45,750 - INFO - ✅ Successfully cloned: bencompton/jest-cucumber
+2026-04-14 15:47:45,752 - INFO - ✅ Validated: ✓ 41/43 file(s) with valid Gherkin keywords
+2026-04-14 15:47:51,006 - INFO - ✅ Successfully cloned: cucumberswift/CucumberSwift
+2026-04-14 15:47:51,008 - INFO - ✅ Validated: ✓ 31/42 file(s) with valid Gherkin keywords
+2026-04-14 15:47:56,235 - INFO - ✅ Successfully cloned: tyler-keith-thompson/cucumberswift
+2026-04-14 15:47:56,237 - INFO - ✅ Validated: ✓ 31/42 file(s) with valid Gherkin keywords
+2026-04-14 15:47:58,692 - INFO - ✅ Successfully cloned: bdd-in-action/second-edition
+2026-04-14 15:47:58,700 - INFO - ✅ Validated: ✓ 38/39 file(s) with valid Gherkin keywords
+2026-04-14 15:47:59,972 - INFO - ✅ Successfully cloned: patheard/cucumber-puppeteer
+2026-04-14 15:47:59,973 - INFO - ✅ Validated: ✓ 30/30 file(s) with valid Gherkin keywords
+2026-04-14 15:48:03,221 - INFO - ✅ Successfully cloned: dynamichands/crm.specflow
+2026-04-14 15:48:03,223 - INFO - ✅ Validated: ✓ 30/30 file(s) with valid Gherkin keywords
+2026-04-14 15:48:04,735 - INFO - ✅ Successfully cloned: mVermaat/Crm.Specflow
+2026-04-14 15:48:04,737 - INFO - ✅ Validated: ✓ 30/30 file(s) with valid Gherkin keywords
+2026-04-14 15:48:10,149 - INFO - ✅ Successfully cloned: jakubsob/cucumber
+2026-04-14 15:48:10,151 - INFO - ✅ Validated: ✓ 28/28 file(s) with valid Gherkin keywords
+2026-04-14 15:48:13,450 - INFO - ✅ Successfully cloned: featurehub-io/featurehub
+2026-04-14 15:48:13,461 - INFO - ✅ Validated: ✓ 28/28 file(s) with valid Gherkin keywords
+2026-04-14 15:48:14,827 - INFO - ✅ Successfully cloned: samuel-ziegler/vitest-cucumber-plugin
+2026-04-14 15:48:14,828 - INFO - ✅ Validated: ✓ 25/26 file(s) with valid Gherkin keywords
+2026-04-14 15:48:16,042 - INFO - ✅ Successfully cloned: muralco/pickled-cucumber
+2026-04-14 15:48:16,043 - INFO - ✅ Validated: ✓ 24/24 file(s) with valid Gherkin keywords
+2026-04-14 15:48:17,744 - INFO - ✅ Successfully cloned: reportportal/agent-java-cucumber
+2026-04-14 15:48:17,746 - INFO - ✅ Validated: ✓ 22/22 file(s) with valid Gherkin keywords
+2026-04-14 15:48:18,950 - INFO - ✅ Successfully cloned: hedhyw/gherkingen
+2026-04-14 15:48:18,952 - INFO - ✅ Validated: ✓ 16/19 file(s) with valid Gherkin keywords
+2026-04-14 15:48:21,406 - INFO - ✅ Successfully cloned: evaluates2/gatsby-starter-typescript-redux-tdd-bdd
+2026-04-14 15:48:21,411 - INFO - ✅ Validated: ✓ 12/18 file(s) with valid Gherkin keywords
+2026-04-14 15:48:25,208 - INFO - ✅ Successfully cloned: serenity-bdd/the-serenity-book
+2026-04-14 15:48:25,211 - INFO - ✅ Validated: ✓ 17/18 file(s) with valid Gherkin keywords
+2026-04-14 15:48:26,344 - INFO - ✅ Successfully cloned: gasparnagy/specflowmasterclass.specoverflow
+2026-04-14 15:48:26,345 - INFO - ✅ Validated: ✓ 18/18 file(s) with valid Gherkin keywords
+2026-04-14 15:48:27,629 - INFO - ✅ Successfully cloned: cucumber/cucumber-jvm-scala
+2026-04-14 15:48:27,631 - INFO - ✅ Validated: ✓ 17/17 file(s) with valid Gherkin keywords
+2026-04-14 15:48:28,819 - INFO - ✅ Successfully cloned: ssense/node-cucumber-testrail-sync
+2026-04-14 15:48:28,820 - INFO - ✅ Validated: ✓ 17/17 file(s) with valid Gherkin keywords
+2026-04-14 15:48:30,059 - INFO - ✅ Successfully cloned: ttutisani/xunit.gherkin.quick
+2026-04-14 15:48:30,061 - INFO - ✅ Validated: ✓ 16/17 file(s) with valid Gherkin keywords
+2026-04-14 15:48:31,297 - INFO - ✅ Successfully cloned: go-bdd/gobdd
+2026-04-14 15:48:31,298 - INFO - ✅ Validated: ✓ 15/16 file(s) with valid Gherkin keywords
+2026-04-14 15:48:32,731 - INFO - ✅ Successfully cloned: cucumber/cucumber-js-pretty-formatter
+2026-04-14 15:48:32,732 - INFO - ✅ Validated: ✓ 15/16 file(s) with valid Gherkin keywords
+2026-04-14 15:48:34,106 - INFO - ✅ Successfully cloned: ThoSe1990/cwt-cucumber
+2026-04-14 15:48:34,107 - INFO - ✅ Validated: ✓ 15/16 file(s) with valid Gherkin keywords
+2026-04-14 15:48:35,344 - INFO - ✅ Successfully cloned: capgemini/powerapps-specflow-bindings
+2026-04-14 15:48:35,346 - INFO - ✅ Validated: ✓ 16/16 file(s) with valid Gherkin keywords
+2026-04-14 15:48:36,478 - INFO - ✅ Successfully cloned: disneystudios/cucumber-slices-maven-plugin
+2026-04-14 15:48:36,480 - INFO - ✅ Validated: ✓ 14/15 file(s) with valid Gherkin keywords
+2026-04-14 15:48:37,665 - INFO - ✅ Successfully cloned: PiotrFLEURY/pickled_cucumber
+2026-04-14 15:48:37,666 - INFO - ✅ Validated: ✓ 14/14 file(s) with valid Gherkin keywords
+2026-04-14 15:48:39,148 - INFO - ✅ Successfully cloned: kozhevnikov/cucumber-pretty
+2026-04-14 15:48:39,149 - INFO - ✅ Validated: ✓ 13/14 file(s) with valid Gherkin keywords
+2026-04-14 15:49:01,413 - INFO - ✅ Successfully cloned: featureform/embeddinghub
+2026-04-14 15:49:01,418 - INFO - ✅ Validated: ✓ 14/14 file(s) with valid Gherkin keywords
+2026-04-14 15:49:19,533 - INFO - ✅ Successfully cloned: featureform/featureform
+2026-04-14 15:49:19,537 - INFO - ✅ Validated: ✓ 14/14 file(s) with valid Gherkin keywords
+2026-04-14 15:49:21,402 - INFO - ✅ Successfully cloned: arthy000/gherkin-testcafe
+2026-04-14 15:49:21,403 - INFO - ✅ Validated: ✓ 14/14 file(s) with valid Gherkin keywords
+2026-04-14 15:49:24,354 - INFO - ✅ Successfully cloned: accenture/bdd-for-all
+2026-04-14 15:49:24,355 - INFO - ✅ Validated: ✓ 12/13 file(s) with valid Gherkin keywords
+2026-04-14 15:49:25,741 - INFO - ✅ Successfully cloned: acmcarther/cucumber
+2026-04-14 15:49:25,742 - INFO - ✅ Validated: ✓ 13/13 file(s) with valid Gherkin keywords
+2026-04-14 15:49:27,060 - INFO - ✅ Successfully cloned: huddlz-hq/cucumber
+2026-04-14 15:49:27,061 - INFO - ✅ Validated: ✓ 12/12 file(s) with valid Gherkin keywords
+2026-04-14 15:49:28,612 - INFO - ✅ Successfully cloned: qaPaschalE/playwright-cucumber-ts-steps
+2026-04-14 15:49:28,613 - INFO - ✅ Validated: ✓ 12/12 file(s) with valid Gherkin keywords
+2026-04-14 15:49:29,774 - INFO - ✅ Successfully cloned: wswebcreation/wdio-multiple-cucumber-html-reporter
+2026-04-14 15:49:29,775 - INFO - ✅ Validated: ✓ 11/12 file(s) with valid Gherkin keywords
+2026-04-14 15:49:38,507 - INFO - ✅ Successfully cloned: achimismaili/featureadmin
+2026-04-14 15:49:38,540 - WARNING - ⚠️  Removed invalid clone folder: seart-tool-cloned-repos-with-feature-files-only/achimismaili/featureadmin
+2026-04-14 15:49:38,540 - INFO - 🗑️  Cleaned up empty parent directory: seart-tool-cloned-repos-with-feature-files-only/achimismaili
+2026-04-14 15:50:51,887 - INFO - ✅ Successfully cloned: ahmed-ali/cucumberish
+2026-04-14 15:50:51,888 - INFO - ✅ Validated: ✓ 11/11 file(s) with valid Gherkin keywords
+2026-04-14 15:50:53,395 - INFO - ✅ Successfully cloned: cucumber/cucumber-electron
+2026-04-14 15:50:53,396 - INFO - ✅ Validated: ✓ 11/11 file(s) with valid Gherkin keywords
+2026-04-14 15:50:54,876 - INFO - ✅ Successfully cloned: gherking/gherkin-formatter
+2026-04-14 15:50:54,877 - INFO - ✅ Validated: ✓ 9/11 file(s) with valid Gherkin keywords
+2026-04-14 15:50:56,171 - INFO - ✅ Successfully cloned: jonsamwell/flutter_gherkin
+2026-04-14 15:50:56,172 - INFO - ✅ Validated: ✓ 11/11 file(s) with valid Gherkin keywords
+2026-04-14 15:50:57,777 - INFO - ✅ Successfully cloned: amiceli/vitest-cucumber
+2026-04-14 15:50:57,779 - INFO - ✅ Validated: ✓ 10/10 file(s) with valid Gherkin keywords
+2026-04-14 15:50:58,890 - INFO - ✅ Successfully cloned: hanzelkaraagac/Mini_Bootcamp_Cucumber
+2026-04-14 15:50:58,891 - INFO - ✅ Validated: ✓ 10/10 file(s) with valid Gherkin keywords
+2026-04-14 15:50:59,041 - INFO - 📊 Statistics saved: seart-tool-cloned-repos-with-feature-files-only_statistics_20260414_154632.json
+2026-04-14 15:50:59,042 - INFO - ✅ Cloned repos CSV: seart-tool-cloned-repos-with-feature-files-only_statistics_20260414_154632_CLONED_20260414_155059.csv
+2026-04-14 15:50:59,042 - INFO -    Records: 50
+2026-04-14 15:50:59,046 - INFO - ⏭️  Skipped repos CSV: seart-tool-cloned-repos-with-feature-files-only_statistics_20260414_154632_SKIPPED_20260414_155059.csv
+2026-04-14 15:50:59,046 - INFO -    Records: 1578
+2026-04-14 15:50:59,046 - INFO - 
+2026-04-14 15:50:59,046 - INFO - 📊 CSV Export Summary:
+2026-04-14 15:50:59,046 - INFO -    ✅ Cloned: 50 repos → _CLONED_*.csv
+2026-04-14 15:50:59,046 - INFO -    ⏭️  Skipped: 1578 repos → _SKIPPED_*.csv
+2026-04-14 15:50:59,046 - INFO -    ❌ Errors: 0 repos → _ERRORS_*.csv
+2026-04-14 15:50:59,046 - INFO - ======================================================================
+2026-04-14 15:50:59,046 - INFO - 📊 EXECUTION SUMMARY
+2026-04-14 15:50:59,046 - INFO - ======================================================================
+2026-04-14 15:50:59,046 - INFO - Total Repositories: 1628
+2026-04-14 15:50:59,046 - INFO - Processed: 1628
+2026-04-14 15:50:59,046 - INFO - ✅ Cloned: 50
+2026-04-14 15:50:59,046 - INFO - ⏭️  Skipped: 1578
+2026-04-14 15:50:59,046 - INFO - ⚠️  Errors: 0
+2026-04-14 15:50:59,046 - INFO - 📁 Clone Directory: seart-tool-cloned-repos-with-feature-files-only
+2026-04-14 15:50:59,046 - INFO - 📋 Checkpoint File: .seart-tool-cloned-repos-with-feature-files-only_checkpoint.json
+2026-04-14 15:50:59,046 - INFO - 📊 Statistics File: seart-tool-cloned-repos-with-feature-files-only_statistics_20260414_154632.json
+2026-04-14 15:50:59,046 - INFO - ======================================================================
+2026-04-14 15:50:59,046 - INFO - 
+📋 SKIPPED REPOSITORIES (Reason Breakdown):
+2026-04-14 15:50:59,046 - INFO - ----------------------------------------------------------------------
+2026-04-14 15:50:59,046 - INFO - 
+  ⏭️  invalid_gherkin_content: No valid Gherkin content (12 .feature file(s) found but none contain Given/When/Then keywords) (1 repo(s)):
+2026-04-14 15:50:59,046 - INFO -      • https://github.com/achimismaili/featureadmin (Features: 12)
+2026-04-14 15:50:59,046 - INFO - 
+  ⏭️  feature_count < 10 (1577 repo(s)):
+2026-04-14 15:50:59,046 - INFO -      • https://github.com/graze/cucumber-rest-bdd (Features: 9)
+2026-04-14 15:50:59,046 - INFO -      • https://github.com/ing-bank/bdd-mobile-security-automation-framework (Features: 9)
+2026-04-14 15:50:59,046 - INFO -      • https://github.com/telekom/bdd-web-app (Features: 9)
+2026-04-14 15:50:59,046 - INFO -      • https://github.com/alexkrechik/vscucumberautocomplete (Features: 9)
+2026-04-14 15:50:59,046 - INFO -      • https://github.com/cucumber/cucumber-android (Features: 9)
+2026-04-14 15:50:59,046 - INFO -      ... and 1572 more
+2026-04-14 15:50:59,047 - INFO - 
+======================================================================
+2026-04-14 15:50:59,047 - INFO - ✅ Execution completed successfully
+2026-04-14 15:50:59,047 - INFO - ======================================================================

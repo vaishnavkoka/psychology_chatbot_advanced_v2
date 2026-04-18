@@ -1,0 +1,71 @@
+[INFO] ============================================================
+[INFO] Image Mutation Tool - Project Initializer
+[INFO] ============================================================
+[INFO] 
+[INFO] 
+[INFO] Step 1/5: Checking Prerequisites
+[INFO] Checking prerequisites...
+[OK] ✓ Python 3.8+: Python 3.10.12
+[OK] ✓ Node.js 14+: v12.22.9
+[OK] ✓ npm: 8.5.1
+[OK] ✓ Git: git version 2.34.1
+[OK] ✓ ImageMagick: installed
+[OK] All prerequisites satisfied!
+[INFO] 
+[INFO] Step 2/5: Creating Directory Structure
+[INFO] Creating directory structure...
+[INFO] ✓ Created: backend
+[INFO] ✓ Created: backend/mutations
+[INFO] ✓ Created: backend/core
+[INFO] ✓ Created: backend/api
+[INFO] ✓ Created: backend/storage
+[INFO] ✓ Created: backend/tests
+[INFO] ✓ Created: frontend/src/components
+[INFO] ✓ Created: frontend/src/pages
+[INFO] ✓ Created: frontend/src/services
+[INFO] ✓ Created: frontend/src/hooks
+[INFO] ✓ Created: uploads
+[INFO] ✓ Created: outputs
+[INFO] ✓ Created: logs
+[OK] Directory structure created!
+[INFO] 
+[INFO] Step 3/5: Setting Up Backend
+[INFO] Setting up backend environment...
+[INFO] Creating Python virtual environment...
+[INFO] Running: /usr/bin/python3 -m venv backend/venv
+[INFO] ✓ Created backend/requirements.txt
+[INFO] Installing Python dependencies (this may take a few minutes)...
+[INFO] Running: backend/venv/bin/pip install -r backend/requirements.txt
+[DEBUG] Output: Collecting Flask==2.3.0
+  Downloading Flask-2.3.0-py3-none-any.whl (96 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.0/97.0 KB 1.8 MB/s eta 0:00:00
+Collecting Flask-CORS==4.0.0
+  Downloading Fl
+[INFO] ✓ Created backend/.env
+[INFO] Verifying backend installation...
+[INFO] Running: backend/venv/bin/python -c from flask import Flask; from PIL import Image; print('Backend OK')
+[ERROR] Command error: [Errno 2] No such file or directory: 'backend/venv/bin/python'
+[OK] Backend setup complete!
+[INFO] 
+[INFO] Step 4/5: Setting Up Frontend
+[INFO] Setting up frontend environment...
+[INFO] ✓ Created frontend/package.json
+[INFO] Installing Node.js dependencies (this may take a few minutes)...
+[INFO] Running: npm install
+[ERROR] Command failed: npm ERR! code ETARGET
+npm ERR! notarget No matching version found for react-slider@^1.8.0.
+npm ERR! notarget In most cases you or one of your dependencies are requesting
+npm ERR! notarget a package version that doesn't exist.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/vaishnavkoka/.npm/_logs/2026-03-23T10_49_10_502Z-debug-0.log
+
+[WARN] Warning: npm install encountered issues, but continuing...
+[INFO] ✓ Created frontend/.env
+[OK] Frontend setup complete!
+[INFO] 
+[INFO] Step 5/5: Creating Startup Scripts
+[INFO] Creating startup scripts...
+[INFO] ✓ Created start.sh
+[INFO] ✓ Created start.cmd
+[ERROR] Failed at step: Creating Startup Scripts
