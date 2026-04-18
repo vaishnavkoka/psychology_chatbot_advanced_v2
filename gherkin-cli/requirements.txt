@@ -1,5 +1,0 @@
-behave==1.2.6
-parse==1.20.0
-parse-type==0.6.2
-behave-html-formatter==0.9.10
-cuke-linter==0.3.1
