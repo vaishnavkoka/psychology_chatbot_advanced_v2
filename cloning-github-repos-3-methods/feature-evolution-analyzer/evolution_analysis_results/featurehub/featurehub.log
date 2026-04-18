@@ -1,9 +1,0 @@
-2026-04-14 22:04:02,919 - INFO - Analyzing: featurehub
-2026-04-14 22:04:02,920 - DEBUG - ✓ Full clone detected (not shallow)
-2026-04-14 22:04:02,920 - INFO - Analyzing commits...
-2026-04-14 22:04:02,934 - INFO - Found 1242 commits
-2026-04-14 22:04:22,049 - INFO - Analyzed 1242 commits (0 skipped)
-2026-04-14 22:04:22,051 - INFO - Generating reports...
-2026-04-14 22:04:22,058 - DEBUG - Creating visualization...
-2026-04-14 22:04:22,485 - DEBUG - Visualization saved: featurehub.png
-2026-04-14 22:04:22,485 - INFO - Generated 3 reports

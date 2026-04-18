@@ -1,8 +1,0 @@
-repo_name,feature_file,scenario_count,scenarios,commits,first_seen,last_modified
-CucumberSeleniumFramework,login.feature,3,user is able to create a new contact | Outline: Free CRM Login Test Scenario | Free CRM Login Test Scenario,8,2017-11-15T12:35:10+05:30,2017-11-24T00:39:43+05:30
-CucumberSeleniumFramework,contacts.feature,2,Outline: Free CRM Create a new contact scenario | Free CRM Create a new contact scenario,2,2017-11-19T17:46:17+05:30,2017-11-19T17:46:17+05:30
-CucumberSeleniumFramework,deals.feature,1,Free CRM Create a new deal scenario,2,2017-11-24T00:39:43+05:30,2017-11-24T00:39:43+05:30
-CucumberSeleniumFramework,dealsmap.feature,1,Free CRM Create a new deal scenario,2,2017-12-16T20:11:08+05:30,2017-12-16T20:11:08+05:30
-CucumberSeleniumFramework,tagging.feature,18,Create a tasks | Search a case | Search an email | Search a call | Search a contact | Login with incorrect username and correct password | Create a deal | Search a deal | Search a forms | Search a docs | validate a report | browser closed | Create a contact | Verify left panel links | Application Logout | Create a case | Login with correct username and correct password | Search a task,2,2017-12-16T23:24:00+05:30,2017-12-16T23:24:00+05:30
-CucumberSeleniumFramework,hooks.feature,4,free crm create deal test | Outline: free crm create mail test | free crm create mail test | free crm create contact test,2,2017-12-17T15:37:41+05:30,2017-12-17T15:37:41+05:30
-CucumberSeleniumFramework,taggedhooks.feature,3,This is Second test | This is First test | This is Third test,2,2017-12-17T15:37:41+05:30,2017-12-17T15:37:41+05:30
