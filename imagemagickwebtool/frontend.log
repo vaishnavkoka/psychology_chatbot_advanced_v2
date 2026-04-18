@@ -1,0 +1,23 @@
+nohup: ignoring input
+
+============================================================
+  🎨 Image Mutation Tool - Frontend Server
+============================================================
+
+📍 Serving on: http://localhost:3000
+📁 Root directory: /home/vaishnavkoka/RE4BDD/imagemagickwebtool
+
+✅ Open your browser and visit:
+   http://localhost:3000
+
+The backend API should be running on:
+   http://localhost:5000
+
+⚠️  Press Ctrl+C to stop the server
+
+============================================================
+
+
+❌ Error: Port 3000 is already in use
+   Try: lsof -i :3000   (to find what's using it)
+   Or use a different port in this script

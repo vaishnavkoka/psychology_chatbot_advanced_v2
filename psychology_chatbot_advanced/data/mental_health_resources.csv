@@ -1,0 +1,19 @@
+provider_type,provider_name,service,contact,availability,specialization,crisis_support,language,website
+hotline,National Suicide Prevention Lifeline,24/7 Crisis Support,1-800-273-8255,24/7,Suicide Prevention,true,English,https://suicidepreventionlifeline.org
+hotline,Crisis Text Line,Text Support,Text HOME to 741741,24/7,General Crisis,true,English,https://www.crisistextline.org
+hotline,SAMHSA National Helpline,Substance Abuse Support,1-800-662-4357,24/7,Addiction/Substance Abuse,true,English,https://www.samhsa.gov
+hotline,Veterans Crisis Line,Military-specific,1-800-273-8255 press 1,24/7,Veterans Mental Health,true,English,https://www.veteranscrisisline.net
+hotline,Trans Lifeline,Trans-specific,1-877-565-8860,24/7,LGBTQ+ Mental Health,true,English,https://translifeline.org
+hotline,Trevor Project,LGBTQ+ Youth,1-866-488-7386,24/7,LGBTQ+ Youth,true,English,https://www.thetrevorproject.org
+hotline,Eating Disorders Association,Eating Disorders,1-800-931-2237,24/7,Eating Disorders,true,English,https://www.nationaleatingdisorders.org
+app,7 Cups,Peer Support,Mobile App/Web,24/7,Emotional Support,false,Multiple,https://www.7cups.com
+app,Headspace,Meditation/Mindfulness,Mobile App/Web,24/7,Stress/Anxiety,false,Multiple,https://www.headspace.com
+app,Calm,Sleep & Meditation,Mobile App/Web,24/7,Sleep/Anxiety,false,Multiple,https://www.calm.com
+app,BetterHelp,Online Therapy,Mobile App/Web,24/7,General Therapy,false,Multiple,https://www.betterhelp.com
+app,Talkspace,Online Therapy,Mobile App/Web,24/7,General Therapy,false,Multiple,https://www.talkspace.com
+therapy,IOCDF,Specialty Therapist Finding,Online Directory,Business Hours,OCD/Anxiety Disorders,false,English,https://iocdf.org
+therapy,ADAA,Therapist Directory,Online Directory,Business Hours,Anxiety/Depression,false,English,https://www.adaa.org
+therapy,AAMFT,Marriage and Family Therapy,Online Directory,Business Hours,Relationships/Family,false,English,https://www.aamft.org
+community,NAMI,Support Groups,Local Chapters,Varies,General Mental Health,false,English,https://www.nami.org
+community,Depression and Bipolar Support Alliance,Support Groups,Local Chapters,Varies,Mood Disorders,false,English,https://www.dbsalliance.org
+community,Alcoholics Anonymous,Support Groups,Local Meetings,Varies,Substance Abuse,false,English,https://www.aa.org

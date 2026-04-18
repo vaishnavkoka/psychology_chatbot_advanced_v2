@@ -1,0 +1,343 @@
+{
+  "metadata": {
+    "created": "2026-04-02T14:31:07.623628",
+    "domain": "Requirement Engineering",
+    "num_documents": 6,
+    "num_qa_pairs": 30,
+    "version": "1.0"
+  },
+  "documents": [
+    {
+      "id": "REQ-001",
+      "title": "User Authentication System Requirements",
+      "content": "\nThe user authentication system must support multiple authentication methods:\n1. Email/Password authentication with secure password hashing\n2. OAuth 2.0 integration with third-party providers (Google, GitHub)\n3. Multi-factor authentication (MFA) via email or authenticator app\n4. Session management with configurable timeout (default 24 hours)\n5. Password recovery via email verification\n6. Account lockout after 5 failed login attempts for 30 minutes\n\nFunctional Requirements:\n- Users must be able to register with valid email and password\n- Password must be at least 12 characters with uppercase, lowercase, numbers, special chars\n- Users can enable/disable MFA in account settings\n- Session tokens must be refreshed every 15 minutes of activity\n- Failed login attempts must be logged for security auditing\n\nNon-Functional Requirements:\n- Authentication should complete within 2 seconds\n- System must support 10,000 concurrent users\n- All authentication data must comply with GDPR\n- Passwords must be hashed using bcrypt with salt\n                "
+    },
+    {
+      "id": "REQ-002",
+      "title": "Search and Filtering Capabilities",
+      "content": "\nThe search system must support:\n1. Full-text search across all document fields\n2. Advanced filtering by multiple criteria\n3. Faceted search with aggregations\n4. Real-time search suggestions/autocomplete\n5. Search result ranking by relevance\n6. Support for Boolean operators (AND, OR, NOT)\n\nSearch Performance:\n- Search results must return within 500ms\n- Autocomplete suggestions within 100ms\n- Support searches across 1 million documents\n- Pagination with configurable page size (10-100 items)\n\nAdvanced Features:\n- Synonym matching for common terms\n- Fuzzy matching for typos (edit distance <= 2)\n- Search within date ranges\n- Sorting by relevance, date, or custom fields\n- Saved searches for authenticated users\n                "
+    },
+    {
+      "id": "REQ-003",
+      "title": "Data Export and Reporting",
+      "content": "\nUsers must be able to export data in multiple formats:\n1. CSV export with customizable columns\n2. PDF reports with branding and customization\n3. Excel exports with multiple sheets\n4. JSON API responses\n5. Scheduled exports via email\n\nExport Constraints:\n- Maximum export size: 100,000 records\n- Exports must respect user permissions\n- Exported data must include audit trail\n- All exports must be encrypted at rest\n\nReport Features:\n- Predefined report templates (Summary, Detailed, Executive)\n- Custom report builder with drag-and-drop interface\n- Scheduled reports (daily, weekly, monthly)\n- Email delivery with HTML and PDF formats\n- Report sharing with access control\n                "
+    },
+    {
+      "id": "REQ-004",
+      "title": "API Rate Limiting and Quotas",
+      "content": "\nThe API must implement rate limiting to prevent abuse:\n1. Per-user rate limiting: 1000 requests/hour for free tier\n2. Per-user rate limiting: 10,000 requests/hour for premium tier\n3. Per-IP rate limiting: 100 requests/minute (anonymous)\n4. Burst allowance: 20% above limit for 5 minutes\n5. Rate limit headers in all responses\n\nRate Limit Response:\n- Return 429 (Too Many Requests) when limit exceeded\n- Include Retry-After header with wait time\n- Log all rate limit violations for analytics\n- Alert users when approaching limits\n- Gradual backoff: exponential retry with jitter\n\nQuota Management:\n- Daily API quota counter resets at UTC midnight\n- Quota visibility in user dashboard\n- Ability to increase quotas through billing\n- Priority support for enterprise customers\n                "
+    },
+    {
+      "id": "REQ-005",
+      "title": "Data Privacy and Security",
+      "content": "\nSecurity and privacy requirements:\n1. End-to-end encryption for sensitive data\n2. SSL/TLS 1.3 for all communications\n3. GDPR compliance with data deletion requests\n4. Regular security audits and penetration testing\n5. Data retention policies with automatic deletion\n\nCompliance Requirements:\n- SOC 2 Type II certification\n- PCI DSS compliance for payment data\n- HIPAA compliance for healthcare data\n- CCPA compliance for California residents\n- Regular third-party security assessments\n\nAccess Control:\n- Role-Based Access Control (RBAC) with 5 default roles\n- Attribute-Based Access Control (ABAC) for fine-grained permissions\n- Multi-tenant data isolation\n- Audit logs for all data access\n- IP whitelisting for enterprise accounts\n                "
+    },
+    {
+      "id": "REQ-006",
+      "title": "Notification System Requirements",
+      "content": "\nThe notification system must support:\n1. Real-time in-app notifications via WebSocket\n2. Email notifications with daily digest option\n3. SMS notifications for critical alerts\n4. Push notifications for mobile apps\n5. Notification preferences and unsubscribe options\n\nNotification Types:\n- System notifications (maintenance, updates)\n- User activity notifications (mentions, comments)\n- Alert notifications (threshold breaches, errors)\n- Task notifications (reminders, deadlines)\n- Promotional notifications (opt-in only)\n\nNotification Management:\n- Users can customize notification frequency (real-time, hourly, daily)\n- Users can enable/disable notification channels per type\n- Do-not-disturb hours configuration\n- Notification history and archive\n- Notification search and filtering\n                "
+    }
+  ],
+  "qa_pairs": [
+    {
+      "id": "REQ-001-Q1",
+      "question": "What authentication methods are supported?",
+      "answer": "The system supports email/password, OAuth 2.0 (Google, GitHub), and multi-factor authentication via email or authenticator app.",
+      "ground_truth_doc": "REQ-001",
+      "document_title": "User Authentication System Requirements",
+      "question_type": "factual",
+      "difficulty": "hard",
+      "document_context": "\nThe user authentication system must support multiple authentication methods:\n1. Email/Password authentication with secure password hashing\n2. OAuth 2.0 integration with third-party providers (Google, GitHub)\n3. Multi-factor authentication (MFA) via email or authenticator app\n4. Session management with configurable timeout (default 24 hours)\n5. Password recovery via email verification\n6. Account lockout after 5 failed login attempts for 30 minutes\n\nFunctional Requirements:\n- Users must be able t"
+    },
+    {
+      "id": "REQ-001-Q2",
+      "question": "What are the password requirements?",
+      "answer": "Passwords must be at least 12 characters and contain uppercase, lowercase, numbers, and special characters.",
+      "ground_truth_doc": "REQ-001",
+      "document_title": "User Authentication System Requirements",
+      "question_type": "specific",
+      "difficulty": "hard",
+      "document_context": "\nThe user authentication system must support multiple authentication methods:\n1. Email/Password authentication with secure password hashing\n2. OAuth 2.0 integration with third-party providers (Google, GitHub)\n3. Multi-factor authentication (MFA) via email or authenticator app\n4. Session management with configurable timeout (default 24 hours)\n5. Password recovery via email verification\n6. Account lockout after 5 failed login attempts for 30 minutes\n\nFunctional Requirements:\n- Users must be able t"
+    },
+    {
+      "id": "REQ-001-Q3",
+      "question": "What is the session timeout policy?",
+      "answer": "Sessions have a configurable timeout with a default of 24 hours. Tokens are refreshed every 15 minutes of activity.",
+      "ground_truth_doc": "REQ-001",
+      "document_title": "User Authentication System Requirements",
+      "question_type": "specific",
+      "difficulty": "medium",
+      "document_context": "\nThe user authentication system must support multiple authentication methods:\n1. Email/Password authentication with secure password hashing\n2. OAuth 2.0 integration with third-party providers (Google, GitHub)\n3. Multi-factor authentication (MFA) via email or authenticator app\n4. Session management with configurable timeout (default 24 hours)\n5. Password recovery via email verification\n6. Account lockout after 5 failed login attempts for 30 minutes\n\nFunctional Requirements:\n- Users must be able t"
+    },
+    {
+      "id": "REQ-001-Q4",
+      "question": "How are users protected against brute force attacks?",
+      "answer": "The system locks accounts after 5 failed login attempts for 30 minutes, and logs all failed attempts for security auditing.",
+      "ground_truth_doc": "REQ-001",
+      "document_title": "User Authentication System Requirements",
+      "question_type": "security",
+      "difficulty": "easy",
+      "document_context": "\nThe user authentication system must support multiple authentication methods:\n1. Email/Password authentication with secure password hashing\n2. OAuth 2.0 integration with third-party providers (Google, GitHub)\n3. Multi-factor authentication (MFA) via email or authenticator app\n4. Session management with configurable timeout (default 24 hours)\n5. Password recovery via email verification\n6. Account lockout after 5 failed login attempts for 30 minutes\n\nFunctional Requirements:\n- Users must be able t"
+    },
+    {
+      "id": "REQ-001-Q5",
+      "question": "Can users recover forgotten passwords?",
+      "answer": "Yes, users can recover their password through email verification.",
+      "ground_truth_doc": "REQ-001",
+      "document_title": "User Authentication System Requirements",
+      "question_type": "process",
+      "difficulty": "easy",
+      "document_context": "\nThe user authentication system must support multiple authentication methods:\n1. Email/Password authentication with secure password hashing\n2. OAuth 2.0 integration with third-party providers (Google, GitHub)\n3. Multi-factor authentication (MFA) via email or authenticator app\n4. Session management with configurable timeout (default 24 hours)\n5. Password recovery via email verification\n6. Account lockout after 5 failed login attempts for 30 minutes\n\nFunctional Requirements:\n- Users must be able t"
+    },
+    {
+      "id": "REQ-002-Q6",
+      "question": "What search operators are supported?",
+      "answer": "The system supports Boolean operators including AND, OR, and NOT for advanced searches.",
+      "ground_truth_doc": "REQ-002",
+      "document_title": "Search and Filtering Capabilities",
+      "question_type": "feature",
+      "difficulty": "medium",
+      "document_context": "\nThe search system must support:\n1. Full-text search across all document fields\n2. Advanced filtering by multiple criteria\n3. Faceted search with aggregations\n4. Real-time search suggestions/autocomplete\n5. Search result ranking by relevance\n6. Support for Boolean operators (AND, OR, NOT)\n\nSearch Performance:\n- Search results must return within 500ms\n- Autocomplete suggestions within 100ms\n- Support searches across 1 million documents\n- Pagination with configurable page size (10-100 items)\n\nAdva"
+    },
+    {
+      "id": "REQ-002-Q7",
+      "question": "What is the expected search response time?",
+      "answer": "Search results must return within 500ms, while autocomplete suggestions must respond within 100ms.",
+      "ground_truth_doc": "REQ-002",
+      "document_title": "Search and Filtering Capabilities",
+      "question_type": "performance",
+      "difficulty": "easy",
+      "document_context": "\nThe search system must support:\n1. Full-text search across all document fields\n2. Advanced filtering by multiple criteria\n3. Faceted search with aggregations\n4. Real-time search suggestions/autocomplete\n5. Search result ranking by relevance\n6. Support for Boolean operators (AND, OR, NOT)\n\nSearch Performance:\n- Search results must return within 500ms\n- Autocomplete suggestions within 100ms\n- Support searches across 1 million documents\n- Pagination with configurable page size (10-100 items)\n\nAdva"
+    },
+    {
+      "id": "REQ-002-Q8",
+      "question": "Does the system handle spelling mistakes in searches?",
+      "answer": "Yes, fuzzy matching is supported for typos with up to 2 character edit distance.",
+      "ground_truth_doc": "REQ-002",
+      "document_title": "Search and Filtering Capabilities",
+      "question_type": "feature",
+      "difficulty": "easy",
+      "document_context": "\nThe search system must support:\n1. Full-text search across all document fields\n2. Advanced filtering by multiple criteria\n3. Faceted search with aggregations\n4. Real-time search suggestions/autocomplete\n5. Search result ranking by relevance\n6. Support for Boolean operators (AND, OR, NOT)\n\nSearch Performance:\n- Search results must return within 500ms\n- Autocomplete suggestions within 100ms\n- Support searches across 1 million documents\n- Pagination with configurable page size (10-100 items)\n\nAdva"
+    },
+    {
+      "id": "REQ-002-Q9",
+      "question": "How many documents can the search system handle?",
+      "answer": "The system supports searching across 1 million documents.",
+      "ground_truth_doc": "REQ-002",
+      "document_title": "Search and Filtering Capabilities",
+      "question_type": "scalability",
+      "difficulty": "easy",
+      "document_context": "\nThe search system must support:\n1. Full-text search across all document fields\n2. Advanced filtering by multiple criteria\n3. Faceted search with aggregations\n4. Real-time search suggestions/autocomplete\n5. Search result ranking by relevance\n6. Support for Boolean operators (AND, OR, NOT)\n\nSearch Performance:\n- Search results must return within 500ms\n- Autocomplete suggestions within 100ms\n- Support searches across 1 million documents\n- Pagination with configurable page size (10-100 items)\n\nAdva"
+    },
+    {
+      "id": "REQ-002-Q10",
+      "question": "Can users save their searches?",
+      "answer": "Yes, authenticated users can save searches for future use.",
+      "ground_truth_doc": "REQ-002",
+      "document_title": "Search and Filtering Capabilities",
+      "question_type": "feature",
+      "difficulty": "hard",
+      "document_context": "\nThe search system must support:\n1. Full-text search across all document fields\n2. Advanced filtering by multiple criteria\n3. Faceted search with aggregations\n4. Real-time search suggestions/autocomplete\n5. Search result ranking by relevance\n6. Support for Boolean operators (AND, OR, NOT)\n\nSearch Performance:\n- Search results must return within 500ms\n- Autocomplete suggestions within 100ms\n- Support searches across 1 million documents\n- Pagination with configurable page size (10-100 items)\n\nAdva"
+    },
+    {
+      "id": "REQ-003-Q1",
+      "question": "What export formats are supported?",
+      "answer": "The system supports CSV, PDF, Excel, and JSON export formats, with scheduled email delivery.",
+      "ground_truth_doc": "REQ-003",
+      "document_title": "Data Export and Reporting",
+      "question_type": "feature",
+      "difficulty": "medium",
+      "document_context": "\nUsers must be able to export data in multiple formats:\n1. CSV export with customizable columns\n2. PDF reports with branding and customization\n3. Excel exports with multiple sheets\n4. JSON API responses\n5. Scheduled exports via email\n\nExport Constraints:\n- Maximum export size: 100,000 records\n- Exports must respect user permissions\n- Exported data must include audit trail\n- All exports must be encrypted at rest\n\nReport Features:\n- Predefined report templates (Summary, Detailed, Executive)\n- Cust"
+    },
+    {
+      "id": "REQ-003-Q2",
+      "question": "What is the maximum export size?",
+      "answer": "The maximum export size is 100,000 records.",
+      "ground_truth_doc": "REQ-003",
+      "document_title": "Data Export and Reporting",
+      "question_type": "constraint",
+      "difficulty": "medium",
+      "document_context": "\nUsers must be able to export data in multiple formats:\n1. CSV export with customizable columns\n2. PDF reports with branding and customization\n3. Excel exports with multiple sheets\n4. JSON API responses\n5. Scheduled exports via email\n\nExport Constraints:\n- Maximum export size: 100,000 records\n- Exports must respect user permissions\n- Exported data must include audit trail\n- All exports must be encrypted at rest\n\nReport Features:\n- Predefined report templates (Summary, Detailed, Executive)\n- Cust"
+    },
+    {
+      "id": "REQ-003-Q3",
+      "question": "How many predefined report templates are available?",
+      "answer": "There are three predefined templates: Summary, Detailed, and Executive.",
+      "ground_truth_doc": "REQ-003",
+      "document_title": "Data Export and Reporting",
+      "question_type": "feature",
+      "difficulty": "hard",
+      "document_context": "\nUsers must be able to export data in multiple formats:\n1. CSV export with customizable columns\n2. PDF reports with branding and customization\n3. Excel exports with multiple sheets\n4. JSON API responses\n5. Scheduled exports via email\n\nExport Constraints:\n- Maximum export size: 100,000 records\n- Exports must respect user permissions\n- Exported data must include audit trail\n- All exports must be encrypted at rest\n\nReport Features:\n- Predefined report templates (Summary, Detailed, Executive)\n- Cust"
+    },
+    {
+      "id": "REQ-003-Q4",
+      "question": "Can exports be scheduled and emailed automatically?",
+      "answer": "Yes, users can schedule daily, weekly, or monthly reports with email delivery.",
+      "ground_truth_doc": "REQ-003",
+      "document_title": "Data Export and Reporting",
+      "question_type": "process",
+      "difficulty": "medium",
+      "document_context": "\nUsers must be able to export data in multiple formats:\n1. CSV export with customizable columns\n2. PDF reports with branding and customization\n3. Excel exports with multiple sheets\n4. JSON API responses\n5. Scheduled exports via email\n\nExport Constraints:\n- Maximum export size: 100,000 records\n- Exports must respect user permissions\n- Exported data must include audit trail\n- All exports must be encrypted at rest\n\nReport Features:\n- Predefined report templates (Summary, Detailed, Executive)\n- Cust"
+    },
+    {
+      "id": "REQ-003-Q5",
+      "question": "Are exported records encrypted?",
+      "answer": "Yes, all exports must be encrypted at rest.",
+      "ground_truth_doc": "REQ-003",
+      "document_title": "Data Export and Reporting",
+      "question_type": "security",
+      "difficulty": "hard",
+      "document_context": "\nUsers must be able to export data in multiple formats:\n1. CSV export with customizable columns\n2. PDF reports with branding and customization\n3. Excel exports with multiple sheets\n4. JSON API responses\n5. Scheduled exports via email\n\nExport Constraints:\n- Maximum export size: 100,000 records\n- Exports must respect user permissions\n- Exported data must include audit trail\n- All exports must be encrypted at rest\n\nReport Features:\n- Predefined report templates (Summary, Detailed, Executive)\n- Cust"
+    },
+    {
+      "id": "REQ-004-Q6",
+      "question": "What are the rate limits for different user tiers?",
+      "answer": "Free tier: 1000 requests/hour, Premium tier: 10,000 requests/hour, Anonymous: 100 requests/minute per IP.",
+      "ground_truth_doc": "REQ-004",
+      "document_title": "API Rate Limiting and Quotas",
+      "question_type": "specific",
+      "difficulty": "hard",
+      "document_context": "\nThe API must implement rate limiting to prevent abuse:\n1. Per-user rate limiting: 1000 requests/hour for free tier\n2. Per-user rate limiting: 10,000 requests/hour for premium tier\n3. Per-IP rate limiting: 100 requests/minute (anonymous)\n4. Burst allowance: 20% above limit for 5 minutes\n5. Rate limit headers in all responses\n\nRate Limit Response:\n- Return 429 (Too Many Requests) when limit exceeded\n- Include Retry-After header with wait time\n- Log all rate limit violations for analytics\n- Alert "
+    },
+    {
+      "id": "REQ-004-Q7",
+      "question": "What HTTP status code is returned for rate limit violations?",
+      "answer": "HTTP 429 (Too Many Requests) is returned with a Retry-After header.",
+      "ground_truth_doc": "REQ-004",
+      "document_title": "API Rate Limiting and Quotas",
+      "question_type": "technical",
+      "difficulty": "easy",
+      "document_context": "\nThe API must implement rate limiting to prevent abuse:\n1. Per-user rate limiting: 1000 requests/hour for free tier\n2. Per-user rate limiting: 10,000 requests/hour for premium tier\n3. Per-IP rate limiting: 100 requests/minute (anonymous)\n4. Burst allowance: 20% above limit for 5 minutes\n5. Rate limit headers in all responses\n\nRate Limit Response:\n- Return 429 (Too Many Requests) when limit exceeded\n- Include Retry-After header with wait time\n- Log all rate limit violations for analytics\n- Alert "
+    },
+    {
+      "id": "REQ-004-Q8",
+      "question": "When do quota counters reset?",
+      "answer": "Daily API quotas reset at UTC midnight.",
+      "ground_truth_doc": "REQ-004",
+      "document_title": "API Rate Limiting and Quotas",
+      "question_type": "process",
+      "difficulty": "easy",
+      "document_context": "\nThe API must implement rate limiting to prevent abuse:\n1. Per-user rate limiting: 1000 requests/hour for free tier\n2. Per-user rate limiting: 10,000 requests/hour for premium tier\n3. Per-IP rate limiting: 100 requests/minute (anonymous)\n4. Burst allowance: 20% above limit for 5 minutes\n5. Rate limit headers in all responses\n\nRate Limit Response:\n- Return 429 (Too Many Requests) when limit exceeded\n- Include Retry-After header with wait time\n- Log all rate limit violations for analytics\n- Alert "
+    },
+    {
+      "id": "REQ-004-Q9",
+      "question": "Can users increase their API quotas?",
+      "answer": "Yes, users can increase quotas through billing upgrades.",
+      "ground_truth_doc": "REQ-004",
+      "document_title": "API Rate Limiting and Quotas",
+      "question_type": "process",
+      "difficulty": "hard",
+      "document_context": "\nThe API must implement rate limiting to prevent abuse:\n1. Per-user rate limiting: 1000 requests/hour for free tier\n2. Per-user rate limiting: 10,000 requests/hour for premium tier\n3. Per-IP rate limiting: 100 requests/minute (anonymous)\n4. Burst allowance: 20% above limit for 5 minutes\n5. Rate limit headers in all responses\n\nRate Limit Response:\n- Return 429 (Too Many Requests) when limit exceeded\n- Include Retry-After header with wait time\n- Log all rate limit violations for analytics\n- Alert "
+    },
+    {
+      "id": "REQ-004-Q10",
+      "question": "Is there a burst allowance above the rate limit?",
+      "answer": "Yes, there is a 20% burst allowance above the limit for 5 minutes.",
+      "ground_truth_doc": "REQ-004",
+      "document_title": "API Rate Limiting and Quotas",
+      "question_type": "feature",
+      "difficulty": "medium",
+      "document_context": "\nThe API must implement rate limiting to prevent abuse:\n1. Per-user rate limiting: 1000 requests/hour for free tier\n2. Per-user rate limiting: 10,000 requests/hour for premium tier\n3. Per-IP rate limiting: 100 requests/minute (anonymous)\n4. Burst allowance: 20% above limit for 5 minutes\n5. Rate limit headers in all responses\n\nRate Limit Response:\n- Return 429 (Too Many Requests) when limit exceeded\n- Include Retry-After header with wait time\n- Log all rate limit violations for analytics\n- Alert "
+    },
+    {
+      "id": "REQ-005-Q1",
+      "question": "What compliance standards are required?",
+      "answer": "The system must comply with GDPR, CCPA, SOC 2 Type II, PCI DSS, and HIPAA.",
+      "ground_truth_doc": "REQ-005",
+      "document_title": "Data Privacy and Security",
+      "question_type": "compliance",
+      "difficulty": "medium",
+      "document_context": "\nSecurity and privacy requirements:\n1. End-to-end encryption for sensitive data\n2. SSL/TLS 1.3 for all communications\n3. GDPR compliance with data deletion requests\n4. Regular security audits and penetration testing\n5. Data retention policies with automatic deletion\n\nCompliance Requirements:\n- SOC 2 Type II certification\n- PCI DSS compliance for payment data\n- HIPAA compliance for healthcare data\n- CCPA compliance for California residents\n- Regular third-party security assessments\n\nAccess Contro"
+    },
+    {
+      "id": "REQ-005-Q2",
+      "question": "How is sensitive data encrypted?",
+      "answer": "Sensitive data uses end-to-end encryption and all communications use SSL/TLS 1.3.",
+      "ground_truth_doc": "REQ-005",
+      "document_title": "Data Privacy and Security",
+      "question_type": "security",
+      "difficulty": "medium",
+      "document_context": "\nSecurity and privacy requirements:\n1. End-to-end encryption for sensitive data\n2. SSL/TLS 1.3 for all communications\n3. GDPR compliance with data deletion requests\n4. Regular security audits and penetration testing\n5. Data retention policies with automatic deletion\n\nCompliance Requirements:\n- SOC 2 Type II certification\n- PCI DSS compliance for payment data\n- HIPAA compliance for healthcare data\n- CCPA compliance for California residents\n- Regular third-party security assessments\n\nAccess Contro"
+    },
+    {
+      "id": "REQ-005-Q3",
+      "question": "What access control models are supported?",
+      "answer": "The system supports Role-Based Access Control (5 default roles) and Attribute-Based Access Control for fine-grained permissions.",
+      "ground_truth_doc": "REQ-005",
+      "document_title": "Data Privacy and Security",
+      "question_type": "feature",
+      "difficulty": "easy",
+      "document_context": "\nSecurity and privacy requirements:\n1. End-to-end encryption for sensitive data\n2. SSL/TLS 1.3 for all communications\n3. GDPR compliance with data deletion requests\n4. Regular security audits and penetration testing\n5. Data retention policies with automatic deletion\n\nCompliance Requirements:\n- SOC 2 Type II certification\n- PCI DSS compliance for payment data\n- HIPAA compliance for healthcare data\n- CCPA compliance for California residents\n- Regular third-party security assessments\n\nAccess Contro"
+    },
+    {
+      "id": "REQ-005-Q4",
+      "question": "How are audit logs maintained?",
+      "answer": "All data access is logged in audit trails for security and compliance purposes.",
+      "ground_truth_doc": "REQ-005",
+      "document_title": "Data Privacy and Security",
+      "question_type": "security",
+      "difficulty": "easy",
+      "document_context": "\nSecurity and privacy requirements:\n1. End-to-end encryption for sensitive data\n2. SSL/TLS 1.3 for all communications\n3. GDPR compliance with data deletion requests\n4. Regular security audits and penetration testing\n5. Data retention policies with automatic deletion\n\nCompliance Requirements:\n- SOC 2 Type II certification\n- PCI DSS compliance for payment data\n- HIPAA compliance for healthcare data\n- CCPA compliance for California residents\n- Regular third-party security assessments\n\nAccess Contro"
+    },
+    {
+      "id": "REQ-005-Q5",
+      "question": "Is multi-tenant data isolation provided?",
+      "answer": "Yes, the system enforces multi-tenant data isolation.",
+      "ground_truth_doc": "REQ-005",
+      "document_title": "Data Privacy and Security",
+      "question_type": "architecture",
+      "difficulty": "easy",
+      "document_context": "\nSecurity and privacy requirements:\n1. End-to-end encryption for sensitive data\n2. SSL/TLS 1.3 for all communications\n3. GDPR compliance with data deletion requests\n4. Regular security audits and penetration testing\n5. Data retention policies with automatic deletion\n\nCompliance Requirements:\n- SOC 2 Type II certification\n- PCI DSS compliance for payment data\n- HIPAA compliance for healthcare data\n- CCPA compliance for California residents\n- Regular third-party security assessments\n\nAccess Contro"
+    },
+    {
+      "id": "REQ-006-Q6",
+      "question": "What notification channels are available?",
+      "answer": "In-app (WebSocket), email, SMS, and push notifications.",
+      "ground_truth_doc": "REQ-006",
+      "document_title": "Notification System Requirements",
+      "question_type": "feature",
+      "difficulty": "easy",
+      "document_context": "\nThe notification system must support:\n1. Real-time in-app notifications via WebSocket\n2. Email notifications with daily digest option\n3. SMS notifications for critical alerts\n4. Push notifications for mobile apps\n5. Notification preferences and unsubscribe options\n\nNotification Types:\n- System notifications (maintenance, updates)\n- User activity notifications (mentions, comments)\n- Alert notifications (threshold breaches, errors)\n- Task notifications (reminders, deadlines)\n- Promotional notific"
+    },
+    {
+      "id": "REQ-006-Q7",
+      "question": "Can users customize notification frequency?",
+      "answer": "Yes, users can set frequency to real-time, hourly, daily, or disable specific notification types.",
+      "ground_truth_doc": "REQ-006",
+      "document_title": "Notification System Requirements",
+      "question_type": "feature",
+      "difficulty": "easy",
+      "document_context": "\nThe notification system must support:\n1. Real-time in-app notifications via WebSocket\n2. Email notifications with daily digest option\n3. SMS notifications for critical alerts\n4. Push notifications for mobile apps\n5. Notification preferences and unsubscribe options\n\nNotification Types:\n- System notifications (maintenance, updates)\n- User activity notifications (mentions, comments)\n- Alert notifications (threshold breaches, errors)\n- Task notifications (reminders, deadlines)\n- Promotional notific"
+    },
+    {
+      "id": "REQ-006-Q8",
+      "question": "What types of notifications are sent?",
+      "answer": "System, user activity, alert, task, and promotional notifications.",
+      "ground_truth_doc": "REQ-006",
+      "document_title": "Notification System Requirements",
+      "question_type": "information",
+      "difficulty": "medium",
+      "document_context": "\nThe notification system must support:\n1. Real-time in-app notifications via WebSocket\n2. Email notifications with daily digest option\n3. SMS notifications for critical alerts\n4. Push notifications for mobile apps\n5. Notification preferences and unsubscribe options\n\nNotification Types:\n- System notifications (maintenance, updates)\n- User activity notifications (mentions, comments)\n- Alert notifications (threshold breaches, errors)\n- Task notifications (reminders, deadlines)\n- Promotional notific"
+    },
+    {
+      "id": "REQ-006-Q9",
+      "question": "Can users set do-not-disturb hours?",
+      "answer": "Yes, users can configure do-not-disturb hours when notifications are suppressed.",
+      "ground_truth_doc": "REQ-006",
+      "document_title": "Notification System Requirements",
+      "question_type": "feature",
+      "difficulty": "medium",
+      "document_context": "\nThe notification system must support:\n1. Real-time in-app notifications via WebSocket\n2. Email notifications with daily digest option\n3. SMS notifications for critical alerts\n4. Push notifications for mobile apps\n5. Notification preferences and unsubscribe options\n\nNotification Types:\n- System notifications (maintenance, updates)\n- User activity notifications (mentions, comments)\n- Alert notifications (threshold breaches, errors)\n- Task notifications (reminders, deadlines)\n- Promotional notific"
+    },
+    {
+      "id": "REQ-006-Q10",
+      "question": "Is there a notification history feature?",
+      "answer": "Yes, users can view, search, and archive their notification history.",
+      "ground_truth_doc": "REQ-006",
+      "document_title": "Notification System Requirements",
+      "question_type": "feature",
+      "difficulty": "easy",
+      "document_context": "\nThe notification system must support:\n1. Real-time in-app notifications via WebSocket\n2. Email notifications with daily digest option\n3. SMS notifications for critical alerts\n4. Push notifications for mobile apps\n5. Notification preferences and unsubscribe options\n\nNotification Types:\n- System notifications (maintenance, updates)\n- User activity notifications (mentions, comments)\n- Alert notifications (threshold breaches, errors)\n- Task notifications (reminders, deadlines)\n- Promotional notific"
+    }
+  ]
+}

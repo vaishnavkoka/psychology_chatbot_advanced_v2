@@ -1,0 +1,12 @@
+2026-04-14 16:39:40,407 - INFO - Analyzing: cucumber-school_bdd-with-cucumber
+2026-04-14 16:39:40,407 - INFO - Cloning: cucumber-school/bdd-with-cucumber
+2026-04-14 16:39:40,407 - DEBUG - URL: https://github.com/cucumber-school/bdd-with-cucumber.git
+2026-04-14 16:39:40,407 - DEBUG - Attempt 1/3
+2026-04-14 16:39:58,023 - INFO - Clone successful
+2026-04-14 16:39:58,023 - INFO - Analyzing commits...
+2026-04-14 16:39:58,029 - INFO - Found 617 commits
+2026-04-14 16:40:45,919 - INFO - Analyzed 509 commits (108 skipped)
+2026-04-14 16:40:45,920 - INFO - Generating reports...
+2026-04-14 16:40:45,934 - DEBUG - Creating visualization...
+2026-04-14 16:40:46,331 - DEBUG - Visualization saved: cucumber-school_bdd-with-cucumber.png
+2026-04-14 16:40:46,331 - INFO - Generated 3 reports

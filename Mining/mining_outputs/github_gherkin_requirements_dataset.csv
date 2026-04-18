@@ -1,0 +1,83 @@
+project_name,project_url,github_stars,language,feature_name,domain,scenario_name,given,when,then,input_text,acceptance_criteria,gherkin_code,tags,difficulty,created_utc,source
+cucumber-js,https://github.com/cucumber/cucumber-js,2500,JavaScript,User Authentication,authentication,Successful login with valid credentials,A user has registered with valid credentials in the system,The user enters their username and password on login page and clicks Login,The system should authenticate the user and redirect to dashboard,"The user is using the authentication service. The business requires secure access, clear feedback on auth failures, and audit trails for compliance.",User receives success message | User session is created with secure token | User is redirected to dashboard within 2 seconds | Login attempt is logged for audit,"Feature: User Authentication
+  As a user
+  I want to authenticate with username and password
+  So that I can access the application securely
+
+  @critical @auth
+  Scenario: Successful login with valid credentials
+    Given a user has registered with valid credentials
+    When the user enters username and password on login page
+    And clicks the Login button
+    Then the system authenticates the user
+    And redirects to dashboard
+    And the session is created with secure token
+",critical ,easy,2026-03-16T19:28:51.226609,github-oss
+cucumber-js,https://github.com/cucumber/cucumber-js,2500,JavaScript,API Rate Limiting,api,API returns 429 when rate limit exceeded,A client has sent the maximum allowed requests in the window,The client sends one more request,The system should return 429 status and Retry-After header,"The user is using the API. The system needs rate limiting, error handling with clear messages, and stock/inventory constraints.",Response HTTP status is 429 | Retry-After header indicates wait time | Client IP is logged for security | Rate limit counter resets after window,"Feature: API Rate Limiting
+  As a system administrator
+  I want to implement rate limiting
+  So that the API is protected from abuse
+
+  @api @performance
+  Scenario: API returns 429 when rate limit exceeded
+    Given a client has sent the maximum allowed requests in the window
+    When the client sends one more request
+    Then the response status is 429
+    And the response includes a Retry-After header
+    And the client IP is logged
+
+  Scenario Outline: Rate limit buckets by endpoint
+    Given requests to <endpoint> have a limit of <limit> per minute
+    When a client sends <requests> requests in 60 seconds
+    Then the response status is <status>
+
+    Examples:
+      | endpoint | limit | requests | status |
+      | /api/v1/data | 100 | 50 | 200 |
+      | /api/v1/data | 100 | 100 | 200 |
+      | /api/v1/data | 100 | 101 | 429 |
+",api ,medium,2026-03-16T19:28:51.226609,github-oss
+behave,https://github.com/behave/behave,2300,Python,Dashboard Filters and Exports,dashboard,Filter requirements by status,The user is logged in and viewing the dashboard with requirements,The user clicks the Status filter and selects 'In Progress',The dashboard should display only In Progress requirements,"The user is using the dashboard. Business wants fast loading, accurate filtering, and clear feedback to complete analysis without unnecessary steps. Measurable outcomes and auditability required.",Filter is applied within 1 second | Only matching requirements are shown | Filter badge indicates active filter | Results count is accurate,"Feature: Dashboard Filters and Exports
+  Background:
+    Given the user is logged into the dashboard
+    And the dashboard contains sample data
+
+  @dashboard @filter
+  Scenario: Filter requirements by status
+    When the user filters requirements by status ""In Progress""
+    Then the dashboard displays only In Progress requirements
+    And the filter badge shows the count
+    And the results are updated within 1 second
+
+  @dashboard @export
+  Scenario Outline: Export data in multiple formats
+    Given requirements are displayed on dashboard
+    When the user exports data as <format>
+    Then a file is downloaded with name <filename>
+    And the file contains all visible requirements
+
+    Examples:
+      | format | filename |
+      | CSV    | requirements.csv |
+      | PDF    | requirements.pdf |
+      | JSON   | requirements.json |
+",dashboard ,medium,2026-03-16T19:28:51.226609,github-oss
+robotframework,https://github.com/robotframework/robotframework,1800,Python,Shopping Cart Management,checkout,Add to cart with stock constraints,A product with limited stock is displayed,The user selects quantity and adds to cart,The system should add items and update stock,"The user is interacting with the system. Business requires clear feedback, accurate processing, and audit trails for all operations.",Cart quantity is updated | Stock is decremented | Insufficient stock error shown when needed | User can proceed to checkout,"Feature: Shopping Cart Management
+  As a shopper
+  I want to manage items in my cart
+  So that I can purchase products
+
+  @cart @stockmanagement
+  Scenario Outline: Add to cart with stock constraints
+    Given a product with <initial_stock> units remaining
+    When the user adds <qty> unit(s) to cart
+    Then the cart shows <qty> item(s)
+    And the remaining stock is <remaining>
+    And the user can proceed to checkout
+
+    Examples:
+      | initial_stock | qty | remaining |
+      | 5             | 1   | 4         |
+      | 2             | 2   | 0         |
+      | 1             | 2   | cannot add |
+",cart ,medium,2026-03-16T19:28:51.226609,github-oss

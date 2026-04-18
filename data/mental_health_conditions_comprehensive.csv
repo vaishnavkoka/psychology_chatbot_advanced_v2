@@ -1,0 +1,11 @@
+condition_name,prevalence_percentage,onset_age,duration,treatment_time_weeks,remission_rate_percentage,key_symptoms,risk_factors,protective_factors
+Major Depressive Disorder,7,20-40,Variable,8-16,65,Depressed mood; Loss of interest; Fatigue; Sleep changes,Genetics; Trauma; Stress; Medical conditions,Social support; Therapy; Exercise; Coping skills
+Generalized Anxiety Disorder,3.1,20-40,Chronic,8-16,60,Excessive worry; Restlessness; Sleep disturbance; Difficulty concentrating,Genetics; Stress; Trauma,Relaxation techniques; Therapy; Meditation; Social support
+Panic Disorder,2.4,20-40,Chronic,6-12,70,Sudden panic attacks; Chest pain; Shortness of breath; Fear,Genetics; Stress; Trauma; Substance use,Therapy; Exercise; Support; Coping skills
+Social Anxiety Disorder,7,15-30,Chronic,12-16,58,Fear of social situations; Avoidance; Physical anxiety symptoms,Genetics; Bullying; Trauma; Family factors,Social support; Gradual exposure; Therapy; Medication
+Specific Phobia,7-9,Childhood,Chronic,4-8,80,Intense fear of specific object/situation; Avoidance,Genetics; Traumatic event; Learned fear,Exposure therapy; Support; Coping skills
+PTSD,3.5,All ages,Chronic,12-16,50,Intrusive memories; Avoidance; Negative mood; Hyperarousal,Trauma exposure; Genetics; Prior mental health,Trauma-focused therapy; Support; Social connection
+Bipolar Disorder,2.4,18-25,Chronic,Variable,40,Mood episodes; Risky behavior; Grandiosity; Depression,Genetics; Stress; Substance use; Sleep disruption,Medication; Therapy; Sleep routine; Social support
+Obsessive-Compulsive Disorder,1,18-25,Chronic,12-20,70,Intrusive thoughts; Compulsions; Anxiety,Genetics; Brain chemistry; Trauma; Stress,Exposure therapy; Medication; Support; Coping
+Borderline Personality Disorder,1.4,Late teens,Chronic,12-24,50,Unstable relationships; Self-harm; Emotional dysregulation,Trauma; Genetics; Invalidating environment,DBT; Therapy; Support; Mindfulness
+Attention-Deficit/Hyperactivity Disorder,4.4,Childhood,Chronic,Variable,70,Inattention; Hyperactivity; Impulsivity,Genetics; Brain development; Prenatal factors,Medication; Structure; Support; Behavioral strategies

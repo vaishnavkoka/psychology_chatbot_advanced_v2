@@ -1,0 +1,208 @@
+{
+  "cbt_techniques": [
+    {
+      "id": "cbt_001",
+      "technique": "Thought Challenging",
+      "description": "Identify and challenge automatic negative thoughts",
+      "steps": [
+        "Identify the automatic thought",
+        "Examine evidence for and against it",
+        "Develop a more balanced perspective",
+        "Practice the new thought pattern",
+        "Notice the emotional change"
+      ],
+      "example": {
+        "automatic_thought": "I made a mistake at work, I'm incompetent",
+        "challenge": "Have I succeeded at tasks before? What was I evaluated on last review?",
+        "balanced_thought": "I made one mistake, but I have many strengths. I'll learn from this."
+      },
+      "duration": "5-10 minutes per thought"
+    },
+    {
+      "id": "cbt_002",
+      "technique": "Cognitive Restructuring",
+      "description": "Replace distorted thinking patterns with realistic ones",
+      "steps": [
+        "Identify distorted thinking patterns (catastrophizing, black-and-white thinking, etc.)",
+        "Understand the thought pattern",
+        "Develop alternative perspectives",
+        "Test the new perspective",
+        "Reinforce the change"
+      ],
+      "distortion_types": [
+        "All-or-nothing thinking",
+        "Catastrophizing",
+        "Overgeneralization",
+        "Mind reading",
+        "Emotional reasoning"
+      ],
+      "duration": "10-15 minutes per thought"
+    },
+    {
+      "id": "cbt_003",
+      "technique": "Behavioral Activation",
+      "description": "Schedule and engage in meaningful activities to improve mood",
+      "steps": [
+        "List activities (enjoyable, accomplishment-oriented, social)",
+        "Rate expected pleasure/accomplishment (0-10)",
+        "Schedule specific times",
+        "Complete the activity",
+        "Rate actual pleasure/accomplishment",
+        "Adjust scheduling based on results"
+      ],
+      "activity_types": [
+        "Physical exercise",
+        "Social interaction",
+        "Hobby engagement",
+        "Task completion",
+        "Skill development"
+      ],
+      "duration": "30 minutes to 1 hour of activity"
+    },
+    {
+      "id": "cbt_004",
+      "technique": "Progressive Muscle Relaxation",
+      "description": "Tense and release muscle groups to reduce physical tension",
+      "steps": [
+        "Find a comfortable position",
+        "Tense one muscle group for 5 seconds",
+        "Release and notice the relaxation",
+        "Take a deep breath",
+        "Move to the next muscle group",
+        "Progress through entire body"
+      ],
+      "muscle_groups": [
+        "Hands and forearms",
+        "Upper arms and shoulders",
+        "Neck and jaw",
+        "Face",
+        "Chest and stomach",
+        "Legs"
+      ],
+      "duration": "15-20 minutes"
+    },
+    {
+      "id": "cbt_005",
+      "technique": "Exposure Therapy",
+      "description": "Gradual exposure to feared situations to reduce anxiety",
+      "steps": [
+        "Create a fear hierarchy",
+        "Start with least anxious situation",
+        "Stay in the situation until anxiety decreases",
+        "Practice regularly",
+        "Progress to next level",
+        "Normalize the feared situation"
+      ],
+      "hierarchy_example": {
+        "level_1": "Thinking about public speaking",
+        "level_2": "Watching someone else speak",
+        "level_3": "Speaking to one person",
+        "level_4": "Speaking to a small group",
+        "level_5": "Presenting to 20+ people"
+      },
+      "duration": "20-60 minutes per session"
+    },
+    {
+      "id": "cbt_006",
+      "technique": "Problem-Solving Technique",
+      "description": "Systematic approach to problem-solving",
+      "steps": [
+        "Define the problem clearly",
+        "Generate possible solutions (brainstorm)",
+        "Evaluate each solution",
+        "Choose the best solution",
+        "Create an action plan",
+        "Implement and evaluate results"
+      ],
+      "evaluation_criteria": [
+        "Feasibility",
+        "Effectiveness",
+        "Time required",
+        "Cost",
+        "Impact on others"
+      ],
+      "duration": "30-45 minutes"
+    },
+    {
+      "id": "cbt_007",
+      "technique": "Assertiveness Training",
+      "description": "Learn to communicate needs and boundaries clearly",
+      "steps": [
+        "Identify situations where you need to be assertive",
+        "Practice saying 'no' without guilt",
+        "Use 'I' statements",
+        "Be specific about requests",
+        "Practice regularly",
+        "Manage others' reactions"
+      ],
+      "assertiveness_scripts": [
+        "I appreciate your help, but I need to handle this myself",
+        "I understand your perspective, and I've decided differently",
+        "I'm not comfortable with that. I prefer to...",
+        "That doesn't work for me. How about we..."
+      ],
+      "duration": "20-30 minutes per situation"
+    },
+    {
+      "id": "cbt_008",
+      "technique": "Mindfulness and Acceptance",
+      "description": "Observing thoughts and feelings without judgment",
+      "steps": [
+        "Find a quiet space",
+        "Focus on your breath",
+        "Notice thoughts without judgment",
+        "Let thoughts pass like clouds",
+        "Return focus to breath",
+        "End with gratitude"
+      ],
+      "techniques": [
+        "Body scan meditation",
+        "Breath awareness",
+        "Thought observation",
+        "Loving-kindness meditation",
+        "Mindful walking"
+      ],
+      "duration": "10-30 minutes"
+    },
+    {
+      "id": "cbt_009",
+      "technique": "Values Clarification",
+      "description": "Identify personal values and align actions accordingly",
+      "steps": [
+        "Reflect on what matters most",
+        "List personal values",
+        "Prioritize top values",
+        "Assess current alignment",
+        "Set value-aligned goals",
+        "Take aligned action"
+      ],
+      "value_categories": [
+        "Relationships",
+        "Health",
+        "Career",
+        "Personal growth",
+        "Spirituality",
+        "Community",
+        "Creativity"
+      ],
+      "duration": "30-60 minutes"
+    },
+    {
+      "id": "cbt_010",
+      "technique": "Sleep Hygiene Improvement",
+      "description": "Establish habits for better sleep quality",
+      "recommendations": [
+        "Keep consistent sleep schedule",
+        "No screens 1 hour before bed",
+        "Cool, dark bedroom (60-67°F)",
+        "No caffeine after 2 PM",
+        "No large meals near bedtime",
+        "Regular exercise (not near bedtime)",
+        "Relaxation techniques before bed",
+        "Reserve bed for sleep only"
+      ],
+      "implementation_timeline": "2-4 weeks to see full benefits",
+      "duration": "Ongoing daily practice"
+    }
+  ]
+}

@@ -1,0 +1,802 @@
+Sno,Filter,Filter command,Example,Result,Threshold,Range
+1,/-annotate,Basic Text with Positioning,"magick img2.png -gravity center -pointsize 36 -fill black -annotate +50+100 ""Hello, World!"" output.png","Places the text ""Hello, World!"" at coordinates (50, 100) with black fill, centered on the image.",,
+2,,Rotated Text with Stroke,"magick img2.png -gravity south -font Arial -pointsize 48 -fill blue -stroke white -annotate 45 ""Rotated Text"" output_rotated.png","Adds blue text with a white stroke, rotated 45 degrees, placed near the bottom.",,
+3,,Text with Undercolor Background:,"magick img2.png -gravity northwest -pointsize 28 -fill yellow -undercolor '#00000080' -annotate +10+10 ""Annotated Text"" output_with_undercolor.png",Adds yellow text with a semi-transparent black undercolor in the top-left corner of the image.,,
+4,,Custom Font and Background:,"magick img2.png -font Times-New-Roman -pointsize 40 -fill red -background none -annotate +30+30 ""Custom Font Text"" output_custom_font.png",Uses a custom font (Times-New-Roman) with red text and no background.,,
+5,,Multi-line Annotate with Gravity:,"magick img2.png -gravity center -fill white -pointsize 32 -annotate 0 ""Line 1\nLine 2"" output_multiline.png",Places multiline text at the center of the image.,,
+6,,Basic Annotation:,"magick img2.png -annotate 0 ""Sample Text"" output_annotate.png","Adds the text ""Sample Text"" without rotation.",,
+7,,Rotated Annotation:,"magick img2.png -annotate 45 ""Diagonal Text"" output_rotate.png",Annotates the image with text rotated 45 degrees.,,
+8,,Text Annotation with Font Size:,"magick img2.png -pointsize 50 -annotate 0 ""Large Text"" output_large_text.png",Uses a specific font size for annotation.,,
+9,,Positioned Text Annotation:,"magick img2.png -annotate +50+100 ""Positioned Text"" output_positioned.png","Places text at specific coordinates (50, 100).",,
+10,,Text with Undercolor:,"magick img2.png -undercolor '#ff000080' -annotate +10+20 ""Text with Undercolor"" output_undercolor.png",Adds text with a semi-transparent red background (undercolor).,,
+11,,Gravity-Based Annotation:,"magick img2.png -gravity center -annotate 0 ""Centered Text"" output_center.png",Places the text at the center of the image using gravity.,,
+12,,Text with Stroke:,"magick img2.png -stroke black -strokewidth 2 -annotate 0 ""Outlined Text"" output_stroke.png",Annotates with an outline around the text.,,
+13,,Multi-line Annotation:,"magick img2.png -annotate 0 ""Line 1\nLine 2"" output_multiline.png",Annotates with multiple lines of text.,,
+14,,Annotation with Font:,"magick img2.png -font Arial -annotate 0 ""Custom Font Text"" output_font.png",Annotates the image using the Arial font.,,
+15,,Annotation with Fill Color:,"magick img2.png -fill blue -annotate 0 ""Blue Text"" output_fill_color.png",Annotates the image with blue-colored text.,,
+16,,Annotation with Custom Font and Size:,"magick img2.png -font Times-New-Roman -pointsize 30 -annotate 0 ""Times New Roman Text"" output_custom_font.png","Uses the ""Times-New-Roman"" font and a custom size of 30 for the text.",,
+17,,Annotate with Transparency:,"magick img2.png -fill ""rgba(255,0,0,0.5)"" -annotate 0 ""Transparent Text"" output_transparent.png",Annotates text with a semi-transparent red color.,,
+18,,Annotate with Shadow Effect:,"magick img2.png -fill white -annotate 0 ""Text with Shadow"" -shadow 80x3+5+5 output_shadow.png",Adds a shadow to the annotated text.,,
+19,,Annotation with Kerning (Spacing Between Letters):,"magick img2.png -kerning 10 -annotate 0 ""Spaced Out Text"" output_kerning.png",Annotates with a 10-pixel spacing between letters.,,
+20,,Annotation with Shear Transformation:,"magick img2.png -annotate 0x45 ""Sheared Text"" output_shear.png",Shears the text at a 45-degree angle.,,
+21,,Annotation Along a Path:,"magick img2.png -draw ""text 100,100 'Text Along Path'"" -annotate 0 ""Path Text"" output_path.png","Annotates text along a specified path (in this case, using basic drawing).",,
+22,/-black-threshold,Simple Black Threshold (with percentage):,magick input.jpg -black-threshold 25% output.jpg,"Any pixel value less than 25% brightness will be set to black, and values above will be unchanged.",,
+23,,Black Threshold with Hexadecimal Color:,magick input.jpg -black-threshold '#808080' output.jpg,"Pixels darker than the specified hex value (#808080, which is medium gray) are set to black.",,
+24,,Black Threshold with RGB Value:,"magick input.jpg -black-threshold 'rgb(128,128,128)' output.jpg","Pixels below the RGB value (128,128,128) will turn black, and other pixels will remain as is.",,
+25,,Black Threshold with Specific Gray Value:,magick input.jpg -black-threshold gray50 output.jpg,"Any pixel below 50% gray (mid-gray) is set to black, while brighter pixels stay the same.",,
+26,,Black Threshold with Named Color:,magick input.jpg -black-threshold 'gray' output.jpg,All pixels darker than gray (default gray) will become black.,,
+27,"/-blur
+ radius*sigma lower value indicates higher blur (radius)
+ higher indicates higher sigma(sigma)",Simple Blur with Radius and Sigma:,magick input.jpg -blur 0x5 output.jpg,"This applies a Gaussian blur with a sigma of 5, resulting in a moderate blur across the entire image. The radius is automatically computed based on the sigma.",,
+28,,Blur with Explicit Radius and Sigma:,magick input.jpg -blur 3x10 output.jpg,"A Gaussian blur is applied with a radius of 3 and a sigma of 10. The image becomes heavily blurred, with the higher sigma creating a more pronounced blur effect.",,
+29,,Minimal Blur (Light Blur):,magick input.jpg -blur 0x1 output.jpg,"A very light blur is applied using a sigma of 1. The image will appear slightly softened, with details still largely preserved.",,
+30,,Heavy Blur:,magick input.jpg -blur 0x20 output.jpg,"A very strong Gaussian blur is applied with a sigma of 20, causing the image to become heavily blurred, making fine details almost unrecognizable.",,
+31,,Moderate Blur with Small Radius:,magick input.jpg -blur 2x5 output.jpg,A moderate blur is applied with a radius of 2 and a sigma of 5. The result will be a blur effect that is more localized due to the smaller radius but still noticeable.,,
+32,,Precision Blur with Radius Only:,magick input.jpg -blur 4 output.jpg,"A blur is applied with just the radius set to 4 (without explicitly setting sigma). This results in ImageMagick computing a suitable sigma automatically, giving a balanced blur effect.",,
+33,"/-border
+ a*b a represents left and right side b represent top and bottom",Simple Border with Default Color:,magick input.jpg -border 10x10 output.jpg,Adds a 10-pixel wide border on all sides of the image using the default color (usually black). The image will have equal borders around it.,,
+34,,Asymmetric Border:,magick input.jpg -border 20x5 output.jpg,"Adds a 20-pixel wide border to the left and right, and a 5-pixel wide border to the top and bottom. The result is a rectangular border with different dimensions.",,
+35,,Thin Border:,magick input.jpg -border 1x1 output.jpg,"A thin 1-pixel border is applied around the image. This adds a very subtle outline around the image, barely noticeable but giving a fine edge.",,
+36,,Large Uniform Border:,magick input.jpg -border 50x50 output.jpg,"A thick 50-pixel wide border is added uniformly around the image, creating a bold frame-like appearance.",,
+37,,Tall Border with Narrow Width:,magick input.jpg -border 5x30 output.jpg,Adds a border that is 5 pixels wide on the left and right and 30 pixels tall on the top and bottom. This results in a vertically prominent border that elongates the image.,,
+38,,Zero Border Width:,magick input.jpg -border 0x10 output.jpg,"Adds a 10-pixel border only to the top and bottom, with no border on the left and right sides. This creates a border effect that emphasizes the vertical edges of the image.",,
+39,,Small Vertical Border:,magick input.jpg -border 0x5 output.jpg,"Adds a 5-pixel border to the top and bottom only, with no border on the left and right. This adds slight vertical padding to the image.",,
+40,,Border with No Height (Horizontal Border Only):,magick input.jpg -border 15x0 output.jpg,"Adds a 15-pixel wide border on the left and right sides only, with no border at the top and bottom. This highlights the horizontal edges of the image.",,
+41,-charcoal,Basic Charcoal Effect:,magick input.jpg -charcoal 1 output.jpg,"Applies a charcoal drawing effect with a radius and sigma of 1, creating a light sketch-like appearance with soft edges.",,
+42,,Moderate Charcoal Effect:,magick input.jpg -charcoal 5 output.jpg,Applies a moderate charcoal effect with a radius and sigma of 5. This results in a stronger sketch effect with more pronounced lines and texture.,,
+43,,Strong Charcoal Effect:,magick input.jpg -charcoal 10 output.jpg,"A strong charcoal effect is applied, turning the image into a highly textured sketch with heavy strokes, resembling a bold charcoal drawing.",,
+44,,Subtle Charcoal Effect:,magick input.jpg -charcoal 0.5 output.jpg,"A very subtle charcoal effect, with fine lines and minimal texture. The image will retain much of its original detail but appear lightly sketched.",,
+45,,Minimal Charcoal Effect:,magick input.jpg -charcoal 0.2 output.jpg,"Applies a barely noticeable charcoal effect with a radius of 0.2. The image will appear very slightly sketched, almost imperceptibly altering the original.",,
+46,"/-chop
+ x * y a represents left and right side b represent top and bottom",Simple Horizontal Chop:,magick input.jpg -chop 100x0 output.jpg,"Removes 100 pixels from the width of the image, effectively chopping off 100 pixels from the left or right side (depending on gravity settings), leaving the height unchanged.",,
+47,,Simple Vertical Chop:,magick input.jpg -chop 0x100 output.jpg,"Removes 100 pixels from the height of the image, chopping off the top or bottom portion of the image, while leaving the width unchanged.",,
+48,,Asymmetric Chop (Vertical and Horizontal):,magick input.jpg -chop 50x150 output.jpg,"Removes 50 pixels from the width and 150 pixels from the height of the image, cutting off both horizontally and vertically.",,
+49,,Center Crop (Chop with Equal Sides):,magick input.jpg -chop 50x50 output.jpg,"Removes 50 pixels from both the width and height of the image, effectively trimming equal parts from all sides and creating a smaller, centered version of the image.",,
+50,"/-clip
+ .svg file format is also used here",Basic Clip Path:,magick input.jpg -clip output.jpg,"Applies the clipping path from the image's internal vector data. This will mask out areas outside the clipping path, leaving only the clipped region visible.",,
+51,,Clip Inside the Path:,magick input.jpg -clip -negate output.jpg,"Applies a clip inside the specified path and inverts the selection, showing only the area inside the clipping path, and hiding everything outside.",,
+52,,Clip with Automatic Path from Image Metadata:,magick input.jpg -clip output.jpg,Uses the clipping path stored in the image metadata (such as in a TIFF file) to define which part of the image is displayed. The rest of the image outside the path is discarded.,,
+53,,Clip with Embedded Clipping Path (Vector Graphics):,magick input.svg -clip output.jpg,"Applies the clip based on vector data from an SVG file, showing only the area inside the vector-defined clipping path while removing the outside portions.",,
+54,/-clip-path,Reapply Clip Path After Resetting:,magick input.jpg -clip -clip-path output.jpg,"Applies the clipping path, then resets it and reapplies the clipping based on the image's metadata, ensuring the clipping path is consistently enforced.",,
+55,,Apply Clip Path by ID:,"magick input.svg -clip-path ""#path1"" output.jpg","Applies a specific clipping path identified by #path1 from an SVG file. Only the part of the image inside the path path1 will be visible, and the rest will be masked out.",,
+56,,Multiple Clip Paths:,"magick input.svg -clip-path ""#path1"" -clip-path ""#path2"" output.jpg","Combines multiple clipping paths from the SVG file (#path1 and #path2), showing only the areas inside both paths and masking everything else.",,
+57,,Clip Path Removal:,magick input.svg -clip-path none output.jpg,"Removes any applied clipping path, returning the image to its full size and visibility without any masked areas.",,
+58,-clip-mask,Basic Clip Mask from Image:,magick input.jpg -clip-mask mask.png output.jpg,"Applies the specified mask (mask.png) to clip the image. Only the parts of the image corresponding to the white areas in the mask will be visible, while the rest is hidden.",,
+59,,Clip Mask with Reset:,magick input.jpg -clip-mask mask.png -clip-mask none output.jpg,"Clips the image using the specified mask, then removes the mask, effectively applying the mask and then resetting the image's full visibility.",,
+60,,Remove Existing Clip Mask:,magick input.jpg -clip-mask none output.jpg,"Removes any applied clip mask, returning the image to its full, unclipped state.",,
+61,"/-colors
+ takes only one value lower value takes toward black and white while higher value increases sharpness in image",Reduce Image to 16 Colors:,magick input.jpg -colors 16 output.jpg,"Reduces the number of colors in the image to 16, creating a simplified, posterized version with fewer shades. This can create a more abstract or ""flat"" look.",,
+62,,Reduce to 256 Colors (Common for GIFs):,magick input.jpg -colors 256 output.gif,"Reduces the color palette of the image to 256 colors, which is commonly used in GIF images. The image will still retain most of its detail but with a limited color range.",,
+63,,Reduce to 2 Colors (Black and White):,magick input.jpg -colors 2 output.jpg,"Converts the image into a black-and-white version by reducing the color palette to 2 colors. This gives the image a stark, high-contrast look.",,
+64,,Reduce to 64 Colors:,magick input.jpg -colors 64 output.jpg,"Reduces the number of colors in the image to 64, producing a posterized effect that simplifies the image without making it entirely abstract.",,
+65,,Reduce to 8 Colors (Highly Stylized):,magick input.jpg -colors 8 output.jpg,"Reduces the image to 8 distinct colors, creating a highly stylized, cartoonish effect. This is often used for creative or retro looks.",,
+66,,Reduce to 128 Colors:,magick input.jpg -colors 128 output.jpg,"Reduces the image to 128 colors, which will still retain much of the original image detail but with a noticeable reduction in color gradients and smoothness.",,
+67,,Reduce to 32 Colors:,magick input.jpg -colors 32 output.jpg,"Reduces the number of colors in the image to 32, resulting in a posterized appearance with obvious bands of color and reduced detail.",,
+68,,Reduce to 4 Colors (Extreme Posterization):,magick input.jpg -colors 4 output.jpg,"Reduces the color palette to just 4 colors, creating an extreme posterization effect. The image will have a very abstract, almost comic-book style.",,
+69,,Set Colors to 1 (Monochrome):,magick input.jpg -colors 1 output.jpg,"Converts the image into a monochrome version, resulting in an entirely black image or white image depending on the dominant color in the input image.",,
+70,,Reduce to 512 Colors:,magick input.jpg -colors 512 output.jpg,Reduces the image to 512 colors. This preserves much of the image’s detail and gradient but will slightly reduce color depth and smoothness.,,
+71,"/-colorize
+ RGB- red blue green
+ minimum 0
+ maximum 0",Basic Red Colorize:,"magick input.jpg -colorize 100,0,0 output.jpg","Applies a full red overlay to the image, turning it into shades of red while preserving underlying details.",,
+72,,Full Blue Colorize:,"magick input.jpg -colorize 0,0,100 output.jpg","Adds a blue overlay across the entire image, giving it a blue-toned effect.",,
+73,,Green Tint (Partial):,"magick input.jpg -colorize 0,50,0 output.jpg","Tints the image with a 50% green overlay, blending green with the original colors without overpowering them.",,
+74,,Yellow Tone (Combined Red and Green):,"magick input.jpg -colorize 50,50,0 output.jpg",Creates a yellow-toned image by combining equal parts of red and green overlay at 50% intensity.,,
+75,"/-colorspace 
+ -colorspace value",Convert to CMY Colorspace:,magick input.jpg -colorspace CMY output.jpg,"Converts the image to the CMY (Cyan, Magenta, Yellow) colorspace, often used in printing where these three colors are combined to create various hues.",,
+76,,Convert to HCL Colorspace:,magick input.jpg -colorspace HCL output.jpg,"Output: Changes the image to HCL (Hue, Chroma, Luminance) colorspace, which is perceptually uniform and useful for certain color adjustments.",,
+77,,Convert to HCLp Colorspace:,magick input.jpg -colorspace HCLp output.jpg,"Output: Applies a perceptually uniform HCLp colorspace, similar to HCL but better suited for smooth color transitions.",,
+78,,Convert to HSI Colorspace:,magick input.jpg -colorspace HSI output.jpg,"Output: Changes the image to HSI (Hue, Saturation, Intensity), often used for easier color manipulation based on intensity.",,
+79,,Convert to HSV Colorspace:,magick input.jpg -colorspace HSV output.jpg,"Output: Converts the image to HSV colorspace (Hue, Saturation, Value), often used in digital graphics for color adjustments.",,
+80,,Convert to Jzazbz Colorspace:,magick input.jpg -colorspace Jzazbz output.jpg,"Output: Changes the image to Jzazbz colorspace, a perceptually uniform model used for high-dynamic-range image editing.",,
+81,,Convert to LCHab Colorspace:,magick input.jpg -colorspace LCHab output.jpg,"Output: Converts the image to LCHab, which separates color into lightness, chroma, and hue using the LAB model’s components.",,
+82,,Convert to LCHuv Colorspace:,magick input.jpg -colorspace LCHuv output.jpg,"Output: Converts the image to LCHuv colorspace, similar to LCHab but based on the Luv model, for consistent color adjustments.",,
+83,,Convert to LMS Colorspace:,magick input.jpg -colorspace LMS output.jpg,"Output: Changes the image to LMS colorspace, based on human eye sensitivity to wavelengths.",,
+84,,Convert to Log Colorspace:,magick input.jpg -colorspace Log output.jpg,"Output: Converts the image to Log colorspace, useful in image processing for a logarithmic representation of colors.",,
+85,,Convert to OHTA Colorspace:,magick input.jpg -colorspace OHTA output.jpg,"Output: Converts the image to OHTA colorspace, which is a variation of LAB, designed for color consistency in video applications.",,
+86,,Convert to OkLab Colorspace:,magick input.jpg -colorspace OkLab output.jpg,"Output: Changes the image to OkLab, a perceptually uniform colorspace gaining popularity for its accuracy in color grading.",,
+87,,Convert to OkLCH Colorspace:,magick input.jpg -colorspace OkLCH output.jpg,"Output: Converts the image to OkLCH, a hue, lightness, and chroma model based on OkLab for smooth color grading.",,
+88,,Convert to Rec601YCbCr Colorspace:,magick input.jpg -colorspace Rec601YCbCr output.jpg,"Output: Converts the image to Rec601YCbCr colorspace, used for standard-definition video with separated brightness and color data.",,
+89,,Convert to Rec709YCbCr Colorspace:,magick input.jpg -colorspace Rec709YCbCr output.jpg,"Output: Converts the image to Rec709YCbCr, used in high-definition video formats with improved color fidelity.",,
+90,,Convert to scRGB Colorspace:,magick input.jpg -colorspace scRGB output.jpg,"Output: Converts the image to scRGB, which supports a wider gamut than sRGB and allows negative values for HDR images.",,
+91,,Convert to Transparent Colorspace:,magick input.jpg -colorspace Transparent output.jpg,"Output: Converts the image to Transparent colorspace, often used for images where transparency handling is critical.",,
+92,,Convert to xyY Colorspace:,magick input.jpg -colorspace xyY output.jpg,"Output: Changes the image to xyY colorspace, which isolates luminance information from chromaticity.",,
+93,,Convert to YCC Colorspace:,magick input.jpg -colorspace YCC output.jpg,"Output: Converts the image to YCC colorspace, used in video compression with separated color channels.",,
+94,,Convert to YDbDr Colorspace:,magick input.jpg -colorspace YDbDr output.jpg,"Output: Converts the image to YDbDr, often used in the PAL broadcast standard.",,
+95,,Convert to YIQ Colorspace:,magick input.jpg -colorspace YIQ output.jpg,"Output: Converts the image to YIQ colorspace, used in NTSC color television for color separation.",,
+96,,Convert to YPbPr Colorspace:,magick input.jpg -colorspace YPbPr output.jpg,"Output: Converts the image to YPbPr colorspace, commonly used in analog television signals.",,
+97,,Convert to Undefined Colorspace:,magick input.jpg -colorspace Undefined output.jpg,"Output: Leaves the colorspace undefined, potentially used when the colorspace should inherit the input image’s colorspace by default.",,
+98,,Convert to HSL Colorspace:,magick input.jpg -colorspace HSL output.jpg,"Output: Converts the image to the HSL colorspace (Hue, Saturation, Lightness), useful for manipulating color and lightness independently.",,
+99,,Convert to HSB Colorspace:,magick input.jpg -colorspace HSB output.jpg,"Output: Converts the image to HSB (Hue, Saturation, Brightness), helpful in graphics applications for brightness-based color adjustments.",,
+100,,Convert to RGB Colorspace:,magick input.jpg -colorspace RGB output.jpg,"Output: Converts the image to RGB, the most common colorspace for digital screens, using red, green, and blue channels.",,
+101,,Convert to sRGB Colorspace:,magick input.jpg -colorspace sRGB output.jpg,"Output: Converts the image to sRGB colorspace, standard for web and digital images, ensuring consistent colors across devices.",,
+102,,Convert to Lab Colorspace:,magick input.jpg -colorspace Lab output.jpg,"Output: Changes the image to Lab colorspace (Lightness and color-opponent dimensions), useful for adjusting color independently of brightness.",,
+103,,"Convert to LMS Colorspace (Long, Medium, Short wavelengths):",magick input.jpg -colorspace LMS output.jpg,"Output: Converts the image to LMS colorspace, based on the human eye's sensitivity to light wavelengths.",,
+104,,Convert to YUV Colorspace:,magick input.jpg -colorspace YUV output.jpg,"Output: Converts the image to YUV, widely used in video processing, where Y represents brightness and U/V represent color.",,
+105,,Convert to YCbCr Colorspace:,magick input.jpg -colorspace YCbCr output.jpg,"Output: Converts the image to YCbCr, used in video compression where Y is luminance, and Cb and Cr represent color components.",,
+106,"/-color-threshold
+ RGB- red green blue
+ 0-255",Basic Color Threshold - Red Range:,"magick input.jpg -color-threshold ""rgb(255,0,0)-rgb(255,50,50)"" output.jpg",Output: Only colors within the specified red range are retained; all others are turned to white.,,
+107,,Basic Color Threshold - Green Range:,"magick input.jpg -color-threshold ""rgb(0,255,0)-rgb(50,255,50)"" output.jpg","Output: Retains colors within the specified green range, changing other pixels to white.",,
+108,,Basic Color Threshold - Blue Range:,"magick input.jpg -color-threshold ""rgb(0,0,255)-rgb(50,50,255)"" output.jpg","Output: Keeps colors within the specified blue range, converting other colors to white.",,
+109,,Threshold for Mid-Range Grays:,"magick input.jpg -color-threshold ""rgb(128,128,128)-rgb(150,150,150)"" output.jpg","Output: Retains mid-gray tones, converting other colors to black.",,
+110,"/-compose
+ The -compose option sets the composition method used when combining two images, with each method blending or overlaying images in a unique way.
+ Take the first image 'destination' and overlay the second 'source' image according to the current -compose setting.",Compose with Multiply:,magick input.jpg overlay.jpg -compose Multiply -composite output.jpg,"Output: Multiplies the colors of the overlay and base image, darkening the resulting image.",,
+111,,Compose with Screen:,magick input.jpg overlay.jpg -compose Screen -composite output.jpg,"Output: Combines images by lightening the base image with the overlay, resulting in a brighter effect.",,
+112,,Compose with Overlay:,magick input.jpg overlay.jpg -compose Overlay -composite output.jpg,"Output: Darkens or lightens the image depending on overlay colors, enhancing midtones and contrast.",,
+113,,Compose with Darken:,magick input.jpg overlay.jpg -compose Darken -composite output.jpg,"Output: Keeps only the darker pixel from each image, making the resulting image darker.",,
+114,,Compose with Lighten:,magick input.jpg overlay.jpg -compose Lighten -composite output.jpg,"Output: Keeps only the lighter pixel from each image, resulting in a lighter overall image.",,
+115,,Compose with Difference:,magick input.jpg overlay.jpg -compose Difference -composite output.jpg,"Output: Shows the difference between each pixel, producing a high-contrast, unique effect.",,
+116,,Compose with Add:,magick input.jpg overlay.jpg -compose Add -composite output.jpg,"Output: Adds pixel values together, increasing brightness and intensity.",,
+117,,Compose with Subtract:,magick input.jpg overlay.jpg -compose Subtract -composite output.jpg,"Output: Subtracts pixel values, which darkens the image depending on the overlay.",,
+118,,Compose with Divide:,magick input.jpg overlay.jpg -compose Divide -composite output.jpg,"Output: Divides the base image by the overlay, creating unique brightness and contrast effects.",,
+119,,Compose with Exclusion:,magick input.jpg overlay.jpg -compose Exclusion -composite output.jpg,Output: Creates an inverse blend for a more subtle version of the Difference composition.,,
+120,,Compose with Hard Light:,magick input.jpg overlay.jpg -compose HardLight -composite output.jpg,"Output: Uses multiply or screen depending on overlay brightness, adding intense contrast.",,
+121,,Compose with Soft Light:,magick input.jpg overlay.jpg -compose SoftLight -composite output.jpg,"Output: Darkens or lightens the base depending on the overlay, resulting in a softer, more natural look.",,
+122,,Compose with Color Dodge:,magick input.jpg overlay.jpg -compose ColorDodge -composite output.jpg,"Output: Brightens the base image based on overlay colors, increasing highlights.",,
+123,,Compose with Color Burn:,magick input.jpg overlay.jpg -compose ColorBurn -composite output.jpg,"Output: Darkens the base image based on overlay colors, enhancing shadows.",,
+124,,Compose with Linear Dodge (Additive):,magick input.jpg overlay.jpg -compose LinearDodge -composite output.jpg,"Output: Adds images in a linear way, useful for high-brightness effects.",,
+125,,Compose with Linear Burn:,magick input.jpg overlay.jpg -compose LinearBurn -composite output.jpg,"Output: Darkens by subtracting base from overlay, producing a deep, intense blend.",,
+126,,Compose with Vivid Light:,magick input.jpg overlay.jpg -compose VividLight -composite output.jpg,"Output: Produces intense contrast, either darkening or brightening depending on the overlay.",,
+127,,Compose with Pin Light:,magick input.jpg overlay.jpg -compose PinLight -composite output.jpg,"Output: Replaces colors in the base image with those from the overlay in a pin-pointed way, creating bold edges.",,
+128,,Compose with Linear Light:,magick input.jpg overlay.jpg -compose LinearLight -composite output.jpg,"Output: Adjusts brightness based on overlay, creating a high-contrast, linear effect.",,
+129,,Compose with Hard Mix:,magick input.jpg overlay.jpg -compose HardMix -composite output.jpg,"Output: Drastically blends colors, reducing them to black, white, and primary colors.",,
+130,,Compose with Luminize:,magick input.jpg overlay.jpg -compose Luminize -composite output.jpg,Output: Combines images by transferring the luminance from the overlay to the base image.,,
+131,,Compose with Plus:,magick input.jpg overlay.jpg -compose Plus -composite output.jpg,"Output: Adds pixel values, increasing brightness with a glowing effect.",,
+132,,Compose with Minus:,magick input.jpg overlay.jpg -compose Minus -composite output.jpg,"Output: Subtracts overlay pixels from the base, creating a darker result.",,
+133,,Compose with Xor:,magick input.jpg overlay.jpg -compose Xor -composite output.jpg,"Output: Combines the images with a binary XOR operation, creating a unique blend with each differing pixel.",,
+134,,Compose with Atop:,magick input.jpg overlay.jpg -compose Atop -composite output.jpg,Output: Places overlay image atop the base image where pixels overlap.,,
+135,,Compose with Over:,magick input.jpg overlay.jpg -compose Over -composite output.jpg,"Output: Places the overlay image over the base image, making the overlay the primary image.",,
+136,,Compose with In:,magick input.jpg overlay.jpg -compose In -composite output.jpg,"Output: Uses the overlay to mask parts of the base image, creating transparency.",,
+137,,Compose with Out:,magick input.jpg overlay.jpg -compose Out -composite output.jpg,"Output: Keeps only parts of the base image not covered by the overlay, effectively cutting out the overlap.",,
+138,,Compose with Clear:,magick input.jpg overlay.jpg -compose Clear -composite output.jpg,"Output: Removes the pixels from the overlap area, creating a clear or transparent result.",,
+139,,Compose with DstIn:,magick input.jpg overlay.jpg -compose DstIn -composite output.jpg,"Output: Uses overlay to mask the destination, retaining only the intersection.",,
+140,,Compose with Copy Opacity:,magick input.jpg overlay.jpg -compose CopyOpacity -composite output.jpg,Output: Transfers the overlay image's opacity onto the base image for blending transparency.,,
+141,"/-contrast
+ Increase the contrast in an image by stretching the range of intensity values.
+ - indicates increase
+ + indicates decrease",Increase Contrast by One Level:,magick input.jpg -contrast output.jpg,"Output: Increases the contrast of the image by one level, making colors more vivid.",,
+142,,Decrease Contrast by One Level:,magick input.jpg +contrast output.jpg,"Output: Decreases the contrast of the image by one level, making colors more muted.",,
+143,,Increase Contrast Repeatedly:,magick input.jpg -contrast -contrast -contrast output.jpg,"Output: Applies multiple levels of increased contrast, significantly boosting vividness and depth in colors.",,
+144,,Decrease Contrast Repeatedly:,magick input.jpg +contrast +contrast +contrast output.jpg,"Output: Applies multiple levels of decreased contrast, creating a very softened and muted effect.",,
+145,,"Mixed Contrast Adjustments (Increase, then Decrease):",magick input.jpg -contrast +contrast output.jpg,"Output: Increases and then decreases contrast, resulting in a slight change as each effect partly offsets the other.",,
+146,,Extreme Increase and Decrease Contrast (Alternating):,magick input.jpg -contrast -contrast +contrast +contrast output.jpg,"Output: Applies alternating contrast changes, enhancing the contrast and then softening it for a balanced effect with some enhanced details.",,
+147,,Maximal Contrast Increase:,magick input.jpg -contrast -contrast -contrast -contrast -contrast output.jpg,"Output: Applies a maximum of five contrast-increasing levels, making colors intensely vivid and details sharper.",,
+148,,Maximal Contrast Decrease:,magick input.jpg +contrast +contrast +contrast +contrast +contrast output.jpg,"1. Output: Applies a maximum of five contrast-decreasing levels, creating a very soft and pastel-like effect by muting colors and reducing sharpness.",,
+149,"/-convolve
+ apply a variety of effects, from blurring and sharpening to edge detection and creative distortions, allowing versatile transformations based on kernel matrices
+ should be in form of 3 5 7 square",Apply a Basic Blur Convolution:,"magick input.jpg -convolve 1,1,1,1,1,1,1,1,1 output.jpg","Output: Applies a 3x3 kernel of 1s, creating a mild blur across the image.",,
+150,,Edge Detection Kernel:,"magick input.jpg -convolve -1,-1,-1,-1,8,-1,-1,-1,-1 output.jpg",Output: Detects edges in the image by enhancing boundaries and creating a high-contrast outline effect.,,
+151,,Sharpening Kernel:,"magick input.jpg -convolve 0,-1,0,-1,5,-1,0,-1,0 output.jpg","Output: Sharpens the image by enhancing edges, adding more definition to details.",,
+152,,Gaussian Blur Kernel:,"magick input.jpg -convolve 1,2,1,2,4,2,1,2,1 output.jpg","Output: Applies a Gaussian blur, creating a softer, out-of-focus look.",,
+153,,Embossing Kernel:,"magick input.jpg -convolve -2,-1,0,-1,1,1,0,1,2 output.jpg","Output: Adds an embossed effect, creating a three-dimensional relief impression on the image.",,
+154,,Custom Vertical Edge Detection:,"magick input.jpg -convolve -1,0,1,-2,0,2,-1,0,1 output.jpg","Output: Detects vertical edges, emphasizing vertical lines and boundaries in the image.",,
+155,,Custom Horizontal Edge Detection:,"magick input.jpg -convolve -1,-2,-1,0,0,0,1,2,1 output.jpg","Output: Detects horizontal edges, emphasizing horizontal lines and boundaries.",,
+156,,Laplacian Filter for Edge Detection:,"magick input.jpg -convolve 0,1,0,1,-4,1,0,1,0 output.jpg","Output: Applies a Laplacian filter to detect edges, resulting in a high-contrast edge-detected image.",,
+157,,Light Edge Enhancement:,"magick input.jpg -convolve 0,-0.5,0,-0.5,3,-0.5,0,-0.5,0 output.jpg","Output: Enhances edges with less intensity, adding subtle contrast to lines and details.",,
+158,,Diagonal Edge Detection:,"magick input.jpg -convolve 2,-1,0,-1,0,1,0,1,2 output.jpg","Output: Detects edges along diagonal directions, emphasizing diagonal lines within the image.",,
+159,,Sobel Edge Detection (Approximation):,"magick input.jpg -convolve -1,0,1,-2,0,2,-1,0,1 output.jpg","Output: Applies a Sobel filter for edge detection, enhancing both horizontal and vertical edges in the image.",,
+160,,Box Blur Kernel:,"magick input.jpg -convolve 1,1,1,1,1,1,1,1,1 output.jpg","Output: Applies an averaging or box blur across a 3x3 area, softening the image uniformly.",,
+161,,Motion Blur (Horizontal):,"magick input.jpg -convolve 1,1,1,0,0,0,-1,-1,-1 output.jpg","Output: Creates a motion blur effect along the horizontal axis, simulating movement across the image.",,
+162,,Motion Blur (Vertical):,"magick input.jpg -convolve 1,0,-1,1,0,-1,1,0,-1 output.jpg","Output: Creates a vertical motion blur effect, simulating movement vertically in the image.",,
+163,,Enhance Contrast:,"magick input.jpg -convolve -1,2,-1,-2,4,-2,-1,2,-1 output.jpg","Output: Enhances contrast in the image, highlighting transitions between light and dark areas.",,
+164,"/-crop
+ allows you to extract a rectangular region from an image, defined by its width, height, and an optional offset.",Basic Crop (Centered),magick input.jpg -crop 100x100 output.jpg,Crops a 100x100 pixel square from the center of the image.,,
+165,,Crop with Specific Offset,magick input.jpg -crop 150x150+50+50 output.jpg,"Crops a 150x150 pixel area starting at coordinates (50, 50).",,
+166,,Crop with Percentage,magick input.jpg -crop 50%x50% output.jpg,Crops the image to the center 50% of its width and height.,,
+167,,Crop with Gravity (Center),magick input.jpg -gravity Center -crop 200x200 output.jpg,Crops a 200x200 pixel area centered in the image.,,
+168,,Crop with Gravity (Northwest),magick input.jpg -gravity Northwest -crop 250x250 output.jpg,Crops a 250x250 pixel area from the top-left corner of the image.,,
+169,,Crop with Gravity (Southeast),magick input.jpg -gravity Southeast -crop 300x300 output.jpg,Crops a 300x300 pixel area from the bottom-right corner of the image.,,
+170,,Crop with Aspect Ratio,magick input.jpg -crop 4:3 output.jpg,Crops the image maintaining a 4:3 aspect ratio based on original dimensions.,,
+171,,Crop with Extended Dimensions,magick input.jpg -crop 300x200+50+50 output.jpg,"Crops a 300x200 pixel area starting from coordinates (50, 50).",,
+172,,Crop to Aspect Ratio with Offset,magick input.jpg -crop 16:9+10+10 output.jpg,"Crops the image to a 16:9 aspect ratio starting from (10, 10).",,
+173,,Crop with Strip Option,magick input.jpg -crop 100x100 +repage output.jpg,Crops a 100x100 pixel area and removes any virtual canvas offset.,,
+174,,Crop and Resize,magick input.jpg -crop 200x200 +repage -resize 100x100 output.jpg,Crops a 200x200 pixel area and then resizes it to 100x100 pixels.,,
+175,,Crop to a Square from the Center,magick input.jpg -gravity Center -crop 150x150+0+0 output.jpg,Crops a square (150x150 pixels) from the center of the image.,,
+176,,Crop with Output Format Specification,magick input.jpg -crop 250x250 +repage -format png output.png,Crops a 250x250 pixel area and saves the output as a PNG file.,,
+177,,Crop with Fixed Aspect Ratio and Size,magick input.jpg -crop 300x200 +repage -resize 300x200 output.jpg,Crops to a 300x200 pixel area and resizes to maintain the same dimensions.,,
+178,,Crop and Keep Background Transparent,magick input.jpg -crop 200x200+10+10 -background transparent output.png,"Crops a 200x200 pixel area from (10, 10) and saves with a transparent background.",,
+179,"/-cycle 
+ allows you to control how the images are cycled when using the magick command.",Cycle Through Images,magick input.jpg -cycle 0 output.jpg,Sets the cycle point to the first image (index 0).,,
+180,,Cycle Through Images (Positive),magick input.jpg -cycle +1 output.jpg,"Advances the cycle point by 1, cycling through the images.",,
+181,,Cycle Through Images (Negative),magick input.jpg -cycle -1 output.jpg,"Moves the cycle point back by 1, cycling through the images.",,
+182,,Cycle Through Images with Step Size,magick input.jpg -cycle 2 output.jpg,Sets the cycle point to the third image (index 2).,,
+183,,Cycle Through Images (Multiple Cycles),magick input.jpg -cycle +5 output.jpg,"Advances the cycle point by 5, allowing for multiple cycling.",,
+184,,Cycle with Edge Images,magick input.jpg -cycle -5 output.jpg,Cycles to the fifth-to-last image in the list.,,
+185,"/-despeckle
+ Reduce the speckles{mark with a large number of small spots or patches of colour} within an image",Basic Despeckle,magick input.jpg -despeckle output.jpg,Applies a despeckling filter to remove noise from the image.,,
+186,,Despeckle with Resize,magick input.jpg -resize 200x200 -despeckle output.jpg,Resizes the image to 200x200 pixels and then applies the despeckling filter.,,
+187,,Despeckle with Blur,magick input.jpg -blur 0x1 -despeckle output.jpg,Applies a slight blur before despeckling to further reduce noise.,,
+188,,Despeckle with Enhance,magick input.jpg -enhance -despeckle output.jpg,Enhances the image contrast before despeckling to improve output quality.,,
+189,,Despeckle with Edge Detection,magick input.jpg -edge 1 -despeckle output.jpg,Detects edges in the image before applying the despeckling filter.,,
+190,,Despeckle with Custom Filter,magick input.jpg -filter Gaussian -despeckle output.jpg,Applies a Gaussian filter to the image followed by despeckling.,,
+191,"/-draw
+ The -draw option is versatile and allows for a wide range of drawing operations directly on images.
+ 
+ The resulting output.jpg will display the effects of the drawing operations specified in each command.",Basic Draw (Line),"magick input.jpg -draw ""line 10,10 100,100"" output.jpg","Draws a line from coordinates (10,10) to (100,100) on the image.",,
+192,,Draw Rectangle,"magick input.jpg -draw ""rectangle 50,50 150,150"" output.jpg","Draws a rectangle with corners at (50,50) and (150,150).",,
+193,,Draw Circle,"magick input.jpg -draw ""circle 100,100 120,120"" output.jpg","Draws a circle with center at (100,100) and radius determined by (120,120).",,
+194,,Draw Ellipse,"magick input.jpg -draw ""ellipse 100,100 50,30 0,360"" output.jpg","Draws an ellipse centered at (100,100) with radii of 50 and 30.",,
+195,,Draw Polygon,"magick input.jpg -draw ""polygon 50,50 100,100 150,50"" output.jpg",Draws a polygon connecting the specified vertices.,,
+196,,Draw Text,"magick input.jpg -draw ""text 10,30 'Hello World'"" output.jpg","Draws the text ""Hello World"" at coordinates (10,30) on the image.",,
+197,,Draw Image,"magick input.jpg -draw ""image Over 0,0 100,100 'overlay.png'"" output.jpg","Overlays 'overlay.png' at coordinates (0,0) on the image.",,
+198,,Draw Composite,"magick input.jpg -draw ""image Over 0,0 'overlay.png'"" output.jpg","Composites 'overlay.png' over the input image starting at (0,0).",,
+199,,Draw Path,"magick input.jpg -draw ""path 'M 50,50 L 100,100'"" output.jpg","Draws a path from (50,50) to (100,100) using SVG path commands.",,
+200,,Draw Filled Rectangle,"magick input.jpg -draw ""fill blue rectangle 50,50 150,150"" output.jpg","Draws a filled blue rectangle from (50,50) to (150,150).",,
+201,,Draw Filled Circle,"magick input.jpg -draw ""fill red circle 100,100 120,120"" output.jpg","Draws a filled red circle centered at (100,100).",,
+202,,Draw Stroke Width,"magick input.jpg -draw ""stroke black stroke-width 3 line 10,10 100,100"" output.jpg",Draws a black line with a stroke width of 3.,,
+203,,Draw Arc,"magick input.jpg -draw ""arc 100,100 50,50 0,180"" output.jpg","Draws an arc centered at (100,100) with a radius of 50.",,
+204,,Draw Bezier Curve,"magick input.jpg -draw ""bezier 50,50 100,10 150,150"" output.jpg",Draws a Bezier curve connecting the specified control points.,,
+205,"/-draw
+ Each command reflects different drawing capabilities, allowing you to manipulate images creatively.
+ Annotate an image with one or more graphic primitives.",Draw Point,"magick input.jpg -draw ""point 10,10"" output.jpg","Draws a single point at coordinates (10,10) on the image.",,
+206,,Draw Line,"magick input.jpg -draw ""line 10,10 100,100"" output.jpg","Draws a line from (10,10) to (100,100) on the image.",,
+207,,Draw Rectangle,"magick input.jpg -draw ""rectangle 50,50 150,150"" output.jpg","Draws a rectangle with corners at (50,50) and (150,150).",,
+208,,Draw Rounded Rectangle,"magick input.jpg -draw ""roundRectangle 50,50 150,150 20,20"" output.jpg",Draws a rectangle with rounded corners at the specified dimensions.,,
+209,,Draw Arc,"magick input.jpg -draw ""arc 50,50 150,150 0,180"" output.jpg","Draws an arc from (50,50) to (150,150) covering the specified angles.",,
+210,,Draw Ellipse,"magick input.jpg -draw ""ellipse 100,100 50,30 0,360"" output.jpg","Draws an ellipse centered at (100,100) with the specified radii.",,
+211,,Draw Circle,"magick input.jpg -draw ""circle 100,100 120,120"" output.jpg","Draws a circle centered at (100,100) with a radius determined by (120,120).",,
+212,,Draw Polyline,"magick input.jpg -draw ""polyline 50,50 100,100 150,50"" output.jpg",Draws a series of connected lines between the specified points.,,
+213,,Draw Polygon,"magick input.jpg -draw ""polygon 50,50 100,100 150,50"" output.jpg",Draws a closed shape connecting the specified vertices.,,
+214,,Draw Bezier Curve,"magick input.jpg -draw ""bezier 50,50 100,10 150,150"" output.jpg",Draws a Bezier curve using the specified control points.,,
+215,,Draw Path,"magick input.jpg -draw ""path 'M 50,50 L 100,100'"" output.jpg",Draws a path using SVG commands.,,
+216,,Draw Image,"magick input.jpg -draw ""image Over 0,0 100,100 'overlay.png'"" output.jpg","Overlays 'overlay.png' at (0,0) on the image.",,
+217,,Draw Filled Rectangle,"magick input.jpg -draw ""fill blue rectangle 50,50 150,150"" output.jpg",Draws a filled blue rectangle.,,
+218,,Draw Filled Circle,"magick input.jpg -draw ""fill red circle 100,100 120,120"" output.jpg",Draws a filled red circle.,,
+219,,Draw Stroke Width,"magick input.jpg -draw ""stroke black stroke-width 3 line 10,10 100,100"" output.jpg",Draws a black line with a stroke width of 3.,,
+220,,Draw Text,"magick input.jpg -draw ""text 10,30 'Hello World'"" output.jpg","Draws the text ""Hello World"" at (10,30).",,
+221,"/-edge radius
+ The -edge option applies an edge detection filter to the input image, highlighting the boundaries of objects within the image.
+ 
+ The resulting output.jpg will display the edges detected based on the specified radius.",Basic Edge Detection,magick input.jpg -edge 1 output.jpg,Detects edges in the image using a 1-pixel radius.,,
+222,,Medium Edge Detection,magick input.jpg -edge 3 output.jpg,Detects edges in the image using a 3-pixel radius.,,
+223,,Strong Edge Detection,magick input.jpg -edge 5 output.jpg,Detects edges in the image using a 5-pixel radius.,,
+224,,Custom Radius Edge Detection,magick input.jpg -edge 10 output.jpg,Detects edges in the image using a 10-pixel radius.,,
+225,,Edge Detection with Background,magick input.jpg -edge 1 -background white output.jpg,Detects edges and sets the background color to white.,,
+226,"/-emboss
+ The -emboss option creates a three-dimensional appearance on the image by simulating light and shadow effects based on pixel values.
+ 
+ The resulting output.jpg will display the embossed version of the input image.",Basic Emboss,magick input.jpg -emboss 1 output.jpg,Applies a basic emboss effect to the image with a radius of 1.,,
+227,,Medium Emboss,magick input.jpg -emboss 2 output.jpg,Applies an emboss effect with a radius of 2 for more pronounced results.,,
+228,,Strong Emboss,magick input.jpg -emboss 3 output.jpg,Applies a strong emboss effect with a radius of 3 for a dramatic look.,,
+229,,Custom Radius Emboss,magick input.jpg -emboss 5 output.jpg,Applies an emboss effect with a custom radius of 5.,,
+230,"/-enhance
+ Apply a digital filter to enhance a noisy image.
+ The -enhance option automatically adjusts the image to improve its overall appearance without requiring specific parameters.",Basic Enhance,magick input.jpg -enhance output.jpg,"Enhances the overall quality of the image, improving brightness and contrast.",,
+231,,Enhance with Preprocessing,magick input.jpg -enhance -contrast output.jpg,Enhances the image after applying a contrast adjustment.,,
+232,,Multiple Enhancements,magick input.jpg -enhance -normalize output.jpg,Enhances the image and normalizes brightness levels for better contrast.,,
+233,,Sharp Enhance,magick input.jpg -enhance -sharpen 0x1 output.jpg,Enhances the image and sharpens it for increased detail.,,
+234,,Threshold Enhance,magick input.jpg -enhance -threshold 50% output.jpg,"Enhances and applies a threshold of 50%, resulting in a binary image.",50%,
+235,,Custom Threshold Enhance,magick input.jpg -enhance -threshold 70% output.jpg,Enhances and applies a threshold of 70% for more defined edges.,70%,
+236,"/-equalize
+ The -equalize option enhances the contrast of the image by adjusting the histogram, making the image's brightness levels more uniform.
+ Perform histogram equalization on the image channel-by-channel.",Basic Equalization,magick input.jpg -equalize output.jpg,"Equalizes the histogram of the image, enhancing contrast.",None,None
+237,,Equalize with RGB Channels,magick input.jpg -equalize -colorspace RGB output.jpg,Equalizes the image in RGB color space for better color balance.,None,None
+238,,Equalize Grayscale Image,magick input.jpg -colorspace Gray -equalize output.jpg,Converts to grayscale and then equalizes the image histogram.,None,None
+239,,Equalize with Specific Threshold,magick input.jpg -equalize -threshold 50% output.jpg,Equalizes the image after applying a threshold of 50%.,50%,None
+240,,Equalize with Defined Range,"magick input.jpg -equalize -level 10%,90% output.jpg",Equalizes the image within a specified range of pixel values (10% to 90%).,None,10%-90%
+241,"/-evaluate operator value
+ 
+ Alter channel pixels by evaluating an arithmetic, relational, or logical expression.
+ The -evaluate command allows you to apply various mathematical operations to each pixel in the image, providing significant flexibility for image adjustments.",Add Value,magick input.jpg -evaluate add 50 output.jpg,"Adds 50 to each pixel value, increasing brightness.",None,None
+242,,Subtract Value,magick input.jpg -evaluate subtract 30 output.jpg,"Subtracts 30 from each pixel value, decreasing brightness.",None,None
+243,,Multiply by Value,magick input.jpg -evaluate multiply 1.5 output.jpg,"Multiplies each pixel value by 1.5, enhancing brightness.",None,None
+244,,Divide by Value,magick input.jpg -evaluate divide 2 output.jpg,"Divides each pixel value by 2, reducing brightness.",None,None
+245,,Threshold,magick input.jpg -evaluate threshold 128 output.jpg,Converts pixels to black and white based on a threshold of 128.,128,None
+246,,Threshold Black,magick input.jpg -evaluate thresholdblack 50 output.jpg,"Converts pixels below 50 to black, retaining others.",50,None
+247,,Threshold White,magick input.jpg -evaluate thresholdwhite 200 output.jpg,"Converts pixels above 200 to white, retaining others.",200,None
+248,,Maximum,magick input.jpg -evaluate max 100 output.jpg,Sets pixels to the maximum of 100 or the current pixel value.,None,None
+249,,Minimum,magick input.jpg -evaluate min 50 output.jpg,Sets pixels to the minimum of 50 or the current pixel value.,None,None
+250,,Gaussian Noise,magick input.jpg -evaluate Gaussian-noise 0.05 output.jpg,Applies Gaussian noise to the image.,None,0.05
+251,,Laplacian Noise,magick input.jpg -evaluate Laplacian-noise output.jpg,Applies Laplacian noise to the image.,None,None
+252,,Sin (Sine),magick input.jpg -evaluate sin 45 output.jpg,Applies sine transformation to pixel values with a frequency of 45.,None,None
+253,,Cos (Cosine),magick input.jpg -evaluate cos 45 output.jpg,Applies cosine transformation to pixel values with a frequency of 45.,None,None
+254,,Logarithm,magick input.jpg -evaluate log output.jpg,"Applies logarithm to each pixel value, adjusting brightness.",None,None
+255,,Square Root,magick input.jpg -evaluate sqrt output.jpg,Applies square root transformation to each pixel value.,None,None
+256,,Root Mean Square,magick input.jpg -evaluate rootmeansquare output.jpg,Calculates the root mean square of the pixel values.,None,None
+257,,Raise to Power,magick input.jpg -evaluate pow 2 output.jpg,"Raises each pixel value to the power of 2, enhancing brightness.",None,None
+258,,Binary AND,magick input.jpg -evaluate and 128 output.jpg,Applies a binary AND operation with the value 128 on each pixel.,None,None
+259,,Binary OR,magick input.jpg -evaluate or 128 output.jpg,Applies a binary OR operation with the value 128 on each pixel.,None,None
+260,,Binary XOR,magick input.jpg -evaluate xor 128 output.jpg,Applies a binary XOR operation with the value 128 on each pixel.,None,None
+261,,Left Shift,magick input.jpg -evaluate leftshift 1 output.jpg,"Shifts pixel values left by 1 bit, effectively multiplying by 2.",None,None
+262,,Right Shift,magick input.jpg -evaluate rightshift 1 output.jpg,"Shifts pixel values right by 1 bit, effectively dividing by 2.",None,None
+263,"/-extent 
+ geometry
+ Set the image size and offset.
+ The -extent command is used to resize the canvas of an image without changing its actual dimensions. It can be particularly useful for creating padding around an image.
+ The -gravity option determines how the original image is positioned on the new canvas.
+ The -background option specifies the color used for the newly created area when extending the canvas.",Basic Extent,magick input.jpg -extent 800x600 output.jpg,"Resizes the canvas to 800x600 pixels, keeping the image centered.",None,None
+264,,Extent with Background Color,magick input.jpg -extent 800x600 -background white output.jpg,"Extends canvas to 800x600 pixels, filling with white background.",None,None
+265,,Extent with Gravity,magick input.jpg -gravity North -extent 800x600 output.jpg,"Resizes canvas to 800x600 pixels, anchoring at the top (North).",None,None
+266,,Extent with Custom Color,magick input.jpg -extent 800x600 -background blue output.jpg,"Extends canvas to 800x600 pixels, filling with blue background.",None,None
+267,,Extend with Negative Values,magick input.jpg -extent -100-100 output.jpg,Adjusts the canvas size negatively; pixels will be cropped.,None,None
+268,,Multiple Commands,magick input.jpg -gravity Center -background gray -extent 800x600 output.jpg,"Extends canvas to 800x600 pixels, centered with a gray background.",None,None
+269,"/-flip
+ Create a mirror image
+ reflect the scanlines in the vertical direction. The image will be mirrored upside-down.",Basic Flip,magick input.jpg -flip output.jpg,Flips the image vertically (top to bottom).,None,None
+270,,Flip with Output Format,magick input.jpg -flip output.png,Flips the image vertically and saves it as a PNG file.,None,None
+271,,Flip with Overwrite,magick input.jpg -flip input.jpg,Flips the image vertically and overwrites the original file.,None,None
+272,,Flip with Multiple Formats,magick input.jpg -flip output.tiff,Flips the image vertically and saves it as a TIFF file.,None,None
+273,,Flip with Quality Setting,magick input.jpg -flip -quality 90 output.jpg,Flips the image vertically with a quality setting of 90%.,None,0-100
+274,,Flip with Verbose Output,magick -verbose input.jpg -flip output.jpg,Flips the image vertically and provides verbose output about the process.,None,None
+275,"/-flop
+ Create a mirror image.
+ Reflect the scanlines in the horizontal direction, just like the image in a vertical mirror.",Basic Flop,magick input.jpg -flop output.jpg,Flops the image horizontally (left to right).,None,None
+276,,Flop with Output Format,magick input.jpg -flop output.png,Flops the image horizontally and saves it as a PNG file.,None,None
+277,,Flop with Overwrite,magick input.jpg -flop input.jpg,Flops the image horizontally and overwrites the original file.,None,None
+278,,Flop with Multiple Formats,magick input.jpg -flop output.tiff,Flops the image horizontally and saves it as a TIFF file.,None,None
+279,,Flop with Quality Setting,magick input.jpg -flop -quality 90 output.jpg,Flops the image horizontally with a quality setting of 90%.,None,0-100
+280,"/-floodfill {+-}x{+-}y color
+ Floodfill the image with color at the specified offset.
+ Flood fill starts from the given 'seed point' which is not gravity affected.
+ used to fill a contiguous area of pixels starting from a specified coordinate with a specific color.",Basic Flood Fill,magick input.jpg -floodfill +0+0 red output.jpg,"Fills the area starting from pixel (0,0) with the color red.",None,None
+281,,Flood Fill with Transparency,magick input.png -floodfill +10+10 blue output.png,"Fills from pixel (10,10) with blue, preserving transparency.",None,None
+282,,Flood Fill with Tolerance,magick input.jpg -floodfill -t 10 +50+50 green output.jpg,"Fills the area at (50,50) with green, using a tolerance of 10.",10,0-100
+283,,Flood Fill with Color Specification,"magick input.jpg -floodfill +20+20 ""#FF5733"" output.jpg","Fills the area at (20,20) with the specified hex color (#FF5733).",None,None
+284,,Flood Fill with Specific Fill Area,magick input.jpg -floodfill +30+30 yellow -paint 2 output.jpg,"Fills the area at (30,30) with yellow and applies paint effect.",None,None
+285,,Flood Fill with Region,magick input.jpg -floodfill -f 50% +40+40 cyan output.jpg,"Fills the area at (40,40) with cyan, limiting fill to 50% of the region.",50%,0-100
+286,"/-frame geometry
+ Surround the image with a border or beveled frame.
+ 
+ used to add a decorative frame around an image.
+ You can customize the frame thickness, color, and background options to suit your needs.",Basic Frame,magick input.jpg -frame 10x10 output.jpg,Adds a simple frame of 10 pixels around the image.,None,None
+287,,Frame with Color,magick input.jpg -frame 5x5 -background blue output.jpg,Adds a blue frame of 5 pixels around the image.,None,None
+288,,Frame with Inner Border,magick input.jpg -frame 15x15 -bordercolor green output.jpg,Adds a green inner border frame of 15 pixels around the image.,None,None
+289,,Frame with Custom Size,magick input.jpg -frame 20x10 output.jpg,Adds a frame of 20 pixels on the width and 10 pixels on the height.,None,None
+290,,Frame with Specific Thickness,magick input.jpg -frame 30x15 -bordercolor red output.jpg,Adds a red frame with specific thickness around the image.,None,None
+291,,Frame with Transparency,magick input.png -frame 10x10 -background none output.png,Adds a transparent frame of 10 pixels around the image.,None,None
+292,,Complex Frame,magick input.jpg -frame 5x5 -background white -bordercolor black output.jpg,Adds a complex frame with white background and black border.,None,None
+293,"/-fx expression
+ Apply a mathematical expression to an image or image channels.
+ R-red G-green B-blue
+ You can manipulate color channels and apply complex transformations using various functions and operations.",Basic FX,magick input.jpg -fx '0.5*R' output.jpg,Reduces the red channel to half its original value.,None,None
+294,,Adjust Brightness,magick input.jpg -fx '0.5*R + 0.5*G + 0.5*B' output.jpg,Adjusts brightness by averaging the RGB channels and scaling down.,None,None
+295,,Increase Contrast,magick input.jpg -fx '1.2*R' output.jpg,Increases the red channel intensity by 20%.,None,None
+296,,Color Transformation,magick input.jpg -fx 'R*0.299 + G*0.587 + B*0.114' output.jpg,Converts image to grayscale using luminance calculation.,None,None
+297,,Apply Gaussian Blur,"magick input.jpg -fx 'gaussian(x,y,3,3)' output.jpg",Applies a Gaussian blur with a radius of 3.,None,None
+298,,Negative Image,magick input.jpg -fx '1-R' output.jpg,Creates a negative of the image by subtracting the red channel from 1.,None,None
+299,,Custom Expression,magick input.jpg -fx 'R+G+B' output.jpg,Creates a composite of the RGB values.,None,None
+300,,Threshold Adjustment,"magick input.jpg -fx 'if(R < 0.5,0,1)' output.jpg","Applies a threshold, setting red channel to 0 or 1 based on a condition.",None,None
+301,,Channel Isolation,magick input.jpg -fx 'R' output.jpg,Isolates and outputs only the red channel.,None,None
+302,"/-gamma value
+ Level of gamma correction.
+ The -gamma option adjusts the gamma of an image, affecting its brightness and contrast.
+ A value less than 1 darkens the image, while a value greater than 1 brightens it.",Basic Gamma Correction,magick input.jpg -gamma 2.2 output.jpg,"Adjusts the image gamma to 2.2, brightening it overall.",None,Reasonable values extend from 0.8 to 2.3. Gamma less than 1.0 darkens the image and gamma greater than 1.0 lightens it
+303,,Gamma Correction (Lower Value),magick input.jpg -gamma 0.5 output.jpg,"Adjusts the image gamma to 0.5, darkening it overall.",None,
+304,,Gamma Correction (Higher Value),magick input.jpg -gamma 3.0 output.jpg,"Adjusts the image gamma to 3.0, significantly brightening it.",None,
+305,,Gamma with Different Channels,magick input.jpg -gamma 1.8 -gamma 1.5 -gamma 2.0 output.jpg,"Applies different gamma values to R, G, and B channels respectively.",None,
+306,,Gamma Correction (Without Specified Value),magick input.jpg -gamma output.jpg,Adjusts the gamma to the default value of 1.0.,None,
+307,,Gamma with Resultant Image,magick input.jpg -gamma 1.8 -gamma 0.7 -gamma 2.5 output.jpg,"Applies multiple gamma corrections, resulting in a complex image adjustment.",None,
+308,"/-gaussian-blur radius
+ Blur the image with a Gaussian operator.
+ The -gaussian-blur option uses a specified radius and sigma to determine the intensity of the blur effect.
+ The first value is the radius, which controls the size of the area around each pixel to consider when blurring, and the second value is sigma, which defines how much to blur.
+ If the radius is set to 0, it will automatically calculate the appropriate radius based on the sigma.",Basic Gaussian Blur,magick input.jpg -gaussian-blur 0x2 output.jpg,Applies a Gaussian blur with a radius of 0 and a sigma of 2.,None,0 to ∞
+309,,Gaussian Blur (Higher Sigma),magick input.jpg -gaussian-blur 0x5 output.jpg,Applies a Gaussian blur with a radius of 0 and a sigma of 5 for a softer effect.,None,0 to ∞
+310,,Gaussian Blur (Specific Radius),magick input.jpg -gaussian-blur 3x2 output.jpg,Applies a Gaussian blur with a radius of 3 and a sigma of 2.,None,0 to ∞
+311,,Gaussian Blur (Larger Radius),magick input.jpg -gaussian-blur 5x5 output.jpg,Applies a Gaussian blur with a radius of 5 and a sigma of 5.,None,0 to ∞
+312,,Gaussian Blur (No Radius),magick input.jpg -gaussian-blur 2 output.jpg,Applies a Gaussian blur with a default radius and a sigma of 2.,None,0 to ∞
+313,,Gaussian Blur with Radius Only,magick input.jpg -gaussian-blur 4x0 output.jpg,Applies a Gaussian blur with a radius of 4 and default sigma.,None,0 to ∞
+314,,Gaussian Blur with Resultant Image,magick input.jpg -gaussian-blur 3x1 -gaussian-blur 5x0 output.jpg,Applies multiple Gaussian blurs for enhanced softening effects.,None,0 to ∞
+315,"/-grayscale method
+ Convert image to grayscale.
+ The -grayscale option provides several methods for converting a color image to grayscale, allowing for flexibility based on the desired outcome.
+ The different methods use various formulas to calculate the luminance or average values from the RGB channels to create the grayscale image.
+ Threshold and range are typically not applicable as the output is a single-channel grayscale image where pixel values range from 0 (black) to 255 (white).",Grayscale Conversion using Rec601 Luma,magick input.jpg -grayscale Rec601Luma output.jpg,Output: Converts the image to grayscale using the Rec. 601 Luma formula (non-linear RGB).,N/A,N/A
+316,,Grayscale Conversion using Rec601 Luminance,magick input.jpg -grayscale Rec601Luminance output.jpg,Output: Converts the image to grayscale using the Rec. 601 Luminance formula (linear RGB).,N/A,N/A
+317,,Grayscale Conversion using Rec709 Luma,magick input.jpg -grayscale Rec709Luma output.jpg,Output: Converts the image to grayscale using the Rec. 709 Luma formula (non-linear RGB).,N/A,N/A
+318,,Grayscale Conversion using Rec709 Luminance,magick input.jpg -grayscale Rec709Luminance output.jpg,Output: Converts the image to grayscale using the Rec. 709 Luminance formula (linear RGB).,N/A,N/A
+319,,Grayscale Conversion using Brightness,magick input.jpg -grayscale Brightness output.jpg,Output: Converts the image to grayscale using the brightness method (maximum RGB channel value).,N/A,N/A
+320,,Grayscale Conversion using Lightness,magick input.jpg -grayscale Lightness output.jpg,Output: Converts the image to grayscale using the lightness method (average of minimum and maximum RGB values).,N/A,N/A
+321,,Grayscale Conversion using Average,magick input.jpg -grayscale Average output.jpg,Output: Converts the image to grayscale using the average of the RGB values.,N/A,N/A
+322,,Grayscale Conversion using Mean Square (MS),magick input.jpg -grayscale MS output.jpg,Output: Converts the image to grayscale using the mean square formula.,N/A,N/A
+323,,Grayscale Conversion using Root Mean Square (RMS),magick input.jpg -grayscale RMS output.jpg,Output: Converts the image to grayscale using the root mean square formula.,N/A,N/A
+324,"/-implode factor
+ Implode image pixels about the center.
+ The implode effect is used to simulate the effect of compressing an image's pixels toward the center.
+ Positive values shrink the image, while negative values expand it.",Basic Implode,magick input.jpg -implode 0.5 output.jpg,Output: Reduces the image size by 50% using implode effect.,N/A,N/A
+325,,Full Implode,magick input.jpg -implode 1.0 output.jpg,"Output: Fully implodes the image, compressing all pixels to the center.",N/A,N/A
+326,,Partial Implode,magick input.jpg -implode 2.0 output.jpg,"Output: Increases the implode effect, collapsing pixels further.",N/A,N/A
+327,,Negative Implode,magick input.jpg -implode -0.5 output.jpg,"Output: Applies negative implode effect, expanding the image.",N/A,N/A
+328,"/-immutable
+ Make image immutable.
+ The -immutable flag is useful for protecting images from accidental edits.
+ Setting an image as immutable is a simple way to ensure its integrity during processing.",Set Image as Immutable,magick input.jpg -immutable output.jpg,"Output: Marks the image as immutable, preventing changes.",N/A,N/A
+329,,Unset Image Immutable,magick input.jpg -immutable false output.jpg,"Output: Resets the immutable property, allowing changes.",N/A,N/A
+330,"/-integral
+ Calculate the sum of values (pixel values) in the image.
+ The -integral command helps speed up processing tasks, particularly for convolution and filtering.
+ It can be used for single or multiple color channels.",Calculate Integral Image,magick input.jpg -integral output.jpg,"Output: Computes the integral image, useful for quick calculations.",N/A,N/A
+331,,Compute Integral Image with Channel,magick input.jpg -integral red -integral output.jpg,Output: Computes the integral for a specific channel (red).,N/A,N/A
+332,,Compute Integral Image with Multiple Channels,magick input.jpg -integral red -integral green -integral output.jpg,Output: Computes integral images for multiple channels.,N/A,N/A
+333,"/-kmeans colors{xiterations}{+tolerance}
+ Kmeans (iterative) color reduction (e.g. -kmeans 5x300+0.0001).
+ The -kmeans command is used for color quantization, effectively reducing the number of distinct colors in an image.
+ The number of clusters can be adjusted according to the desired output.",Basic K-means Clustering,magick input.jpg -kmeans 5 output.jpg,Output: Clusters the image into 5 colors.,N/A,N/A
+334,,K-means with Iterations,magick input.jpg -kmeans 5 -iterations 10 output.jpg,Output: Clusters the image into 5 colors with 10 iterations.,N/A,N/A
+335,,K-means with Color Distance,magick input.jpg -kmeans 5 -colorspace sRGB output.jpg,Output: Clusters the image into 5 colors using sRGB color space.,N/A,N/A
+336,,K-means with Optimization,magick input.jpg -kmeans 5 -dither output.jpg,Output: Clusters the image into 5 colors and applies dithering.,N/A,N/A
+337,,K-means with Predefined Colors,magick input.jpg -kmeans 5 -colors output.jpg,Output: Clusters the image into 5 colors and uses the existing colors.,N/A,N/A
+338,"/-label
+ The -label command is used to annotate images with text.
+ You can customize font, position, and background color for the label.",Basic Labeling,"magick input.jpg -label ""Sample Label"" output.jpg","Output: Adds the label ""Sample Label"" to the image.",N/A,N/A
+339,,Label with Font,"magick input.jpg -font Arial -label ""Sample"" output.jpg","Output: Adds the label ""Sample"" with Arial font to the image.",N/A,N/A
+340,,Label with Position,"magick input.jpg -label ""Sample"" -gravity South output.jpg","Output: Adds the label ""Sample"" at the bottom of the image.",N/A,N/A
+341,,Label with Background Color,"magick input.jpg -background lightblue -label ""Sample"" output.jpg","Output: Adds the label ""Sample"" with a light blue background.",N/A,N/A
+342,,Transparent Label,"magick input.jpg -label ""Sample"" -background none output.jpg","Output: Adds the label ""Sample"" with a transparent background.",N/A,N/A
+343,"/-lat 
+ applies local adaptive thresholding for high-contrast results.
+ Parameters: <width>x<height>+<threshold>, where threshold is a percentage",Basic Local Thresholding,magick input.jpg -lat 15x15+10% output.jpg,Output: Applies adaptive thresholding with a 15x15 neighborhood and 10% threshold.,10%,15x15
+344,,Higher Threshold,magick input.jpg -lat 20x20+20% output.jpg,Output: Increases threshold sensitivity with a 20x20 neighborhood and 20% threshold.,20%,20x20
+345,,"Small Neighborhood, Low Threshold",magick input.jpg -lat 10x10+5% output.jpg,Output: Thresholds with a 10x10 neighborhood and 5% threshold for finer detail.,5%,10x10
+346,,Large Neighborhood,magick input.jpg -lat 30x30+15% output.jpg,Output: Applies thresholding with a 30x30 neighborhood and 15% threshold for broad adjustments.,15%,30x30
+347,,Custom High Threshold,magick input.jpg -lat 25x25+25% output.jpg,Output: Increases sensitivity to variations with a 25% threshold on a 25x25 neighborhood.,25%,25x25
+348,"/-level 
+ level adjustments are made using the format -level <black point>,<white point>[,<gamma>].
+ The command modifies image brightness, contrast, and gamma for a broad range of tonal adjustments.",Basic Level Adjustment,"magick input.jpg -level 0%,100% output.jpg",Output: Adjusts the image’s levels from full black to full white range.,"0%,100%",N/A
+349,,Highlight Boost,"magick input.jpg -level 0%,120% output.jpg","Output: Expands highlights beyond normal, enhancing brightness.","0%,120%",N/A
+350,,Shadow Compression,"magick input.jpg -level 10%,100% output.jpg",Output: Compresses shadows while keeping highlights at max range.,"10%,100%",N/A
+351,,Midtones Adjustment,"magick input.jpg -level 20%,80% output.jpg","Output: Focuses on midtones by limiting shadows and highlights, balancing contrast.","20%,80%",N/A
+352,,Gamma Correction,"magick input.jpg -level 0%,100%,1.2 output.jpg","Output: Adjusts gamma to 1.2, slightly enhancing midtones without altering black or white points.","0%,100%",Gamma: 1.2
+353,,Strong Contrast,"magick input.jpg -level 10%,90% output.jpg",Output: Creates strong contrast by reducing both shadow and highlight ranges.,"10%,90%",N/A
+354,"/-map 
+ this option restricts colors in input.jpg to those in the provided color map file.
+ For optimal results, use a .png format for custom colormap images with well-defined color values.
+ Will work when we have .png images
+ also throws warning to use ""-remap""",Basic Color Map Application,magick input.jpg -map colormap.png output.jpg,Output: Applies a specified color map from colormap.png to remap colors in input.jpg.,N/A,N/A
+355,,Grayscale Mapping,magick input.jpg -map grayscale.png output.jpg,Output: Maps colors of input.jpg to grayscale values defined in grayscale.png.,N/A,N/A
+356,,Reduce to 16 Colors,magick input.jpg -map palette_16colors.png output.jpg,"Output: Remaps image colors to a 16-color palette, reducing detail for stylized effect.",N/A,N/A
+357,,Custom Skin Tone Map,magick input.jpg -map skin_tone_palette.png output.jpg,Output: Adjusts colors to match tones specified in a skin tone map.,N/A,N/A
+358,,Enhanced Contrast Color Map,magick input.jpg -map contrast_map.png output.jpg,Output: Boosts contrast in mapped areas by using a specified contrast-enhancing color map.,N/A,N/A
+359,"/-statistic Median geometry
+ Apply a median filter to the image.
+ Select the 'middle' value from all the surrounding pixels.
+ smoothens noise while preserving edges.
+ Higher radius values create more pronounced smoothing effects.",Basic Median Filter,magick input.jpg --statistic Median 2 output.jpg,"Applies a median filter with a 2-pixel radius, reducing noise while preserving edges.",N/A,0 to image width
+360,,High Radius Median,magick input.jpg --statistic Median 5 output.jpg,Uses a 5-pixel radius for more intense noise reduction and smoothing.,N/A,0 to image width
+361,,Low Radius Median,magick input.jpg --statistic Median 1 output.jpg,Minimal smoothing with a 1-pixel radius for slight noise reduction.,N/A,0 to image width
+362,,Extreme Noise Reduction,magick input.jpg --statistic Median 10 output.jpg,Extreme noise reduction with a high median radius for very smooth results.,N/A,0 to image width
+363,"/-modulate brightness[,saturation,hue]
+ Vary the brightness, saturation, and hue of an image.
+ -modulate adjusts brightness, saturation, and hue using the format -modulate brightness,saturation,hue.
+ Values are in percentages (0–200% for brightness/saturation; 0–360° for hue).",Basic Brightness,"magick input.jpg -modulate 120,100,100 output.jpg",Adjusts brightness to 120% without changing hue or saturation.,N/A,0–200
+364,,Basic Saturation,"magick input.jpg -modulate 100,150,100 output.jpg",Increases saturation to 150% without altering brightness or hue.,N/A,0–200
+365,,Basic Hue Shift,"magick input.jpg -modulate 100,100,180 output.jpg",Adjusts hue by 180 degrees while keeping brightness and saturation unchanged.,N/A,0–360 degrees
+366,,Vintage Effect,"magick input.jpg -modulate 85,75,110 output.jpg",Adds a vintage effect by lowering brightness and saturation with slight hue adjustment.,N/A,Custom Values
+367,,High Brightness/Low Sat,"magick input.jpg -modulate 150,50,100 output.jpg","High brightness with reduced saturation for a faded, washed-out look.",N/A,Custom Values
+368,,Cool Tone Shift,"magick input.jpg -modulate 90,100,250 output.jpg",Creates a cool tone by shifting hue and reducing brightness.,N/A,Custom Values
+369,"/-monochrome
+ Transform the image to black and white.",Basic Monochrome,magick input.jpg -monochrome output.jpg,"Converts the image to monochrome, applying a black-and-white threshold.",N/A,N/A
+370,,Monochrome with Dither,magick input.jpg -monochrome -dither FloydSteinberg output.jpg,Applies Floyd-Steinberg dithering for smoother monochrome conversion.,N/A,N/A
+,,Monochrome with No Dither,magick input.jpg -monochrome -dither None output.jpg,Converts to monochrome without any dithering effect.,N/A,N/A
+,,Monochrome with Threshold,magick input.jpg -threshold 50% -monochrome output.jpg,Sets a threshold for pixel intensity at 50% for a custom monochrome effect.,Any value from 0% to 100%,0–255
+371,"/-negate
+ Replace each pixel with its complementary color.
+ 
+ The red, green, and blue intensities of an image are negated. White becomes black, yellow becomes blue, etc. 
+ command can target specific color channels or apply to the entire image.
+ This operation is useful for creating negative images or adjusting color contrast.",Basic Negate,magick input.jpg -negate output.jpg,"Inverts the colors of the image, turning black to white and vice versa.",N/A,N/A
+372,,Negate with Channel,magick input.jpg -negate Red output.jpg,Negates only the red channel of the image.,N/A,N/A
+373,,Negate with Multiple Channels,"magick input.jpg -negate Red,Green output.jpg",Negates the red and green channels.,N/A,N/A
+374,,Negate with Alpha Channel,magick input.jpg -negate -alpha on output.png,Inverts colors and keeps transparency intact.,N/A,N/A
+375,,Negate and Save Changes,magick input.jpg -negate +write output.jpg,Inverts colors and writes the output image in a single step.,N/A,N/A
+376,"/-normalize
+ Increase the contrast in an image by stretching the range of intensity values.
+ The intensity values are stretched to cover the entire range of possible values. While doing so, black-out at most 2% of the pixels and white-out at most 1% of the pixels.",Basic Normalize,magick input.jpg -normalize output.jpg,Normalizes the image by scaling pixel values to the full range of colors.,N/A,N/A
+377,,Normalize with Clip,magick input.jpg -normalize -clip output.jpg,Normalizes and clips pixel values to avoid overflow.,N/A,N/A
+378,,Normalize with Separate Channel,magick input.jpg -normalize Red output.jpg,Normalizes only the red channel separately.,N/A,N/A
+379,,Normalize with Auto-Level,magick input.jpg -normalize -auto-level output.jpg,Enhances contrast by applying auto-leveling after normalization.,N/A,N/A
+380,"/-opaque color
+ Change this color to the fill color within the image.
+ It is useful for replacing colors in an image, making them opaque or transparent as needed.",Basic Opaque,magick input.jpg -opaque blue output.jpg,Changes all blue pixels to opaque.,N/A,N/A
+381,,Opaque with a Color,magick input.jpg -opaque red -transparent white output.jpg,Changes red pixels to opaque while making white pixels transparent.,N/A,N/A
+382,,Opaque by Color Range,"magick input.jpg -opaque ""rgb(255,0,0)"" output.jpg",Replaces pixels matching the specified RGB color with opaque.,N/A,N/A
+383,,Opaque with Transparency,magick input.png -opaque black -transparent blue output.png,Makes black pixels opaque and blue pixels transparent.,N/A,N/A
+384,"/-ordered-dither 
+ option is particularly useful for reducing color banding and enhancing the visual quality of images with limited color palettes.
+ -ordered-dither threshold_map{,level...}
+ Dither the image using a pre-defined ordered dither threshold map specified, and a uniform color map with the given number of levels per color channel.",Basic Ordered Dither,magick input.jpg -ordered-dither output.png,Applies ordered dithering to the image for better color representation.,N/A,N/A
+385,,Ordered Dither with Method,magick input.jpg -ordered-dither 4 output.png,Applies 4-color ordered dithering to reduce the color palette.,N/A,N/A
+386,,Dither with Specific Pattern,magick input.jpg -ordered-dither 16 output.png,"Uses a 16-color pattern for dithering, enhancing details.",N/A,N/A
+387,,Dither with Custom Threshold,magick input.jpg -ordered-dither 8 -threshold 50% output.png,Applies ordered dithering with a threshold to control color depth.,50%,N/A
+388,"/-orient image orientation
+ Specify orientation of a digital camera image.
+ 
+ Note, this is a setting. This merely sets the orientation metadata, and does not change the image.",Set Orientation to Right,magick input.jpg -rotate 90 output.jpg,Rotates the image 90 degrees clockwise (Right).,N/A,N/A
+389,,Set Orientation to Left,magick input.jpg -rotate -90 output.jpg,Rotates the image 90 degrees counterclockwise (Left).,N/A,N/A
+390,,Set Orientation to 180,magick input.jpg -rotate 180 output.jpg,Rotates the image 180 degrees.,N/A,N/A
+391,,Set Orientation to Top,magick input.jpg -flip output.jpg,Flips the image vertically (Top).,N/A,N/A
+392,,Set Orientation to Bottom,magick input.jpg -flop output.jpg,Flips the image horizontally (Bottom).,N/A,N/A
+393,,Undefined (No Action),magick input.jpg -orient Undefined output.jpg,Output: No change made to the image orientation.,N/A,N/A
+394,,Top-Left (Do Nothing),magick input.jpg -orient top-left output.jpg,Output: No change made to the image orientation.,N/A,N/A
+395,,Top-Right (Flip Horizontally),magick input.jpg -flip output.jpg,Output: Flips the image horizontally.,N/A,N/A
+396,,Bottom-Right (Rotate 180 Degrees),magick input.jpg -rotate 180 output.jpg,Output: Rotates the image 180 degrees.,N/A,N/A
+397,,Bottom-Left (Flip Vertically),magick input.jpg -flop output.jpg,Output: Flips the image vertically.,N/A,N/A
+398,,Left-Top (Transpose),magick input.jpg -rotate 90 -flop output.jpg,Output: Rotates the image 90 degrees and flips horizontally.,N/A,N/A
+399,,Right-Top (Rotate 90 Degrees),magick input.jpg -rotate 90 output.jpg,Output: Rotates the image 90 degrees clockwise.,N/A,N/A
+400,,Right-Bottom (Transverse),magick input.jpg -rotate 90 -flip output.jpg,Output: Rotates the image 90 degrees and flips vertically.,N/A,N/A
+401,,Left-Bottom (Rotate 270 Degrees),magick input.jpg -rotate -90 output.jpg,Output: Rotates the image 270 degrees clockwise.,N/A,N/A
+402,"/-paint radius
+ Simulate an oil painting.
+ Each pixel is replaced by the most frequent color in a circular neighborhood whose width is specified with radius.",Basic Paint (Level 1),magick input.jpg -paint 1 output.jpg,Output: Applies a paint effect using a 1-pixel brush.,N/A,1
+403,,Basic Paint (Level 2),magick input.jpg -paint 2 output.jpg,Output: Applies a paint effect using a 2-pixel brush.,N/A,2
+404,,Basic Paint (Level 3),magick input.jpg -paint 3 output.jpg,Output: Applies a paint effect using a 3-pixel brush.,N/A,3
+405,,Basic Paint (Level 4),magick input.jpg -paint 4 output.jpg,Output: Applies a paint effect using a 4-pixel brush.,N/A,4
+406,,Basic Paint (Level 5),magick input.jpg -paint 5 output.jpg,Output: Applies a paint effect using a 5-pixel brush.,N/A,5
+407,"/-posterize levels
+ Reduce the image to a limited number of color levels per channel.
+ Very low values of levels, e.g., 2, 3, 4, have the most visible effect.",Posterize Level 2,magick input.jpg -posterize 2 output.jpg,Output: Reduces the image to 2 levels of color.,N/A,2
+408,,Posterize Level 3,magick input.jpg -posterize 3 output.jpg,Output: Reduces the image to 3 levels of color.,N/A,3
+409,,Posterize Level 4,magick input.jpg -posterize 4 output.jpg,Output: Reduces the image to 4 levels of color.,N/A,4
+410,,Posterize Level 5,magick input.jpg -posterize 5 output.jpg,Output: Reduces the image to 5 levels of color.,N/A,5
+411,"/-raise thickness
+ Lighten or darken image edges.
+ This will create a 3-D effect. 
+  -raise does not alter the dimensions of the image.
+ The -raise command is used to adjust the position of the image, creating a raised effect.
+ It accepts positive values to raise the image or negative values to lower it, as well as specific dimensions for precise control.",Raise Image by 10 pixels,magick input.jpg -raise 10 output.jpg,Output: Raises the image by 10 pixels.,N/A,10 pixels
+412,,Raise Image by 20 pixels,magick input.jpg -raise 20 output.jpg,Output: Raises the image by 20 pixels.,N/A,20 pixels
+413,,Raise Image by Negative Value,magick input.jpg -raise -10 output.jpg (this will not work),Output: Lowers the image by 10 pixels (if supported).,N/A,-10 pixels
+414,,Raise with Specific Geometry,magick input.jpg -raise 20x10 output.jpg,Output: Raises the image by 20 pixels in height and 10 pixels in width.,N/A,20x10 pixels
+415,"/-random-threshold lowxhigh
+ Apply a random threshold to the image.
+ The -random-threshold command allows for random thresholding effects based on provided values, creating unique visual outputs.
+ You can specify thresholds as percentages, decimal values, or ranges for more control over the effect.",Random Threshold with Default,magick input.jpg -random-threshold output.jpg,Output: Applies a random threshold to the image.,N/A,Default settings
+416,,Random Threshold with Percentage,magick input.jpg -random-threshold 30% output.jpg,Output: Applies a random threshold with 30% intensity.,30%,0% - 100%
+417,,Random Threshold with Specific Value,magick input.jpg -random-threshold 0.5 output.jpg,Output: Applies a random threshold with a value of 0.5 (50%).,0.5,0.0 - 1.0
+418,,Random Threshold with Two Values,"magick input.jpg -random-threshold 0.2,0.8 output.jpg",Output: Applies a random threshold between 0.2 and 0.8.,0.2 - 0.8,0.0 - 1.0
+419,"/-resample horizontalxvertical
+ Resample image to specified horizontal and vertical resolution.
+ The -resample command is used for changing the resolution of an image, affecting its quality and size when printed or displayed.",Resample with 72 DPI,magick input.jpg -resample 72 output.jpg,Output: Resamples the image to 72 dots per inch (DPI).,N/A,1 - 300 DPI
+420,,Resample with 300 DPI,magick input.jpg -resample 300 output.jpg,Output: Resamples the image to 300 DPI for high-quality print.,N/A,1 - 300 DPI
+421,,Resample with Size Specification,magick input.jpg -resample 100x100 output.jpg,Output: Resamples the image to a specific size of 100x100 pixels.,N/A,Specified Size
+422,,Resample with Percentage,magick input.jpg -resample 50% output.jpg,Output: Resamples the image to 50% of its original size.,N/A,0% - 100%
+423,,Resample with Different Units,magick input.jpg -resample 2.54x2.54 cm output.jpg,Output: Resamples the image to 2.54 cm (1 inch) for both dimensions.,N/A,"Units: cm, in, etc."
+424,"/-resize geometry
+ Resize an image.
+ The -resize command modifies the dimensions of an image, allowing for a variety of resizing methods and constraints.
+ Commands can use specific pixel dimensions, percentages, or maintain aspect ratios while resizing.",Resize to Specific Dimensions,magick input.jpg -resize 200x200 output.jpg,Output: Resizes the image to 200x200 pixels.,N/A,Specified Size
+425,,Resize by Percentage,magick input.jpg -resize 50% output.jpg,Output: Resizes the image to 50% of its original size.,N/A,1% - 100%
+426,,Resize Maintaining Aspect Ratio,magick input.jpg -resize 300x output.jpg,"Output: Resizes the image to 300 pixels wide, maintaining aspect ratio.",N/A,Specified Width
+427,,Resize with Maximum Dimensions,magick input.jpg -resize 400x300^ output.jpg,"Output: Resizes the image to fit within 400x300 pixels, cropping excess.",N/A,Specified Size
+428,,Resize with Adaptive Resampling,magick input.jpg -resize 800x600! output.jpg,"Output: Resizes the image to exactly 800x600 pixels, ignoring aspect ratio.",N/A,Specified Size
+429,,Resize Using a Filter,magick input.jpg -resize 50% -filter Lanczos output.jpg,Output: Resizes the image to 50% using the Lanczos filter for quality.,N/A,1% - 100%
+430,,Resize to Fit Within Specific Bounds,magick input.jpg -resize 800x600^ output.jpg,"Output: Resizes the image to fill the 800x600 area, cropping if necessary.",N/A,Specified Size
+431,"/-roll {+-}x{+-}y
+ Roll an image vertically or horizontally by the amount given like pixels.
+ A negative x offset rolls the image right-to-left. A negative y offset rolls the image bottom-to-top.",Roll Right by 50 Pixels,magick input.jpg -roll +50+0 output.jpg,Output: Rolls the image 50 pixels to the right.,N/A,Any integer value
+432,,Roll Down by 30 Pixels,magick input.jpg -roll 0+30 output.jpg,Output: Rolls the image 30 pixels down.,N/A,Any integer value
+433,,Roll Left by 20 Pixels,magick input.jpg -roll -20+0 output.jpg,Output: Rolls the image 20 pixels to the left.,N/A,Any integer value
+434,,Roll Up by 10 Pixels,magick input.jpg -roll 0-10 output.jpg,Output: Rolls the image 10 pixels up.,N/A,Any integer value
+435,,Roll Right and Down,magick input.jpg -roll +30+20 output.jpg,Output: Rolls the image 30 pixels right and 20 pixels down.,N/A,Any integer value
+436,,Roll Left and Up,magick input.jpg -roll -15-25 output.jpg,Output: Rolls the image 15 pixels left and 25 pixels up.,N/A,Any integer value
+437,,Roll with Negative Values,magick input.jpg -roll -50-50 output.jpg,Output: Rolls the image 50 pixels left and 50 pixels up.,N/A,Any integer value
+438,"/-rotate degrees{<}{>}
+ Apply Paeth image rotation (using shear operations) to the image.
+ The -rotate command rotates the image around its center by the specified angle.
+ Positive values indicate a clockwise rotation, while negative values indicate a counter-clockwise rotation.",Rotate by 90 Degrees,magick input.jpg -rotate 90 output.jpg,Output: Rotates the image 90 degrees clockwise.,N/A,Any multiple of 90 degrees
+439,,Rotate by 180 Degrees,magick input.jpg -rotate 180 output.jpg,Output: Rotates the image 180 degrees (upside down).,N/A,Any multiple of 90 degrees
+440,,Rotate by 270 Degrees,magick input.jpg -rotate 270 output.jpg,Output: Rotates the image 270 degrees clockwise (90 degrees counter-clockwise).,N/A,Any multiple of 90 degrees
+441,,Rotate by 45 Degrees,magick input.jpg -rotate 45 output.jpg,Output: Rotates the image 45 degrees clockwise.,N/A,Any angle (0-360 degrees)
+442,,Rotate by -90 Degrees,magick input.jpg -rotate -90 output.jpg,Output: Rotates the image 90 degrees counter-clockwise.,N/A,Any multiple of 90 degrees
+443,,Rotate by -180 Degrees,magick input.jpg -rotate -180 output.jpg,Output: Rotates the image 180 degrees (upside down).,N/A,Any multiple of 90 degrees
+444,,Rotate by -45 Degrees,magick input.jpg -rotate -45 output.jpg,Output: Rotates the image 45 degrees counter-clockwise.,N/A,Any angle (0-360 degrees)
+445,"/-rotational-blur angle
+ Blur around the center of the image.
+ The radius determines the strength of the blur; higher values produce a more pronounced blur effect.
+ Negative values for radius can create inverse effects",Basic Rotational Blur,magick input.jpg -rotational-blur 5 output.jpg,Output: Applies a rotational blur with a radius of 5 pixels.,N/A,Any positive value
+446,,Rotational Blur with Higher Radius,magick input.jpg -rotational-blur 10 output.jpg,Output: Applies a rotational blur with a radius of 10 pixels.,N/A,Any positive value
+447,,Rotational Blur with Maximum Radius,magick input.jpg -rotational-blur 100 output.jpg,Output: Applies a rotational blur with a radius of 100 pixels.,N/A,Any positive value
+448,,Rotational Blur with Negative Radius,magick input.jpg -rotational-blur -5 output.jpg,Output: Applies a rotational blur with a negative radius (inverse effect).,N/A,Any negative value
+449,,Rotational Blur with Specific Angle,magick input.jpg -rotational-blur 15.5 output.jpg,Output: Applies a rotational blur with a radius of 15.5 pixels.,N/A,Any positive value
+450,White Balance(Vibrance Value),Complete desaturation,magick input.png -define white-balance:vibrance=-100% -white-balance output_desaturated.png,Complete desaturation,-100%,
+451,,Very high reduction in color saturation,magick input.png -define white-balance:vibrance=-80% -white-balance output_muted_80.png,Very high reduction in color saturation,-80%,
+452,,Strong reduction in saturation,magick input.png -define white-balance:vibrance=-50% -white-balance output_muted_50.png,Strong reduction in saturation,-50%,
+453,,Significant reduction in color saturation,magick input.png -define white-balance:vibrance=-30% -white-balance output_muted_30.png,Significant reduction in color saturation,-30%,
+454,,Moderate reduction in saturation,magick input.png -define white-balance:vibrance=-20% -white-balance output_muted_20.png,Moderate reduction in saturation,-20%,
+455,,Slight reduction in saturation,magick input.png -define white-balance:vibrance=-10% -white-balance output_muted_10.png,Slight reduction in saturation,-10%,
+456,,No change in color saturation,magick input.png -define white-balance:vibrance=0% -white-balance output_original.png,No change in color saturation,0%,
+457,,Slight enhancement of color saturation,magick input.png -define white-balance:vibrance=10% -white-balance output_vibrant_10.png,Slight enhancement of color saturation,10%,
+458,,Moderate enhancement of saturation,magick input.png -define white-balance:vibrance=20% -white-balance output_vibrant_20.png,Moderate enhancement of saturation,20%,
+459,,Significant enhancement of color saturation,magick input.png -define white-balance:vibrance=30% -white-balance output_vibrant_30.png,Significant enhancement of color saturation,30%,
+460,,High saturation; may cause clipping,magick input.png -define white-balance:vibrance=40% -white-balance output_vibrant_40.png,High saturation; may cause clipping,40%,
+461,,Strong enhancement of saturation,magick input.png -define white-balance:vibrance=50% -white-balance output_vibrant_50.png,Strong enhancement of saturation,50%,
+462,,Very high enhancement of color saturation,magick input.png -define white-balance:vibrance=80% -white-balance output_vibrant_80.png,Very high enhancement of color saturation,80%,
+463,,Maximum enhancement; extreme saturation,magick input.png -define white-balance:vibrance=100% -white-balance output_extreme_vibrant.png,Maximum enhancement; extreme saturation,100%,
+464,Wave Filter (Amplitude),No wave effect,magick input.png -wave 0x20 output_no_wave.png,The image remains unchanged.,0,
+465,,Slight wave distortion,magick input.png -wave 10x20 output_wave_10.png,Subtle wave effect; minor distortion visible.,10,
+466,,Moderate wave distortion,magick input.png -wave 20x20 output_wave_20.png,Noticeable wave effect; more pronounced distortion.,20,
+467,,Strong wave distortion,magick input.png -wave 30x20 output_wave_30.png,Clear wave pattern; significant distortion.,30,
+468,,Very strong wave distortion,magick input.png -wave 50x20 output_wave_50.png,Intense wave effect; strong visual impact.,50,
+469,,Extreme wave distortion,magick input.png -wave 100x20 output_wave_100.png,Highly distorted image; can lose detail.,100,
+470,Wavelength,Very tight waves,magick input.png -wave 10x10 output_wave_wavelength_10.png,Waves appear very close together; tight sine wave effect.,10,
+471,,Standard wave spacing,magick input.png -wave 20x20 output_wave_wavelength_20.png,Regular wave effect; balanced sine wave.,20,
+472,,Wider wave spacing,magick input.png -wave 30x20 output_wave_wavelength_30.png,Waves are more spaced out; smoother appearance.,30,
+473,,Very wide wave spacing,magick input.png -wave 50x20 output_wave_wavelength_50.png,Large waves; less frequent sine wave pattern.,50,
+474,Unsharp (Radius x Sigma x Gain x Threshold),Subtle sharpening,magick input.png -unsharp 0x1.0x1.0x0.05 output.png,A small radius and sigma apply light sharpening with a small threshold to enhance fine details.,0x1.0x1.0x0.05,
+475,,Moderate sharpening,magick input.png -unsharp 1x1.0x1.5x0.05 output.png,Stronger sharpening effect by increasing gain; subtle details become more prominent,1x1.0x1.5x0.05,
+476,,Blurred areas less sharpened,magick input.png -unsharp 2x2.0x1.0x0.1 output.png,Increasing the radius and threshold limits sharpening to significant edges.,2x2.0x1.0x0.1,
+477,,Very sharp image with contrasty edges,magick input.png -unsharp 3x2.0x2.0x0.05 output.png,"High gain causes edges to pop, suitable for high-contrast effects.",3x2.0x2.0x0.05,
+478,,Soft sharpening with minimal enhancement,magick input.png -unsharp 5x3.0x0.5x0.05 output.png,"Larger radius smooths over small details, retaining soft focus.",5x3.0x0.5x0.05,
+479,,Extreme sharpening with noise risk,magick input.png -unsharp 0x1.0x3.0x0.02 output.png,"High gain can cause noise or halos around sharp edges, especially in lower-threshold",0x1.0x3.0x0.02,
+480,,Sharpen only strong edges,magick input.png -unsharp 2x2.0x1.0x0.2 output.png,A higher threshold avoids sharpening background textures and noise.,2x2.0x1.0x0.2,
+481,,"High radius, light sharpening on larger areas",magick input.png -unsharp 10x5.0x1.0x0.1 output.png,"Suitable for portraits, enhances facial contours without exaggerating fine wrinkles.",10x5.0x1.0x0.1,
+482,,Over-sharpening with high noise,magick input.png -unsharp 3x1.0x1.0x0.05 output.png,"Tiny radius and low threshold sharpen everything, but this may amplify noise.",0x0.5x1.0x0.01,
+483,"Transform Filter sx, sy, rx, ry, tx, ty",Identity (No Transformation),"magick input.jpg -affine 1,0,0,1,0,0 -transform output.jpg",No change; image stays the same.,"1,0,0,1,0,0",
+484,,Uniform Scaling (2x),"magick input.jpg -affine 2,0,0,2,0,0 -transform output.jpg",Image is scaled 2x larger along both axes.,"2,0,0,2,0,0",
+485,,Uniform Scaling (0.5x),"magick input.jpg -affine 0.5,0,0,0.5,0,0 -transform output.jpg",Image is scaled down to half its size.,"0.5,0,0,0.5,0,0",
+486,,Skew / Rotation (45 degrees),"magick input.jpg -affine 1,-1,1,1,0,0 -transform output.jpg",Image appears skewed along one diagonal.,"1,-1,1,1,0,0",
+487,,Horizontal Translation (+50px),"magick input.jpg -affine 1,0,0,1,50,0 -transform output.jpg",Image moves 50 pixels to the right.,"1,0,0,1,50,0",
+488,,Vertical Translation (+50px),"magick input.jpg -affine 1,0,0,1,0,50 -transform output.jpg",Image moves 50 pixels down.,"1,0,0,1,0,50",
+489,,Combination: Scale + Skew,"magick input.jpg -affine 1.5,0.2,-0.2,1.5,0,0 -transform output.jpg",Scales image by 1.5x and slightly skews it.,"1.5,0.2,-0.2,1.5,0,0",
+490,,Horizontal Flip,"magick input.jpg -affine -1,0,0,1,0,0 -transform output.jpg",Image is flipped horizontally (mirrored).,"-1,0,0,1,0,0",
+491,,Vertical Flip,"magick input.jpg -affine 1,0,0,-1,0,0 -transform output.jpg",Image is flipped vertically (upside down).,"1,0,0,-1,0,0",
+492,,90° Rotation,"magick input.jpg -affine 0,1,-1,0,0,0 -transform output.jpg",Rotates the image by 90 degrees counter-clockwise.,"0,1,-1,0,0,0",
+493,,180° Rotation,"magick input.jpg -affine -1,0,0,-1,0,0 -transform output.jpg",Flips the image upside down (180° rotation).,"-1,0,0,-1,0,0",
+494,,270° Rotation,"magick input.jpg -affine 0,-1,1,0,0,0 -transform output.jpg",Rotates image 270° counter-clockwise.,"0,-1,1,0,0,0",
+495,,30° Rotation + Skew,"magick input.jpg -affine 1,-0.5,0.5,1,0,0 -transform output.jpg",Skews the image along x and y with a slight rotation.,"1,-0.5,0.5,1,0,0",
+496,,45° Skew (Diagonal),"magick input.jpg -affine 1,1,-1,1,0,0 -transform output.jpg",Skews the image along a 45° diagonal.,"1,1,-1,1,0,0",
+497,,45° Rotation + Skew,"magick input.jpg -affine 1,-1,1,1,0,0 -transform output.jpg",Rotates and skews the image diagonally.,"1,-1,1,1,0,0",
+498,,Strong Skew,"magick input.jpg -affine 1,2,-2,1,0,0 -transform output.jpg",Strong skew along both axes.,"1,2,-2,1,0,0",
+499,,Subtle Skew,"magick input.jpg -affine 1,0.5,-0.5,1,0,0 -transform output.jpg",A slight skew horizontally and vertically.,"1,0.5,-0.5,1,0,0",
+500,Tint Filter,Barely noticeable tint. Minimal shift in mid-range colors.,magick input.jpg -fill blue -tint 10% output.jpg,"Original image almost unchanged, with slight hints of fill color.",0% - 10%,
+501,,Subtle tint. Light color overlay on neutral tones.,magick input.jpg -fill red -tint 25% output.jpg,Mildly altered grays and muted shades. Ideal for softening tones.,11% - 30%,
+502,,Balanced tint. Moderate blend between the original and fill colors.,magick input.jpg -fill green -tint 50% output.jpg,Grays noticeably shift to the fill color; other hues get a mild overlay.,31% - 50%,
+503,,Strong tint effect. Tint color dominates neutral tones.,magick input.jpg -fill yellow -tint 75% output.jpg,Mid-tones and grays heavily shift to the tint color; most of the original color fades.,51% - 75%,
+504,,Nearly full tint. Only traces of original color remain.,magick input.jpg -fill purple -tint 90% output.jpg,Strong artistic effect. Image takes on a heavily tinted appearance.,76% - 99%,
+505,,Complete tint. Mid-range tones fully replaced with the fill color.,magick input.jpg -fill cyan -tint 100% output.jpg,"The image becomes a version dominated by the fill color, losing original detail in affected areas.",100%,
+506,Thumbnail Filter (Geometry Argument),"Scales image to fit inside WxH, keeping aspect ratio.",magick input.jpg -thumbnail 300x200 output.jpg,Image fits within 300x200 with possible padding.,"WxH (e.g., 300x200)",
+507,,Enlarges and crops to fill WxH exactly.,magick input.jpg -thumbnail 300x200^ output.jpg,Parts of the image may be cropped.,"WxH^ (e.g., 300x200^)",
+508,,"Forces image to resize exactly to WxH, ignoring aspect ratio",magick input.jpg -thumbnail 300x200! output.jpg,Image may look stretched or squished.,"WxH! (e.g., 300x200!)",
+509,,Sets width to W; height is adjusted automatically.,magick input.jpg -thumbnail 300x output.jpg,Image scales proportionally based on width.,"W (e.g., 300x)",
+510,,Sets height to H; width adjusts automatically.,magick input.jpg -thumbnail x200 output.jpg,Image scales proportionally based on height.,"xH (e.g., x200)",
+511,,Resizes the image by a percentage.,magick input.jpg -thumbnail 50% output.jpg,Image scales to half its original size.,"% (e.g., 50%)",
+512,,Resizes to fit within an aspect ratio.,magick input.jpg -thumbnail 4:3 output.jpg,Image maintains ratio with padding/cropping,"Aspect Ratio (e.g., 4:3)",
+513,,Resizes only if the width is larger than W.,magick input.jpg -thumbnail 300x> output.jpg,Image is reduced if too wide.,"Longer Edge (e.g., 300x>)",
+514,,Resizes only if the height is smaller than H.,magick input.jpg -thumbnail x200< output.jpg,Enlarges image if height is small.,"Shorter Edge (e.g., x200<)",
+515,,Ensures the shortest side is at least W or H.,magick input.jpg -thumbnail 300^> output.jpg,Enlarges the smallest dimension to the given size.,"Min Dimension (e.g., 300^>)",
+516,Transparent,Makes all pixels of the specified color transparent.,"magick input.png -transparent ""#FF0000"" output.png",Major areas of the specified color are removed.,"Specific color (e.g., #FF0000)",
+517,,Exact matches only. (Fuzz factor),"magick input.png -fuzz 0% -transparent ""#FF0000"" output.png",No change unless the exact color is present.,0%,
+518,,Allows for slight variations.,"magick input.png -fuzz 10% -transparent ""#FF0000"" output.png",Noticeable changes for colors close to the target.,5% to 10%,
+519,,"Broad matching, affecting similar shades.","magick input.png -fuzz 20% -transparent ""#FF0000"" output.png",Significant portions of the image become transparent.,20% and above,
+520,,All non-matching pixels become transparent. Inversion with +transparent,"magick input.png +transparent ""#00FF00"" output.png",Isolates the specified color completely.,"Any color (e.g., #00FF00)",
+521,,Sets a palette color to be transparent in GIF/PNG8 formats.,"magick input.gif -transparent-color ""#FFFFFF"" output.gif",Background colors or common colors can become transparent.,"Specific color (e.g., #FFFFFF)",
+522,Threshold,All pixels become white.,magick input.png -threshold 0% output.png,"Since every pixel value is considered ≥ 0% threshold, all are set to maximum intensity (white).",0%,
+523,,Gradual brightening of lighter regions.,magick input.png -threshold 25% output.png,"Darker regions remain black, while increasingly brighter regions turn white.",1-49%,
+524,,Midpoint change.,magick input.png -threshold 50% output.png,"Half the image’s pixels shift to white, the rest remain black, based on their intensity.",50%,
+525,,Dominantly black image.,magick input.png -threshold 75% output.png,"As the threshold increases, most pixels are reassigned to black; only very bright ones stay white.",51-99%,
+526,,All pixels become black.,magick input.png -threshold 100% output.png,"Every pixel intensity is below 100%, so all are set to the minimum intensity (black).",100%,
+527,Swirl Filter,No change,magick input.png -swirl 0 output.png,The original image remains intact.,0°,
+528,,Mild distortion,magick input.png -swirl 30 output.png,"Subtle swirl effect, especially visible in the center; outer areas are almost unaffected.",1° - 45°,
+529,,Moderate swirl,magick input.png -swirl 75 output.png,Swirl effect becomes noticeable; circular rotation of pixels starts becoming clear.,46° - 90°,
+530,,Strong swirl,magick input.png -swirl 150 output.png,Prominent swirling effect; pixels near the center show significant rotation.,91° - 180°,
+531,,Full circular swirl,magick input.png -swirl 300 output.png,"Image appears wrapped around itself in a vortex-like effect, heavily distorting the entire image.",181° - 360°,
+532,,Extreme distortion,magick input.png -swirl 400 output.png,"The swirl effect starts repeating, creating overlapping distortions and spirals.",>360°,
+533,,Swirl in the opposite direction,magick input.png -swirl -150 output.png,Negative degrees cause the swirl to rotate in the opposite direction (clockwise instead of counterclockwise).,-1° to -360°,
+534,Strip Filter,"Removes metadata such as EXIF, ICC profiles, and PNG chunks.",magick input.jpg -strip output.jpg,"Image retains visual content, but file size reduces.",N/A,
+535,,"Removes PNG-specific chunks like bKGD, cHRM, gAMA, iCCP.",magick input.png -strip output.png,Smaller PNG file; removed profiles affect color calibration.,N/A,
+536,,"Removes camera information, GPS location, and timestamps from images with EXIF profiles.",magick input.jpg -strip output.jpg,Strips sensitive data for privacy.,N/A,
+537,,Resets orientation metadata (such as rotation flags) to avoid display issues in some viewers.,magick input.jpg -orient Undefined -strip output.jpg,No orientation metadata; use +repage for reset canvas.,Set to Undefined,
+538,Spread Filter,Minor pixel displacement. Image appears subtly noisy or grainy.,magick input.jpg -spread 2 output.jpg,Slight degradation in smooth textures or edges.,1-5 Pixels,
+539,,"Moderate spread effect, visible distortion.",magick input.jpg -spread 10 output.jpg,Soft blurring and randomized patterns throughout the image.,6-15 Pixels,
+540,,Noticeable distortion. Details are randomized.,magick input.jpg -spread 20 output.jpg,The original image becomes unrecognizable in places.,16-30 Pixels,
+541,,Extreme pixel displacement with chaotic patterns.,magick input.jpg -spread 35 output.jpg,"Abstract, almost mosaic-like effect.",31+ Pixels,
+542,,Controls pixel interpolation to smooth the spread effect.,magick input.jpg -interpolate bilinear -spread 8 output.jpg,Reduces harsh pixelation in the spread.,-interpolate Bilinear,
+543,,Uses the nearest pixel for lookup during spread.,magick input.jpg -interpolate nearest -spread 10 output.jpg,Produces sharper but noisier results.,-interpolate NearestNeighbor,
+544,Splice,Adds 10 pixels of padding along the vertical edge.,"magick input.jpg -background white -splice 0x10 output.jpg  (we can avoid extra filter before -splice)
+magick input.jpg -splice 0x10 output.jpg",Thin horizontal padding.,0x10,
+545,,Adds 20 pixels along horizontal edges.,magick input.jpg -background blue -splice 20x0 output.jpg,Narrow vertical padding on both sides.,20x0,
+546,,Adds padding with a 5-pixel offset from the origin.,magick input.jpg -background red -splice 10x10+5+5 output.jpg,Off-center padding affecting multiple edges.,10x10+5+5,
+547,,Adds 30-pixel padding to the bottom of the image.,magick input.jpg -gravity South -splice 0x30 output.jpg,Enlarges canvas at the bottom with padding.,-gravity South -splice 0x30,
+548,,Inserts 50-pixel padding to the right of the image.,magick input.jpg -gravity East -splice 50x0 output.jpg,Image is wider with padding on the right edge.,-gravity East -splice 50x0,
+549,,Using multiple gravity settings to pad various edges.,magick input.jpg -gravity NorthEast -splice 15x15 output.jpg,"Adds padding to top, bottom, or sides as needed.",Combined Gravity,
+550,Solarize,No pixels are inverted; the image remains unchanged.,magick input.jpg -solarize 0.0 output.jpg,Original image without any effect.,0,
+551,,Only the brightest pixels are solarized.,magick input.jpg -solarize 10.0 output.jpg,"Slight solarization effect, mostly in highlights.",10,
+552,,More mid-tones are solarized; noticeable effects begin.,magick input.jpg -solarize 25.0 output.jpg,Moderate solarization with distinct light areas inverted.,25,
+553,,Half of the image's pixels are solarized.,magick input.jpg -solarize 50.0 output.jpg,Significant solarization with mixed effects throughout.,50,
+554,,Most pixels are solarized; strong contrast.,magick input.jpg -solarize 75.0 output.jpg,Strong solarization effect; many areas inverted.,75,
+555,,Only darkest areas remain unchanged.,magick input.jpg -solarize 90.0 output.jpg,Very high contrast with a surreal effect.,90,
+556,,Almost all pixels are solarized; extreme effect.,magick input.jpg -solarize 99.9 output.jpg,Image appears almost entirely inverted; dramatic visuals.,99.9,
+557,Sigmoidal Contrast Mid Point,No contrast change; image remains unchanged.,magick input.jpg -sigmoidal-contrast 0x50 output.jpg,Original image without effect.,0,
+558,,Low to moderate contrast increase; subtle enhancement.,magick input.jpg -sigmoidal-contrast 2x50 output.jpg,Slightly improved details with minimal clipping.,1--3,
+559,,Noticeable contrast enhancement; more detailed.,magick input.jpg -sigmoidal-contrast 5x50 output.jpg,Enhanced shadows and highlights without severe clipping.,3--10,
+560,,High contrast enhancement; significant changes.,magick input.jpg -sigmoidal-contrast 15x50 output.jpg,Stronger details; may begin to clip highlights/shadows.,10--20,
+561,,Extreme contrast; potential clipping and smoothing effects.,magick input.jpg -sigmoidal-contrast 25x50 output.jpg,Smoothing thresholding effect; loss of details possible.,>20,
+562,,Maximum effect on whites; highlights may be lost.,magick input.jpg -sigmoidal-contrast 10x0 output.jpg,Bright areas become clipped; loss of highlight details.,0,
+563,,Balanced contrast; retains most details.,magick input.jpg -sigmoidal-contrast 10x50 output.jpg,Natural-looking contrast enhancement.,50%,
+564,,Maximum effect on blacks; shadows may be lost.,magick input.jpg -sigmoidal-contrast 10x100 output.jpg,Dark areas become clipped; loss of shadow details.,100%,
+565,"/-profile filename
+ +profile profile_name
+ Manage ICM, IPTC, or generic profiles in an image.
+ Each command demonstrates how to manipulate the ICC profile of an image, which can affect color accuracy and reproduction.
+ The * character in the command is used to specify that all profiles should be removed.
+ICC---International Color Consortium
+we should pass a profile along with path compulsorily",Add ICC Profile (Do not use for testing),magick input.jpg -profile sRGB.icc output.jpg,Output: Adds the sRGB ICC profile to the image.,N/A,N/A
+566,,Remove ICC Profile (Do not use for testing),"magick input.jpg +profile ""*"" output.jpg",Output: Removes all profiles from the image.,N/A,N/A
+567,,Use Custom ICC Profile (Do not use for testing),magick input.jpg -profile custom.icc output.jpg,Output: Applies a custom ICC profile to the image.,N/A,N/A
+568,,Apply CMYK Profile (Do not use for testing),magick input.jpg -profile CMYK.icc output.jpg,Output: Applies a CMYK ICC profile to the image.,N/A,N/A
+569,,Use Profile for Output (Do not use for testing),magick input.jpg -profile sRGB.icc -profile AdobeRGB1998.icc output.jpg,Output: Applies multiple profiles sequentially to the image.,N/A,N/A
+570,,sRGB_v4_ICC_preference_displayclass,magick input.jpg -profile sRGB_v4_ICC_preference_displayclass.icc output.jpg,Applies the sRGB v4 ICC preference display class color profile to the image.,N/A,N/A
+571,,sRGB_v4_ICC_preference,magick input.jpg -profile sRGB_v4_ICC_preference.icc output.jpg,Applies the sRGB v4 ICC preference color profile to the image.,N/A,N/A
+572,,sRGB2014.,magick input.jpg -profile sRGB2014.icc output.jpg,Applies the sRGB 2014 color profile to the image.,N/A,N/A
+573,,Adobe RGB 1998,magick input.jpg -profile AdobeRGB1998.icc output.jpg,Applies the Adobe RGB 1998 color profile to the image.,N/A,N/A
+574,,Apple RGB,magick input.jpg -profile AppleRGB.icc output.jpg,Applies the Apple RGB color profile to the image.,N/A,N/A
+575,,APTEC PC10 CardBoard 2023 v1,magick input.jpg -profile APTEC_PC10_CardBoard_2023_v1.icc output.jpg,Applies the APTEC PC10 CardBoard color profile.,N/A,N/A
+576,,APTEC PC11 CCNB 2023 v1,magick input.jpg -profile APTEC_PC11_CCNB_2023_v1.icc output.jpg,Applies the APTEC PC11 CCNB color profile.,N/A,N/A
+577,,CGATS21 CRPC1,magick input.jpg -profile CGATS21_CRPC1.icc output.jpg,Applies the CGATS21 CRPC1 color profile.,N/A,N/A
+578,,CGATS21 CRPC2,magick input.jpg -profile CGATS21_CRPC2.icc output.jpg,Applies the CGATS21 CRPC2 color profile.,N/A,N/A
+579,,CGATS21 CRPC3,magick input.jpg -profile CGATS21_CRPC3.icc output.jpg,Applies the CGATS21 CRPC3 color profile.,N/A,N/A
+580,,CGATS21 CRPC4,magick input.jpg -profile CGATS21_CRPC4.icc output.jpg,Applies the CGATS21 CRPC4 color profile.,N/A,N/A
+581,,CGATS21 CRPC5,magick input.jpg -profile CGATS21_CRPC5.icc output.jpg,Applies the CGATS21 CRPC5 color profile.,N/A,N/A
+582,,CGATS21 CRPC6,magick input.jpg -profile CGATS21_CRPC6.icc output.jpg,Applies the CGATS21 CRPC6 color profile.,N/A,N/A
+583,,CGATS21 CRPC7,magick input.jpg -profile CGATS21_CRPC7.icc output.jpg,Applies the CGATS21 CRPC7 color profile.,N/A,N/A
+584,,CNFR27,magick input.jpg -profile CNFR27.ICC output.jpg,Applies the CNFR27 color profile.,N/A,N/A
+585,,CNZ005,magick input.jpg -profile CNZ005.ICC output.jpg,Applies the CNZ005 color profile.,N/A,N/A
+586,,CNZ006,magick input.jpg -profile CNZ006.ICC output.jpg,Applies the CNZ006 color profile.,N/A,N/A
+587,,CNZ007,magick input.jpg -profile CNZ007.ICC output.jpg,Applies the CNZ007 color profile.,N/A,N/A
+588,,Coated FOGRA 27,magick input.jpg -profile CoatedFOGRA27.icc output.jpg,Applies the Coated FOGRA 27 color profile.,N/A,N/A
+589,,Coated FOGRA 39,magick input.jpg -profile CoatedFOGRA39.icc output.jpg,Applies the Coated FOGRA 39 color profile.,N/A,N/A
+590,,Coated GRACoL 2006,magick input.jpg -profile CoatedGRACoL2006.icc output.jpg,Applies the Coated GRACoL 2006 color profile.,N/A,N/A
+591,,Coated Fogra 39L VIGC 260,magick input.jpg -profile Coated_Fogra39L_VIGC_260.icc output.jpg,Applies the Coated Fogra 39L VIGC 260 color profile.,N/A,N/A
+592,,Coated Fogra 39L VIGC 300,magick input.jpg -profile Coated_Fogra39L_VIGC_300.icc output.jpg,Applies the Coated Fogra 39L VIGC 300 color profile.,N/A,N/A
+593,,ColorMatch RGB,magick input.jpg -profile ColorMatchRGB.icc output.jpg,Applies the ColorMatch RGB color profile.,N/A,N/A
+594,,GRACoL 2006 Coated 1v2,magick input.jpg -profile GRACoL2006_Coated1v2.icc output.jpg,Applies the GRACoL 2006 Coated 1v2 color profile.,N/A,N/A
+595,,GRACoL 2013 UNC CRPC3,magick input.jpg -profile GRACoL2013UNC_CRPC3.icc output.jpg,Applies the GRACoL 2013 UNC CRPC3 color profile.,N/A,N/A
+596,,GRACoL 2013 CRPC6,magick input.jpg -profile GRACoL2013_CRPC6.icc output.jpg,Applies the GRACoL 2013 CRPC6 color profile.,N/A,N/A
+597,,JapanColor 2001 Coated,magick input.jpg -profile JapanColor2001Coated.icc output.jpg,Applies the JapanColor 2001 Coated color profile.,N/A,N/A
+598,,JapanColor 2001 Uncoated,magick input.jpg -profile JapanColor2001Uncoated.icc output.jpg,Applies the JapanColor 2001 Uncoated color profile.,N/A,N/A
+599,,JapanColor 2002 Newspaper,magick input.jpg -profile JapanColor2002Newspaper.icc output.jpg,Applies the JapanColor 2002 Newspaper color profile.,N/A,N/A
+600,,JapanColor 2003 Web Coated,magick input.jpg -profile JapanColor2003WebCoated.icc output.jpg,Applies the JapanColor 2003 Web Coated color profile.,N/A,N/A
+601,,JapanColor 2011 Coated,magick input.jpg -profile JapanColor2011Coated.icc output.jpg,Applies the JapanColor 2011 Coated color profile.,N/A,N/A
+602,,Japan Web Coated,magick input.jpg -profile JapanWebCoated.icc output.jpg,Applies the Japan Web Coated color profile.,N/A,N/A
+603,,PAL SECAM,magick input.jpg -profile PAL_SECAM.icc output.jpg,Applies the PAL SECAM color profile.,N/A,N/A
+604,,PSO Coated v3,magick input.jpg -profile PSOcoated_v3.icc output.jpg,Applies the PSO Coated v3 color profile.,N/A,N/A
+605,,PSO sc-b paper v3 FOGRA 54,magick input.jpg -profile PSOsc-b_paper_v3_FOGRA54.icc output.jpg,Applies the PSO sc-b paper v3 FOGRA 54 color profile.,N/A,N/A
+606,,PSO uncoated v3 FOGRA 52,magick input.jpg -profile PSOuncoated_v3_FOGRA52.icc output.jpg,Applies the PSO uncoated v3 FOGRA 52 color profile.,N/A,N/A
+607,,RSWOP,magick input.jpg -profile RSWOP.icm output.jpg,Applies the RSWOP color profile.,N/A,N/A
+608,,SC paper eci,magick input.jpg -profile SC_paper_eci.icc output.jpg,Applies the SC paper eci color profile.,N/A,N/A
+609,,SMPTE-C,magick input.jpg -profile SMPTE-C.icc output.jpg,Applies the SMPTE-C color profile.,N/A,N/A
+610,,SNAP 2007,magick input.jpg -profile SNAP2007.icc output.jpg,Applies the SNAP 2007 color profile.,N/A,N/A
+611,,SWOP 2006 Coated 3 v2,magick input.jpg -profile SWOP2006_Coated3v2.icc output.jpg,Applies the SWOP 2006 Coated 3 v2 color profile.,N/A,N/A
+612,,SWOP 2006 Coated 5 v2,magick input.jpg -profile SWOP2006_Coated5v2.icc output.jpg,Applies the SWOP 2006 Coated 5 v2 color profile.,N/A,N/A
+613,,SWOP 2013 C3 CRPC5,magick input.jpg -profile SWOP2013C3_CRPC5.icc output.jpg,Applies the SWOP 2013 C3 CRPC5 color profile.,N/A,N/A
+614,,Uncoated FOGRA 29,magick input.jpg -profile UncoatedFOGRA29.icc output.jpg,Applies the Uncoated FOGRA 29 color profile.,N/A,N/A
+615,,Uncoated Fogra 47L VIGC 260,magick input.jpg -profile Uncoated_Fogra47L_VIGC_260.icc output.jpg,Applies the Uncoated Fogra 47L VIGC 260 color profile.,N/A,N/A
+616,,Uncoated Fogra 47L VIGC 300,magick input.jpg -profile Uncoated_Fogra47L_VIGC_300.icc output.jpg,Applies the Uncoated Fogra 47L VIGC 300 color profile.,N/A,N/A
+617,,US Web Coated SWOP,magick input.jpg -profile USWebCoatedSWOP.icc output.jpg,Applies the US Web Coated SWOP color profile.,N/A,N/A
+618,,US Web Uncoated,magick input.jpg -profile USWebUncoated.icc output.jpg,Applies the US Web Uncoated color profile.,N/A,N/A
+619,,Video HD,magick input.jpg -profile VideoHD.icc output.jpg,Applies the Video HD color profile.,N/A,N/A
+620,,Video NTSC,magick input.jpg -profile VideoNTSC.icc output.jpg,Applies the Video NTSC color profile.,N/A,N/A
+621,,Video PAL,magick input.jpg -profile VideoPAL.icc output.jpg,Applies the Video PAL color profile.,N/A,N/A
+622,,Web Coated FOGRA 28,magick input.jpg -profile WebCoatedFOGRA28.icc output.jpg,Applies the Web Coated FOGRA 28 color profile.,N/A,N/A
+623,,Web Coated SWOP 2006 Grade 3,magick input.jpg -profile WebCoatedSWOP2006Grade3.icc output.jpg,Applies the Web Coated SWOP 2006 Grade 3 color profile.,N/A,N/A
+624,,Web Coated SWOP 2006 Grade 5,magick input.jpg -profile WebCoatedSWOP2006Grade5.icc output.jpg,Applies the Web Coated SWOP 2006 Grade 5 color profile.,N/A,N/A
+625,Total filter count : 76,,,,,
+626,,,,,,
+627,,,,,,
+628,,,,,,
+629,,,,,,
+630,,,,,,
+631,,,,,,
+632,,,,,,
+633,,,,,,
+634,,,,,,
+635,,,,,,
+636,,,,,,
+645,,,,,,
+646,,,,,,
+647,,,,,,
+648,,,,,,
+649,,,,,,
+650,,,,,,
+651,,,,,,
+652,,,,,,
+653,,,,,,
+654,,,,,,
+655,,,,,,
+656,,,,,,
+657,,,,,,
+658,,,,,,
+659,,,,,,
+660,,,,,,

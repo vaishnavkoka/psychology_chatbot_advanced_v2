@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Image Mutation Tool - ImageMagick Filters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 350px 1fr 400px;
+            gap: 20px;
+            padding: 30px;
+            max-height: 850px;
+            height: 850px;
+            overflow: hidden;
+        }
+
+        /* ============ UPLOAD SECTION ============ */
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 850px;
+            overflow-y: auto;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .upload-area:hover {
+            background: #667eea;
+            color: white;
+            border-color: #764ba2;
+        }
+
+        .upload-area input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .upload-area:hover .upload-label {
+            color: white;
+        }
+
+        .upload-info {
+            background: #e7f3ff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #0066cc;
+            display: none;
+        }
+
+        .upload-info.active {
+            display: block;
+        }
+
+        /* ============ GALLERY STYLES ============ */
+        #galleryContainer {
+            display: none;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            flex: 0 1 auto;
+            overflow-y: auto;
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        #galleryContainer.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #galleryContainer h4 {
+            margin: 0 0 8px 0;
+            font-size: 0.85em;
+            color: #555;
+            font-weight: 600;
+        }
+
+        #imageGallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 8px;
+            flex: 0;
+        }
+
+        .gallery-thumbnail {
+            position: relative;
+            cursor: pointer;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 3px solid #ddd;
+            background: white;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            height: 110px;
+            flex-shrink: 0;
+        }
+
+        .gallery-thumbnail.selected {
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .gallery-thumbnail:hover {
+            transform: scale(1.05);
+            border-color: #667eea;
+        }
+
+        .gallery-thumbnail-preview {
+            flex: 1;
+            background: #f5f5f5;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+        }
+
+        .gallery-thumbnail-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 3px;
+        }
+
+        .gallery-thumbnail-name {
+            font-size: 0.65em;
+            padding: 2px 3px;
+            color: #444;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-top: 1px solid #eee;
+            background: white;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .gallery-delete-btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 24px;
+            height: 24px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .gallery-thumbnail:hover .gallery-delete-btn {
+            opacity: 1;
+        }
+
+        .gallery-delete-btn:hover {
+            background: #ff5252;
+            transform: scale(1.1);
+        }
+
+        /* ============ FILTER SECTION ============ */
+        .filter-section {
+            display: flex;
+            flex-direction: column;
+            max-height: 850px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .filter-section::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .filter-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .filter-section::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+
+        .filter-section::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* ============ FILTER TABS ============ */
+        .filter-tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .filter-radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .filter-radio-label:hover {
+            background: #f0f4ff;
+        }
+
+        .filter-radio-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .filter-radio-label span {
+            font-weight: 600;
+            color: #666;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .filter-radio-label input[type="radio"]:checked + span {
+            color: #667eea;
+        }
+
+        .filter-tab {
+            display: none;
+        }
+
+        .filter-tab.active {
+            display: block;
+        }
+
+        /* ============ CONTINUOUS FILTERS ============ */
+        .filter-group {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .filter-group h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .slider-container {
+            margin-bottom: 12px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .slider-label span:first-child {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .slider-label span:last-child {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #764ba2;
+            transform: scale(1.2);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #764ba2;
+            transform: scale(1.2);
+        }
+
+        input[type="range"]:disabled {
+            background: #ccc;
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        input[type="range"]:disabled::-webkit-slider-thumb {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        input[type="range"]:disabled::-moz-range-thumb {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        /* ============ DISCRETE FILTERS ============ */
+        .dropdown-container {
+            margin-bottom: 15px;
+        }
+
+        .dropdown-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .radio-option:hover {
+            background: #e8eef7;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .radio-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 0.95em;
+        }
+
+        .helper-text {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+            pointer-events: none;
+            margin-bottom: 5px;
+            z-index: 100;
+        }
+
+        .helper-text::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: #333;
+        }
+
+        .radio-option:hover .helper-text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+
+        select:hover {
+            border-color: #667eea;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* ============ RESULTS SECTION ============ */
+        .results-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 850px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .result-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .image-box {
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: auto;
+        }
+
+        .image-box h4 {
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        #originalsGallery, #resultsGallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            padding: 12px;
+            flex: 1;
+            overflow-y: auto;
+            max-height: 550px;
+        }
+
+        .gallery-result-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            height: 180px;
+            transition: all 0.2s ease;
+        }
+
+        .gallery-result-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .gallery-result-image {
+            flex: 1;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            overflow: hidden;
+        }
+
+        .gallery-result-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .gallery-result-name {
+            font-size: 0.7em;
+            padding: 3px;
+            color: #444;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-top: 1px solid #eee;
+            background: white;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .gallery-result-download {
+            padding: 0;
+            background: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        .gallery-result-download button {
+            width: 100%;
+            padding: 3px 4px;
+            font-size: 0.7em;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .gallery-result-download button:hover {
+            background: #764ba2;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.95em;
+            padding: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #e0e0e0;
+        }
+
+        .btn-secondary:disabled {
+            background: #ccc;
+            color: #999;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        #downloadBtn:not(:disabled) {
+            background: #27ae60;
+            color: white;
+        }
+
+        #downloadBtn:not(:disabled):hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        .btn-small {
+            flex: 0.5;
+            padding: 8px 12px;
+            font-size: 0.85em;
+        }
+
+        .info-box {
+            padding: 15px;
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #0066cc;
+        }
+
+        .info-box.error {
+            background: #fff0f0;
+            border-left-color: #d32f2f;
+            color: #d32f2f;
+        }
+
+        .info-box.success {
+            background: #f0fff4;
+            border-left-color: #10b981;
+            color: #10b981;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .result-container {
+                grid-template-columns: 1fr;
+            }
+
+            #originalsGallery, #resultsGallery {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                max-height: 400px;
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Advanced Image Mutation Tool</h1>
+            <p>ImageMagick Filters with Continuous & Discrete Controls</p>
+        </div>
+
+        <div class="main-content">
+            <!-- LEFT: UPLOAD -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="imageInput" accept="image/*" multiple>
+                    <label for="imageInput" class="upload-label">
+                        📁 Click or Drag Images
+                    </label>
+                    <p style="margin-top: 8px; color: #999; font-size: 0.9em;">
+                        JPG, PNG, GIF, WebP, BMP
+                        <br>
+                        <small style="font-size: 0.85em;">Select 1 or more images</small>
+                    </p>
+                </div>
+                <div id="uploadInfo" class="upload-info"></div>
+
+                <!-- GALLERY -->
+                <div id="galleryContainer">
+                    <h4 style="margin: 0 0 8px 0;">📷 Uploaded Images</h4>
+                    <div id="imageGallery"></div>
+                    <button class="btn btn-small" id="clearGalleryBtn" onclick="clearAllImages()" 
+                            style="width: 100%; height: 40px; margin-top: 10px; background: #ff6b6b; color: white; border: none; font-size: 0.95em; font-weight: 600; flex-shrink: 0;" 
+                            title="Remove all images">✕ Clear All Images</button>
+                </div>
+            </div>
+
+            <!-- CENTER: FILTERS -->
+            <div class="filter-section">
+                <div class="filter-tabs">
+                    <label class="filter-radio-label">
+                        <input type="radio" name="filter-type" value="continuous" checked>
+                        <span>Continuous Filters</span>
+                    </label>
+                    <label class="filter-radio-label">
+                        <input type="radio" name="filter-type" value="discrete">
+                        <span>Discrete Filters</span>
+                    </label>
+                </div>
+
+                <!-- CONTINUOUS FILTERS TAB -->
+                <div id="continuous" class="filter-tab active">
+                    <div class="filter-group" style="margin-bottom: 15px;">
+                        <h3 style="margin-bottom: 12px;">Select a Continuous Filter</h3>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="filterBlur" name="continuous-filter" value="blur">
+                                <label for="filterBlur">Blur (Gaussian)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="filterThreshold" name="continuous-filter" value="threshold">
+                                <label for="filterThreshold">Black Threshold</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="filterBorder" name="continuous-filter" value="border">
+                                <label for="filterBorder">Border (Pixels)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="filterCharcoal" name="continuous-filter" value="charcoal">
+                                <label for="filterCharcoal">Charcoal Effect</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="filterColorReduce" name="continuous-filter" value="colorReduce">
+                                <label for="filterColorReduce">Color Palette</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blur Filter -->
+                    <div class="filter-group" id="blurGroup" style="display: none;">
+                        <h3>Blur (Gaussian)</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Sigma (Blur Strength)</span>
+                                <span id="blurValue">0</span>
+                            </div>
+                            <input type="range" id="blurSlider" min="0" max="20" value="0" step="0.5" disabled>
+                            <small style="color: #666;">0 = sharp, 20 = extreme blur</small>
+                        </div>
+                    </div>
+
+                    <!-- Black Threshold -->
+                    <div class="filter-group" id="thresholdGroup" style="display: none;">
+                        <h3>Black Threshold</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Brightness Threshold</span>
+                                <span id="thresholdValue">0</span>%
+                            </div>
+                            <input type="range" id="thresholdSlider" min="0" max="100" value="0" step="1" disabled>
+                            <small style="color: #666;">Pixels darker than this become black</small>
+                        </div>
+                    </div>
+
+                    <!-- Border -->
+                    <div class="filter-group" id="borderGroup" style="display: none;">
+                        <h3>Border (Pixels)</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Horizontal & Vertical</span>
+                                <span id="borderValue">0</span>px
+                            </div>
+                            <input type="range" id="borderSlider" min="0" max="100" value="0" step="1" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Charcoal Effect -->
+                    <div class="filter-group" id="charcoalGroup" style="display: none;">
+                        <h3>Charcoal Effect</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Sketch Intensity</span>
+                                <span id="charcoalValue">0</span>
+                            </div>
+                            <input type="range" id="charcoalSlider" min="0.2" max="10" value="0.2" step="0.2" disabled>
+                            <small style="color: #666;">0.2 = subtle, 10 = heavy sketch</small>
+                        </div>
+                    </div>
+
+                    <!-- Color Reduce -->
+                    <div class="filter-group" id="colorReduceGroup" style="display: none;">
+                        <h3>Color Palette</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Number of Colors</span>
+                                <span id="colorReduceValue">0</span>
+                            </div>
+                            <input type="range" id="colorReduceSlider" min="2" max="256" value="2" step="1" disabled>
+                            <small style="color: #666;">2 = B&W, 256 = full palette</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISCRETE FILTERS TAB -->
+                <div id="discrete" class="filter-tab">
+                    <!-- Filter Type Selection -->
+                    <div class="filter-group">
+                        <h3>Select Filter Type</h3>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="discreteNone" name="discrete-filter-type" value="none" checked>
+                                <label for="discreteNone">None</label>
+                                <span class="helper-text">No discrete filter</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="discreteColorize" name="discrete-filter-type" value="colorize">
+                                <label for="discreteColorize">Colorize</label>
+                                <span class="helper-text">Apply color tones</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="discreteColorspace" name="discrete-filter-type" value="colorspace">
+                                <label for="discreteColorspace">Colorspace</label>
+                                <span class="helper-text">Convert color space</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="discreteAnnotate" name="discrete-filter-type" value="annotate">
+                                <label for="discreteAnnotate">Annotate</label>
+                                <span class="helper-text">Add text overlay</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="discreteChop" name="discrete-filter-type" value="chop">
+                                <label for="discreteChop">Chop</label>
+                                <span class="helper-text">Crop image edges</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colorize Options (hidden until selected) -->
+                    <div id="colorizeOptions" class="filter-group" style="display: none;">
+                        <h3>🎨 Colorize</h3>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="colorizeRed" name="colorize" value="red" checked>
+                                <label for="colorizeRed">Red Tone</label>
+                                <span class="helper-text">Warm reddish tint</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorizeBlue" name="colorize" value="blue">
+                                <label for="colorizeBlue">Blue Tone</label>
+                                <span class="helper-text">Cool bluish tint</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorizeGreen" name="colorize" value="green">
+                                <label for="colorizeGreen">Green Tone</label>
+                                <span class="helper-text">Natural green tint</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorizeYellow" name="colorize" value="yellow">
+                                <label for="colorizeYellow">Yellow Tone</label>
+                                <span class="helper-text">Warm yellow tint</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorizeCyan" name="colorize" value="cyan">
+                                <label for="colorizeCyan">Cyan Tone</label>
+                                <span class="helper-text">Cool cyan tint</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorizeMagenta" name="colorize" value="magenta">
+                                <label for="colorizeMagenta">Magenta Tone</label>
+                                <span class="helper-text">Vibrant magenta tint</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorizeSepia" name="colorize" value="sepia">
+                                <label for="colorizeSepia">Sepia Tone</label>
+                                <span class="helper-text">Vintage brown tone</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colorspace Options (hidden until selected) -->
+                    <div id="colorspaceOptions" class="filter-group" style="display: none;">
+                        <h3>🔄 Colorspace</h3>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="colorspaceGray" name="colorspace" value="Gray" checked>
+                                <label for="colorspaceGray">Grayscale</label>
+                                <span class="helper-text">Convert to black & white</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorspaceHSV" name="colorspace" value="HSV">
+                                <label for="colorspaceHSV">HSV</label>
+                                <span class="helper-text">Hue-Saturation-Value model</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorspaceHCL" name="colorspace" value="HCL">
+                                <label for="colorspaceHCL">HCL</label>
+                                <span class="helper-text">Hue-Chroma-Luminance model</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorspaceCMY" name="colorspace" value="CMY">
+                                <label for="colorspaceCMY">CMY</label>
+                                <span class="helper-text">Cyan-Magenta-Yellow model</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorspaceCMYK" name="colorspace" value="CMYK">
+                                <label for="colorspaceCMYK">CMYK (Print)</label>
+                                <span class="helper-text">Print-friendly CMYK model</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorspaceYCbCr" name="colorspace" value="YCbCr">
+                                <label for="colorspaceYCbCr">YCbCr (Video)</label>
+                                <span class="helper-text">Video compression standard</span>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="colorspaceLab" name="colorspace" value="Lab">
+                                <label for="colorspaceLab">LAB (Perceptual)</label>
+                                <span class="helper-text">Perceptually uniform model</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Annotate Options (hidden until selected) -->
+                    <div id="annotateOptions" class="filter-group" style="display: none;">
+                        <h3>✏️ Text Annotation</h3>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Text</label>
+                            <input type="text" id="annotateText" class="text-input" placeholder="Enter text" maxlength="50">
+                        </div>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Position</label>
+                            <select id="annotatePosition">
+                                <option value="center">Center</option>
+                                <option value="northwest">Top-Left</option>
+                                <option value="north">Top-Center</option>
+                                <option value="northeast">Top-Right</option>
+                                <option value="west">Left</option>
+                                <option value="east">Right</option>
+                                <option value="southwest">Bottom-Left</option>
+                                <option value="south">Bottom-Center</option>
+                                <option value="southeast">Bottom-Right</option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Font Size</label>
+                            <select id="annotateFontSize">
+                                <option value="24">Small (24px)</option>
+                                <option value="36">Medium (36px)</option>
+                                <option value="48">Large (48px)</option>
+                                <option value="72">Extra Large (72px)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Chop Options (hidden until selected) -->
+                    <div id="chopOptions" class="filter-group" style="display: none;">
+                        <h3>✂️ Chop (Crop)</h3>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Chop Type</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="chopHorizontal" name="chop-type" value="horizontal" checked>
+                                    <label for="chopHorizontal">Horizontal Crop</label>
+                                    <span class="helper-text">Remove top & bottom</span>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="chopVertical" name="chop-type" value="vertical">
+                                    <label for="chopVertical">Vertical Crop</label>
+                                    <span class="helper-text">Remove left & right</span>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="chopCenter" name="chop-type" value="center">
+                                    <label for="chopCenter">Center Crop</label>
+                                    <span class="helper-text">Keep center region</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Pixels to Remove</label>
+                            <input type="number" id="chopValue" class="text-input" placeholder="Enter pixels (1-200)" min="1" max="200" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: RESULTS -->
+            <div class="results-section">
+                <div class="result-container">
+                    <div class="image-box">
+                        <h4>📷 Originals</h4>
+                        <div id="originalsGallery" style="display: none;"></div>
+                        <div class="image-placeholder" id="originalsPlaceholder" style="flex: 1; margin: 0;">Upload images to see originals</div>
+                    </div>
+                    <div class="image-box">
+                        <h4>🎨 Results</h4>
+                        <div id="resultsGallery" style="display: none;"></div>
+                        <div class="image-placeholder" id="resultsPlaceholder" style="flex: 1; margin: 0;">Apply a filter to see results</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" id="applyBtn" disabled>
+                        Apply Filter
+                    </button>
+                    <button class="btn btn-secondary btn-small" id="resetBtn">Reset</button>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" id="downloadBtn" disabled>
+                        📥 Download Result
+                    </button>
+                </div>
+
+                <div id="statusBox" class="info-box" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let uploadedFiles = [];
+        let allResults = [];  // Store all mutation results
+        let currentMutation = null;
+
+        // Tab switching
+        // Filter type radio button handlers
+        document.querySelectorAll('input[name="filter-type"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+                document.getElementById(e.target.value).classList.add('active');
+            });
+        });
+
+        // Discrete filter type selection handlers
+        document.querySelectorAll('input[name="discrete-filter-type"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const filterType = e.target.value;
+                
+                // Hide all option panels first
+                document.getElementById('colorizeOptions').style.display = 'none';
+                document.getElementById('colorspaceOptions').style.display = 'none';
+                document.getElementById('annotateOptions').style.display = 'none';
+                document.getElementById('chopOptions').style.display = 'none';
+                
+                // Show the selected filter's options
+                if (filterType === 'colorize') {
+                    document.getElementById('colorizeOptions').style.display = 'block';
+                } else if (filterType === 'colorspace') {
+                    document.getElementById('colorspaceOptions').style.display = 'block';
+                } else if (filterType === 'annotate') {
+                    document.getElementById('annotateOptions').style.display = 'block';
+                } else if (filterType === 'chop') {
+                    document.getElementById('chopOptions').style.display = 'block';
+                }
+            });
+        });
+
+        // Update slider values
+        const sliders = {
+            blur: document.getElementById('blurSlider'),
+            threshold: document.getElementById('thresholdSlider'),
+            border: document.getElementById('borderSlider'),
+            charcoal: document.getElementById('charcoalSlider'),
+            colorReduce: document.getElementById('colorReduceSlider')
+        };
+
+        const values = {
+            blur: document.getElementById('blurValue'),
+            threshold: document.getElementById('thresholdValue'),
+            border: document.getElementById('borderValue'),
+            charcoal: document.getElementById('charcoalValue'),
+            colorReduce: document.getElementById('colorReduceValue')
+        };
+
+        sliders.blur.addEventListener('input', (e) => {
+            values.blur.textContent = parseFloat(e.target.value).toFixed(1);
+        });
+
+        sliders.threshold.addEventListener('input', (e) => {
+            values.threshold.textContent = e.target.value;
+        });
+
+        sliders.border.addEventListener('input', (e) => {
+            values.border.textContent = e.target.value;
+        });
+
+        sliders.charcoal.addEventListener('input', (e) => {
+            values.charcoal.textContent = parseFloat(e.target.value).toFixed(1);
+        });
+
+        sliders.colorReduce.addEventListener('input', (e) => {
+            values.colorReduce.textContent = e.target.value;
+        });
+
+        // Continuous filter selection radio buttons
+        document.querySelectorAll('input[name="continuous-filter"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const selectedFilter = e.target.value;
+                
+                // Hide all filter groups
+                document.getElementById('blurGroup').style.display = 'none';
+                document.getElementById('thresholdGroup').style.display = 'none';
+                document.getElementById('borderGroup').style.display = 'none';
+                document.getElementById('charcoalGroup').style.display = 'none';
+                document.getElementById('colorReduceGroup').style.display = 'none';
+
+                // Disable all sliders
+                sliders.blur.disabled = true;
+                sliders.threshold.disabled = true;
+                sliders.border.disabled = true;
+                sliders.charcoal.disabled = true;
+                sliders.colorReduce.disabled = true;
+
+                // Reset all sliders to 0
+                sliders.blur.value = 0;
+                sliders.threshold.value = 0;
+                sliders.border.value = 0;
+                sliders.charcoal.value = 0.2;
+                sliders.colorReduce.value = 2;
+
+                values.blur.textContent = '0';
+                values.threshold.textContent = '0';
+                values.border.textContent = '0';
+                values.charcoal.textContent = '0.2';
+                values.colorReduce.textContent = '2';
+
+                // Show and enable selected filter
+                if (selectedFilter === 'blur') {
+                    document.getElementById('blurGroup').style.display = 'block';
+                    sliders.blur.disabled = false;
+                } else if (selectedFilter === 'threshold') {
+                    document.getElementById('thresholdGroup').style.display = 'block';
+                    sliders.threshold.disabled = false;
+                } else if (selectedFilter === 'border') {
+                    document.getElementById('borderGroup').style.display = 'block';
+                    sliders.border.disabled = false;
+                } else if (selectedFilter === 'charcoal') {
+                    document.getElementById('charcoalGroup').style.display = 'block';
+                    sliders.charcoal.disabled = false;
+                } else if (selectedFilter === 'colorReduce') {
+                    document.getElementById('colorReduceGroup').style.display = 'block';
+                    sliders.colorReduce.disabled = false;
+                }
+            });
+        });
+
+        // File upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const uploadInfo = document.getElementById('uploadInfo');
+        const applyBtn = document.getElementById('applyBtn');
+        const galleryContainer = document.getElementById('galleryContainer');
+        const imageGallery = document.getElementById('imageGallery');
+        const originalsGallery = document.getElementById('originalsGallery');
+        const originalsPlaceholder = document.getElementById('originalsPlaceholder');
+
+        const displayOriginalsGallery = () => {
+            if (uploadedFiles.length === 0) {
+                originalsGallery.style.display = 'none';
+                originalsPlaceholder.style.display = 'flex';
+                return;
+            }
+
+            originalsGallery.innerHTML = '';
+            const uniqueFiles = uploadedFiles.filter((file, index, self) => self.findIndex(f => f.name === file.name) === index);
+            
+            uniqueFiles.forEach((file) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-result-item';
+                    item.innerHTML = `
+                        <div class="gallery-result-image">
+                            <img src="${e.target.result}" alt="${file.name}">
+                        </div>
+                        <div class="gallery-result-name" title="${file.name}">${file.name}</div>
+                    `;
+                    originalsGallery.appendChild(item);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            originalsGallery.style.display = 'grid';
+            originalsPlaceholder.style.display = 'none';
+        };
+
+        const displayGallery = () => {
+            if (uploadedFiles.length === 0) {
+                galleryContainer.classList.remove('active');
+                return;
+            }
+
+            galleryContainer.classList.add('active');
+            imageGallery.innerHTML = '';
+
+            uploadedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const thumbnail = document.createElement('div');
+                    thumbnail.className = 'gallery-thumbnail';
+                    thumbnail.dataset.index = index;
+
+                    thumbnail.innerHTML = `
+                        <div class="gallery-thumbnail-preview">
+                            <img src="${e.target.result}" alt="${file.name}">
+                        </div>
+                        <div class="gallery-thumbnail-name" title="${file.name}">${file.name.split('.')[0]}</div>
+                        <button class="gallery-delete-btn" onclick="deleteImage(${index})" title="Delete image">✕</button>
+                    `;
+
+                    imageGallery.appendChild(thumbnail);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Calculate total size
+            const totalSize = uploadedFiles.reduce((sum, file) => sum + file.size, 0);
+            const formatBytes = (bytes) => {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+            };
+
+            uploadInfo.innerHTML = `✓ ${uploadedFiles.length} image(s) • ${formatBytes(totalSize)}`;
+            uploadInfo.classList.add('active');
+        };
+
+        const handleFileSelect = (files) => {
+            if (!files || files.length === 0) return;
+
+            const validFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+            if (validFiles.length === 0) {
+                showStatus('Please select valid image files', 'error');
+                return;
+            }
+
+            uploadedFiles = validFiles;  // Reset, don't append
+            allResults = [];  // Clear previous results
+            displayGallery();
+            displayOriginalsGallery();
+            applyBtn.disabled = false;
+            resetResults();
+        };
+
+        uploadArea.addEventListener('click', () => imageInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#667eea';
+            uploadArea.style.color = 'white';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.background = '#f8f9fa';
+            uploadArea.style.color = '#667eea';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#f8f9fa';
+            uploadArea.style.color = '#667eea';
+            handleFileSelect(e.dataTransfer.files);
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            handleFileSelect(e.target.files);
+        });
+
+        // Get current filter settings
+        const getActiveTab = () => {
+            return document.querySelector('.filter-tab.active').id;
+        };
+
+        const getContinuousSettings = () => {
+            const selectedFilter = document.querySelector('input[name="continuous-filter"]:checked');
+            if (!selectedFilter) {
+                return null;
+            }
+            
+            const filterType = selectedFilter.value;
+            return {
+                type: filterType,
+                blur: parseFloat(document.getElementById('blurSlider').value),
+                threshold: parseInt(document.getElementById('thresholdSlider').value),
+                border: parseInt(document.getElementById('borderSlider').value),
+                charcoal: parseFloat(document.getElementById('charcoalSlider').value),
+                colorReduce: parseInt(document.getElementById('colorReduceSlider').value)
+            };
+        };
+
+        const getDiscreteSettings = () => {
+            const selectedType = document.querySelector('input[name="discrete-filter-type"]:checked').value;
+
+            return {
+                type: selectedType,
+                colorize: selectedType === 'colorize' ? document.querySelector('input[name="colorize"]:checked').value : null,
+                colorspace: selectedType === 'colorspace' ? document.querySelector('input[name="colorspace"]:checked').value : null,
+                annotate: selectedType === 'annotate' ? {
+                    text: document.getElementById('annotateText').value,
+                    position: document.getElementById('annotatePosition').value,
+                    fontSize: document.getElementById('annotateFontSize').value
+                } : null,
+                chop: selectedType === 'chop' ? {
+                    type: document.querySelector('input[name="chop-type"]:checked').value,
+                    value: parseInt(document.getElementById('chopValue').value)
+                } : null
+            };
+        };
+
+        // Get display label for a radio button group
+        const getRadioLabel = (groupName) => {
+            const checked = document.querySelector(`input[name="${groupName}"]:checked`);
+            if (!checked || !checked.id) return '';
+            // Find label with matching 'for' attribute
+            const label = document.querySelector(`label[for="${checked.id}"]`);
+            return label ? label.textContent.trim() : '';
+        };
+
+        // Apply filter to ALL images
+        applyBtn.addEventListener('click', async () => {
+            if (uploadedFiles.length === 0) return;
+
+            const activeTab = getActiveTab();
+            let mutation, params, filterName = '';
+
+            if (activeTab === 'continuous') {
+                const settings = getContinuousSettings();
+                if (!settings || !settings.type) {
+                    showStatus('Select a continuous filter', 'error');
+                    return;
+                }
+
+                switch(settings.type) {
+                    case 'blur':
+                        if (settings.blur === 0) {
+                            showStatus('Adjust the Blur slider', 'error');
+                            return;
+                        }
+                        filterName = 'blur';
+                        mutation = 'blur';
+                        params = { sigma: settings.blur };
+                        break;
+                    case 'threshold':
+                        if (settings.threshold === 0) {
+                            showStatus('Adjust the Black Threshold slider', 'error');
+                            return;
+                        }
+                        filterName = 'threshold';
+                        mutation = 'black_threshold';
+                        params = { percentage: settings.threshold };
+                        break;
+                    case 'border':
+                        if (settings.border === 0) {
+                            showStatus('Adjust the Border slider', 'error');
+                            return;
+                        }
+                        filterName = 'border';
+                        mutation = 'border';
+                        params = { pixels: settings.border };
+                        break;
+                    case 'charcoal':
+                        if (settings.charcoal === 0.2) {
+                            showStatus('Adjust the Charcoal slider', 'error');
+                            return;
+                        }
+                        filterName = 'charcoal';
+                        mutation = 'charcoal';
+                        params = { radius: settings.charcoal };
+                        break;
+                    case 'colorReduce':
+                        if (settings.colorReduce === 2) {
+                            showStatus('Adjust the Color Palette slider', 'error');
+                            return;
+                        }
+                        filterName = 'color_reduce';
+                        mutation = 'color_reduce';
+                        params = { colors: settings.colorReduce };
+                        break;
+                    default:
+                        showStatus('Select a continuous filter', 'error');
+                        return;
+                }
+            } else {
+                const settings = getDiscreteSettings();
+                
+                switch (settings.type) {
+                    case 'colorize':
+                        filterName = getRadioLabel('colorize');
+                        mutation = 'colorize';
+                        params = { tone: settings.colorize };
+                        break;
+                    case 'colorspace':
+                        filterName = getRadioLabel('colorspace');
+                        mutation = 'colorspace';
+                        params = { colorspace: settings.colorspace };
+                        break;
+                    case 'annotate':
+                        if (!settings.annotate.text) {
+                            showStatus('Enter annotation text', 'error');
+                            return;
+                        }
+                        filterName = 'annotate';
+                        mutation = 'annotate';
+                        params = {
+                            text: settings.annotate.text,
+                            position: settings.annotate.position,
+                            fontSize: settings.annotate.fontSize
+                        };
+                        break;
+                    case 'chop':
+                        filterName = 'chop';
+                        mutation = 'chop';
+                        params = {
+                            type: settings.chop.type,
+                            value: settings.chop.value
+                        };
+                        break;
+                    default:
+                        showStatus('Select a discrete filter type', 'error');
+                        return;
+                }
+            }
+
+            await applyMutationToAll(mutation, params, filterName);
+        });
+
+        // Apply mutation to ALL images
+        const applyMutationToAll = async (mutation, params, filterName = '') => {
+            if (uploadedFiles.length === 0) return;
+
+            showStatus(`Processing ${uploadedFiles.length} image(s)...`, 'info');
+            applyBtn.disabled = true;
+            allResults = [];
+
+            let processedCount = 0;
+            for (const file of uploadedFiles) {
+                const formData = new FormData();
+                formData.append('image', file);
+                formData.append('mutation', mutation);
+                formData.append('parameters', JSON.stringify(params));
+
+                try {
+                    const response = await fetch('http://localhost:5000/api/mutate', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        const error = await response.json();
+                        throw new Error(error.error || 'Unknown error');
+                    }
+
+                    const data = await response.json();
+                    if (!data.success) throw new Error(data.error);
+
+                    // Update download filename to include filter name
+                    let downloadFilename = data.download_filename;
+                    if (filterName) {
+                        const parts = downloadFilename.split('.');
+                        const extension = parts.pop();
+                        // Convert to lowercase and replace spaces/special chars with underscores
+                        const cleanFilterName = filterName.toLowerCase().replace(/[\s\-()]+/g, '_');
+                        downloadFilename = parts.join('.') + '_' + cleanFilterName + '.' + extension;
+                    }
+
+                    allResults.push({
+                        filename: file.name,
+                        result_url: data.result_url,
+                        download_url: data.download_url,
+                        download_filename: downloadFilename
+                    });
+
+                    processedCount++;
+                    showStatus(`Processing... ${processedCount}/${uploadedFiles.length}`, 'info');
+                } catch (err) {
+                    showStatus(`Error processing ${file.name}: ${err.message}`, 'error');
+                }
+            }
+
+            currentMutation = mutation;
+            displayResultsGallery();
+            applyBtn.disabled = false;
+            showStatus(`✓ ${mutation} applied to ${allResults.length}/${uploadedFiles.length} images!`, 'success');
+        };
+
+        // Display results gallery
+        const displayResultsGallery = () => {
+            const resultsGallery = document.getElementById('resultsGallery');
+            const resultsPlaceholder = document.getElementById('resultsPlaceholder');
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            if (allResults.length === 0) {
+                resultsGallery.style.display = 'none';
+                resultsPlaceholder.style.display = 'flex';
+                if (downloadBtn) downloadBtn.disabled = true;
+                return;
+            }
+
+            resultsGallery.innerHTML = '';
+
+            allResults.forEach((result) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-result-item';
+                item.innerHTML = `
+                    <div class="gallery-result-image">
+                        <img src="${result.result_url}?t=${Date.now()}" alt="${result.filename}">
+                    </div>
+                    <div class="gallery-result-name" title="${result.filename}">${result.filename}</div>
+                    <div class="gallery-result-download">
+                        <button onclick="downloadResult('${result.download_url}', '${result.download_filename}')">📥 Download</button>
+                    </div>
+                `;
+                resultsGallery.appendChild(item);
+            });
+
+            resultsGallery.style.display = 'grid';
+            resultsPlaceholder.style.display = 'none';
+            if (downloadBtn) {
+                downloadBtn.disabled = false;
+                downloadBtn.style.cursor = 'pointer';
+                downloadBtn.style.opacity = '1';
+            }
+        };
+
+        // Download result
+        window.downloadResult = function(url, filename) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+        };
+
+        // Delete individual image
+        window.deleteImage = function(index) {
+            uploadedFiles.splice(index, 1);
+            allResults = [];
+            
+            // Remove thumbnail from DOM without full rebuild
+            const imageGallery = document.getElementById('imageGallery');
+            const thumbnails = imageGallery.querySelectorAll('.gallery-thumbnail');
+            if (thumbnails[index]) {
+                thumbnails[index].remove();
+            }
+            
+            // If no more images, hide gallery container
+            if (uploadedFiles.length === 0) {
+                document.getElementById('galleryContainer').classList.remove('active');
+                document.getElementById('applyBtn').disabled = true;
+            }
+            
+            displayOriginalsGallery();
+            resetResults();
+        };
+
+        // Reset
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            resetResults();
+        });
+
+        // Bulk Download as ZIP or single direct download
+        document.getElementById('downloadBtn').addEventListener('click', async () => {
+            if (allResults.length === 0) return;
+            
+            // Single image - download directly
+            if (allResults.length === 1) {
+                const result = allResults[0];
+                const link = document.createElement('a');
+                link.href = result.download_url;
+                link.download = result.download_filename;
+                link.click();
+                showStatus(`✓ Downloaded ${result.download_filename}!`, 'success');
+                return;
+            }
+            
+            // Multiple images - create ZIP
+            if (typeof JSZip === 'undefined') {
+                showStatus('ZIP library not available. Downloading images individually...', 'warning');
+                for (let i = 0; i < allResults.length; i++) {
+                    const result = allResults[i];
+                    const link = document.createElement('a');
+                    link.href = result.download_url;
+                    link.download = result.download_filename;
+                    setTimeout(() => link.click(), i * 300);
+                }
+                return;
+            }
+            
+            showStatus(`Creating ZIP archive with ${allResults.length} image(s)...`, 'info');
+            
+            try {
+                const zip = new JSZip();
+                const folder = zip.folder('mutated-images');
+                
+                // Download each image and add to ZIP
+                for (let i = 0; i < allResults.length; i++) {
+                    const result = allResults[i];
+                    try {
+                        const response = await fetch(result.download_url);
+                        const blob = await response.blob();
+                        folder.file(result.download_filename, blob);
+                    } catch (err) {
+                        console.warn(`Failed to download ${result.download_filename}`);
+                    }
+                }
+                
+                // Generate ZIP and download
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(zipBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `mutated-images-${Date.now()}.zip`;
+                link.click();
+                URL.revokeObjectURL(url);
+                
+                showStatus(`✓ Downloaded ${allResults.length} image(s) as ZIP!`, 'success');
+            } catch (err) {
+                showStatus(`Error creating ZIP: ${err.message}`, 'error');
+                console.error('ZIP creation failed:', err);
+            }
+        });
+
+        const resetResults = () => {
+            const resultsGallery = document.getElementById('resultsGallery');
+            const resultsPlaceholder = document.getElementById('resultsPlaceholder');
+            const downloadBtn = document.getElementById('downloadBtn');
+            resultsGallery.style.display = 'none';
+            resultsPlaceholder.style.display = 'flex';
+            document.getElementById('statusBox').style.display = 'none';
+            if (downloadBtn) {
+                downloadBtn.disabled = true;
+                downloadBtn.style.cursor = 'not-allowed';
+                downloadBtn.style.opacity = '0.5';
+            }
+            allResults = [];
+        };
+
+        // Clear all images from gallery
+        window.clearAllImages = function() {
+            uploadedFiles = [];
+            allResults = [];
+            displayGallery();
+            displayOriginalsGallery();
+            resetResults();
+            document.getElementById('uploadInfo').classList.remove('active');
+            applyBtn.disabled = true;
+            showStatus('All images cleared', 'info');
+        };
+
+        // Show status message
+        const showStatus = (message, type = 'info') => {
+            const statusBox = document.getElementById('statusBox');
+            statusBox.textContent = message;
+            statusBox.className = 'info-box ' + type;
+            statusBox.style.display = 'block';
+            if (type === 'success') {
+                setTimeout(() => statusBox.style.display = 'none', 4000);
+            }
+        };
+    </script>
+</body>
+</html>

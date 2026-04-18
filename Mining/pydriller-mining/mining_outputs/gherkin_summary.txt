@@ -1,0 +1,220 @@
+================================================================================
+PyDriller BDD Feature Mining Report
+================================================================================
+
+Repository: gherkin
+URL: https://github.com/cucumber/gherkin
+Branch: main
+Commits analyzed: 3537
+Commits with features: 1166
+Feature files: 48
+Scenarios: 268
+Languages: Java, Ruby
+First commit: 2017-01-08T14:15:52+00:00
+Last commit: 2026-03-17T02:11:32+00:00
+
+Feature Files:
+  - inconsistent_cell_count.feature
+    Scenarios: 2
+    Modified in 13 commits
+    By 4 authors
+  - invalid_language.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - multiple_parser_errors.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - single_parser_error.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - unexpected_eof.feature
+    Scenarios: 2
+    Modified in 13 commits
+    By 4 authors
+  - background.feature
+    Scenarios: 2
+    Modified in 24 commits
+    By 6 authors
+  - datatables.feature
+    Scenarios: 1
+    Modified in 16 commits
+    By 6 authors
+  - descriptions.feature
+    Scenarios: 11
+    Modified in 15 commits
+    By 5 authors
+  - docstrings.feature
+    Scenarios: 1
+    Modified in 23 commits
+    By 5 authors
+  - escaped_pipes.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - example_token_multiple.feature
+    Scenarios: 2
+    Modified in 13 commits
+    By 4 authors
+  - example_tokens_everywhere.feature
+    Scenarios: 2
+    Modified in 13 commits
+    By 4 authors
+  - i18n_no.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - incomplete_background_1.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - incomplete_background_2.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - incomplete_scenario.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - incomplete_scenario_outline.feature
+    Scenarios: 11
+    Modified in 13 commits
+    By 4 authors
+  - language.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - minimal.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - readme_example.feature
+    Scenarios: 3
+    Modified in 13 commits
+    By 4 authors
+  - scenario_outline.feature
+    Scenarios: 5
+    Modified in 24 commits
+    By 4 authors
+  - scenario_outline_no_newline.feature
+    Scenarios: 3
+    Modified in 13 commits
+    By 4 authors
+  - scenario_outlines_with_tags.feature
+    Scenarios: 3
+    Modified in 13 commits
+    By 4 authors
+  - several_examples.feature
+    Scenarios: 3
+    Modified in 13 commits
+    By 4 authors
+  - tags.feature
+    Scenarios: 8
+    Modified in 34 commits
+    By 6 authors
+  - test.feature
+    Scenarios: 51
+    Modified in 3 commits
+    By 3 authors
+  - tagged_feature_with_scenario_outline.feature
+    Scenarios: 2
+    Modified in 13 commits
+    By 4 authors
+  - scenario_outline_with_docstring.feature
+    Scenarios: 4
+    Modified in 13 commits
+    By 4 authors
+  - scenario_outline_with_value_with_dollar_sign.feature
+    Scenarios: 4
+    Modified in 13 commits
+    By 5 authors
+  - very_long.feature
+    Scenarios: 100
+    Modified in 13 commits
+    By 4 authors
+  - padded_example.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - rule_without_name_and_description.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - complex_background.feature
+    Scenarios: 3
+    Modified in 13 commits
+    By 4 authors
+  - whitespace_in_tags.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - datatables_with_new_lines.feature
+    Scenarios: 1
+    Modified in 13 commits
+    By 4 authors
+  - rule_with_tag.feature
+    Scenarios: 5
+    Modified in 14 commits
+    By 4 authors
+  - calculator.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - scenario_outline_with_value_with_trailing_backslash.feature
+    Scenarios: 4
+    Modified in 1 commits
+    By 1 authors
+  - extra_table_content.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - descriptions_with_comments.feature
+    Scenarios: 10
+    Modified in 2 commits
+    By 2 authors
+  - backslash_at_end_of_line_in_datatable.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - file_ends_with_open_docstring.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - unfinished_datatable.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - prefixed-keywords.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - trim_space.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - trim_tab.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+  - conjunctions.feature
+    Scenarios: 3
+    Modified in 1 commits
+    By 1 authors
+  - star-keywords.feature
+    Scenarios: 1
+    Modified in 1 commits
+    By 1 authors
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+OVERALL STATISTICS
+================================================================================
+total_repositories: 1
+total_commits_analyzed: 3537
+total_feature_files_found: 48
+total_scenarios_extracted: 268
+total_commits_with_features: 1166

@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Image Mutation Tool - ImageMagick Filters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        @media (min-width: 1200px) {
+            body {
+                padding: 15px;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            body {
+                padding: 20px;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 2000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                border-radius: 8px;
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 900px) {
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 0.9em;
+            }
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 280px 1fr 1.3fr;
+            gap: 25px;
+            padding: 20px;
+            min-height: 100vh;
+            height: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1600px) {
+            .main-content {
+                grid-template-columns: 250px 1fr 1.2fr;
+                gap: 20px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 220px 1fr 1fr;
+                gap: 15px;
+                padding: 12px;
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 10px;
+                min-height: auto;
+            }
+
+            .upload-section, .results-section {
+                min-height: auto;
+            }
+
+            .image-box {
+                height: 350px;
+            }
+        }
+
+        /* ============ UPLOAD SECTION ============ */
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: fit-content;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .upload-area:hover {
+            background: #667eea;
+            color: white;
+            border-color: #764ba2;
+        }
+
+        .upload-area input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .upload-area:hover .upload-label {
+            color: white;
+        }
+
+        .upload-preview {
+            margin-top: 15px;
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .upload-preview.active {
+            display: block;
+        }
+
+        .gallery-thumbnail {
+            position: relative;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .gallery-thumbnail:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+        }
+
+        .gallery-thumbnail.active {
+            border-color: #667eea;
+            background: #e7f3ff;
+            font-weight: 600;
+        }
+
+        .gallery-thumbnail-name {
+            flex: 1;
+            font-size: 0.85em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .gallery-thumbnail-remove {
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.75em;
+            cursor: pointer;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+
+        .gallery-thumbnail-remove:hover {
+            background: #e74c3c;
+        }
+
+        .upload-info {
+            background: #e7f3ff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #0066cc;
+            display: none;
+        }
+
+        .upload-info.active {
+            display: block;
+        }
+
+        /* ============ FILTER TABS ============ */
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-btn:hover {
+            color: #667eea;
+        }
+
+        .filter-tab {
+            display: none;
+        }
+
+        .filter-tab.active {
+            display: block;
+        }
+
+        /* ============ CONTINUOUS FILTERS ============ */
+        .filter-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #ddd;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .filter-group.active {
+            border-left-color: #667eea;
+            background: #e7f3ff;
+        }
+
+        .filter-radio {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            cursor: pointer;
+            accent-color: #667eea;
+            width: 20px;
+            height: 20px;
+        }
+
+        .filter-group h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            padding-right: 35px;
+        }
+
+        .filter-group.active h3 {
+            color: #667eea;
+        }
+
+        .slider-container {
+            margin-bottom: 12px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .slider-label span:first-child {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .slider-label span:last-child {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #764ba2;
+            transform: scale(1.2);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #764ba2;
+            transform: scale(1.2);
+        }
+
+        /* ============ DISCRETE FILTERS ============ */
+        .dropdown-container {
+            margin-bottom: 15px;
+        }
+
+        .dropdown-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+
+        select:hover {
+            border-color: #667eea;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* ============ RESULTS SECTION ============ */
+        .results-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .result-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        @media (max-width: 1200px) {
+            .result-container {
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .image-box {
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 450px;
+        }
+
+        @media (max-width: 1200px) {
+            .image-box {
+                min-height: 350px;
+            }
+        }
+
+        .image-box h4 {
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        .image-box img {
+            flex: 1;
+            width: 100%;
+            object-fit: contain;
+            display: none;
+            padding: 15px;
+            background: white;
+        }
+
+        .image-box img.active {
+            display: block;
+        }
+
+        .image-placeholder {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.95em;
+            background: white;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            opacity: 0.6;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-small {
+            flex: 0.5;
+            padding: 8px 12px;
+            font-size: 0.85em;
+        }
+
+        .info-box {
+            padding: 15px;
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #0066cc;
+        }
+
+        .info-box.error {
+            background: #fff0f0;
+            border-left-color: #d32f2f;
+            color: #d32f2f;
+        }
+
+        .info-box.success {
+            background: #f0fff4;
+            border-left-color: #10b981;
+            color: #10b981;
+        }
+
+        /* ============ DISABLED STATE ============ */
+        input[type="range"]:disabled,
+        select:disabled,
+        .text-input:disabled {
+            background-color: #f0f0f0;
+            color: #999;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        input[type="range"]:disabled::-webkit-slider-thumb {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        input[type="range"]:disabled::-moz-range-thumb {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        /* ============ GALLERY STYLES ============ */
+        #galleryContainer {
+            display: none;
+            margin: 0;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            flex: 1;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+
+        #galleryContainer.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #galleryContainer h3 {
+            margin: 0 0 8px 0;
+            font-size: 0.85em;
+            color: #555;
+            font-weight: 600;
+        }
+
+        #imageGallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            flex: 1;
+        }
+
+        .gallery-thumbnail {
+            position: relative;
+            cursor: pointer;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            background: white;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            height: 150px;
+        }
+
+        @media (max-width: 1200px) {
+            #imageGallery {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            }
+
+            .gallery-thumbnail {
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            #imageGallery {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .gallery-thumbnail {
+                height: 120px;
+            }
+        }
+
+        .gallery-thumbnail:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-thumbnail.active {
+            border-color: #667eea;
+            background: #e7f3ff;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+
+        .gallery-thumbnail-preview {
+            flex: 1;
+            background: #f5f5f5;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px;
+        }
+
+        .gallery-thumbnail-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 3px;
+        }
+
+        .gallery-thumbnail-name {
+            font-size: 0.7em;
+            padding: 3px 4px;
+            color: #444;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-top: 1px solid #eee;
+            background: white;
+            line-height: 1.2;
+        }
+
+        .gallery-thumbnail-remove {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: rgba(255, 71, 87, 0.9);
+            border: none;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            padding: 0;
+            line-height: 1;
+            opacity: 0;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .gallery-thumbnail:hover .gallery-thumbnail-remove {
+            opacity: 1;
+        }
+
+        .gallery-thumbnail-remove:hover {
+            background: rgba(255, 71, 87, 1);
+            transform: scale(1.15);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .result-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Advanced Image Mutation Tool</h1>
+            <p>ImageMagick Filters with Continuous & Discrete Controls</p>
+        </div>
+
+        <div class="main-content">
+            <!-- LEFT: UPLOAD -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="imageInput" accept="image/*" multiple>
+                    <label for="imageInput" class="upload-label">
+                        📁 Click or Drag Images (Max 40)
+                    </label>
+                    <p style="margin-top: 8px; color: #999; font-size: 0.9em;">PNG, JPG, BMP, GIF, WebP</p>
+                </div>
+                <div id="uploadInfo" class="upload-info"></div>
+                <div id="galleryContainer" style="display: none; max-height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: #f8f9fa;">
+                    <div id="imageGallery"></div>
+                </div>
+            </div>
+
+            <!-- CENTER: FILTERS -->
+            <div>
+                <div class="filter-tabs">
+                    <button class="tab-btn active" data-tab="continuous">Continuous</button>
+                    <button class="tab-btn" data-tab="discrete">Discrete</button>
+                </div>
+
+                <!-- CONTINUOUS FILTERS TAB -->
+                <div id="continuous" class="filter-tab active">
+                    <!-- Blur Filter -->
+                    <div class="filter-group" data-filter="blur">
+                        <input type="radio" name="continuousFilter" class="filter-radio" value="blur">
+                        <h3>Blur (Gaussian)</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Sigma (Blur Strength)</span>
+                                <span id="blurValue">5</span>
+                            </div>
+                            <input type="range" id="blurSlider" min="0" max="20" value="5" step="0.5" disabled>
+                            <small style="color: #666;">0 = sharp, 20 = extreme blur</small>
+                        </div>
+                    </div>
+
+                    <!-- Black Threshold -->
+                    <div class="filter-group" data-filter="threshold">
+                        <input type="radio" name="continuousFilter" class="filter-radio" value="threshold">
+                        <h3>Black Threshold</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Brightness Threshold</span>
+                                <span id="thresholdValue">25</span>%
+                            </div>
+                            <input type="range" id="thresholdSlider" min="0" max="100" value="25" step="1" disabled>
+                            <small style="color: #666;">Pixels darker than this become black</small>
+                        </div>
+                    </div>
+
+                    <!-- Border -->
+                    <div class="filter-group" data-filter="border">
+                        <input type="radio" name="continuousFilter" class="filter-radio" value="border">
+                        <h3>Border (Pixels)</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Horizontal & Vertical</span>
+                                <span id="borderValue">10</span>px
+                            </div>
+                            <input type="range" id="borderSlider" min="0" max="100" value="10" step="1" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Charcoal Effect -->
+                    <div class="filter-group" data-filter="charcoal">
+                        <input type="radio" name="continuousFilter" class="filter-radio" value="charcoal">
+                        <h3>Charcoal Effect</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Sketch Intensity</span>
+                                <span id="charcoalValue">5</span>
+                            </div>
+                            <input type="range" id="charcoalSlider" min="0.2" max="10" value="5" step="0.2" disabled>
+                            <small style="color: #666;">0.2 = subtle, 10 = heavy sketch</small>
+                        </div>
+                    </div>
+
+                    <!-- Color Reduce -->
+                    <div class="filter-group" data-filter="colorReduce">
+                        <input type="radio" name="continuousFilter" class="filter-radio" value="colorReduce">
+                        <h3>Color Palette</h3>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Number of Colors</span>
+                                <span id="colorReduceValue">16</span>
+                            </div>
+                            <input type="range" id="colorReduceSlider" min="2" max="256" value="16" step="1" disabled>
+                            <small style="color: #666;">2 = B&W, 256 = full palette</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISCRETE FILTERS TAB -->
+                <div id="discrete" class="filter-tab">
+                    <!-- Colorize -->
+                    <div class="filter-group">
+                        <h3>Colorize</h3>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Tone</label>
+                            <select id="colorizeSelect">
+                                <option value="red">Red Tone</option>
+                                <option value="blue">Blue Tone</option>
+                                <option value="green">Green Tone</option>
+                                <option value="yellow">Yellow Tone</option>
+                                <option value="cyan">Cyan Tone</option>
+                                <option value="magenta">Magenta Tone</option>
+                                <option value="sepia">Sepia Tone</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Colorspace -->
+                    <div class="filter-group">
+                        <h3>Colorspace Conversion</h3>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Color Model</label>
+                            <select id="colorspaceSelect">
+                                <option value="RGB">RGB (Default)</option>
+                                <option value="Gray">Grayscale</option>
+                                <option value="HSV">HSV (Hue/Saturation/Value)</option>
+                                <option value="HCL">HCL (Hue/Chroma/Lightness)</option>
+                                <option value="CMY">CMY (Cyan/Magenta/Yellow)</option>
+                                <option value="CMYK">CMYK (Print)</option>
+                                <option value="YCbCr">YCbCr (Video)</option>
+                                <option value="Lab">LAB (Perceptual)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Annotate -->
+                    <div class="filter-group">
+                        <h3>Text Annotation</h3>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Text</label>
+                            <input type="text" id="annotateText" class="text-input" placeholder="Enter text" maxlength="50">
+                        </div>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Position</label>
+                            <select id="annotatePosition">
+                                <option value="center">Center</option>
+                                <option value="northwest">Top-Left</option>
+                                <option value="north">Top-Center</option>
+                                <option value="northeast">Top-Right</option>
+                                <option value="west">Left</option>
+                                <option value="east">Right</option>
+                                <option value="southwest">Bottom-Left</option>
+                                <option value="south">Bottom-Center</option>
+                                <option value="southeast">Bottom-Right</option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Font Size</label>
+                            <select id="annotateFontSize">
+                                <option value="24">Small (24px)</option>
+                                <option value="36">Medium (36px)</option>
+                                <option value="48">Large (48px)</option>
+                                <option value="72">Extra Large (72px)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Crop/Chop -->
+                    <div class="filter-group">
+                        <h3>Chop (Crop)</h3>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Chop Type</label>
+                            <select id="chopType">
+                                <option value="horizontal">Horizontal Crop</option>
+                                <option value="vertical">Vertical Crop</option>
+                                <option value="center">Center Crop</option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <label class="dropdown-label">Pixels to Remove</label>
+                            <input type="number" id="chopValue" class="text-input" placeholder="Enter pixels (1-200)" min="1" max="200" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: RESULTS -->
+            <div class="results-section">
+                <div class="result-container">
+                    <div class="image-box">
+                        <h4>Original</h4>
+                        <div id="originalContainer" class="image-placeholder">No image loaded</div>
+                        <img id="originalImage" alt="Original">
+                    </div>
+                    <div class="image-box">
+                        <h4>Result</h4>
+                        <div id="resultContainer" class="image-placeholder">Apply a filter to see result</div>
+                        <img id="resultImage" alt="Result">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" id="applyBtn" disabled>
+                        Apply Filter
+                    </button>
+                    <button class="btn btn-secondary btn-small" id="resetBtn">Reset</button>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" id="downloadBtn" disabled>
+                        📥 Download Result
+                    </button>
+                </div>
+
+                <div id="statusBox" class="info-box" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let selectedFile = null;
+        let uploadedFiles = [];
+        let currentResult = null;
+        let currentMutation = null;
+        let isProcessing = false;
+
+        // Helper: Disable all filter controls
+        const disableAllControls = () => {
+            document.querySelectorAll('input[type="range"], select, .btn-primary, .text-input').forEach(el => {
+                el.disabled = true;
+            });
+            isProcessing = true;
+        };
+
+        // Helper: Enable all filter controls
+        const enableAllControls = () => {
+            document.querySelectorAll('input[type="range"], select, .text-input').forEach(el => {
+                el.disabled = false;
+            });
+            const applyBtn = document.getElementById('applyBtn');
+            if (selectedFile) {
+                applyBtn.disabled = false;
+            }
+            isProcessing = false;
+        };
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+                const tabId = e.target.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // ==== CONTINUOUS FILTER SELECTION (Radio Buttons) ====
+        let activeFilter = null;
+
+        document.querySelectorAll('input[name="continuousFilter"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const filterName = e.target.value;
+                const filterGroup = e.target.closest('.filter-group');
+
+                // Remove active state from all groups
+                document.querySelectorAll('.filter-group[data-filter]').forEach(group => {
+                    group.classList.remove('active');
+                    const slider = group.querySelector('input[type="range"]');
+                    if (slider) slider.disabled = true;
+                });
+
+                // Add active state to selected group
+                filterGroup.classList.add('active');
+                const slider = filterGroup.querySelector('input[type="range"]');
+                if (slider) slider.disabled = false;
+
+                activeFilter = filterName;
+                enableApplyButton(); // Enable apply button when filter is selected
+            });
+        });
+
+        // Enable Apply button when filter is selected
+        const enableApplyButton = () => {
+            const applyBtn = document.getElementById('applyBtn');
+            if (selectedFile && activeFilter) {
+                applyBtn.disabled = false;
+            }
+        };
+
+        // Update slider values
+        const sliders = {
+            blur: document.getElementById('blurSlider'),
+            threshold: document.getElementById('thresholdSlider'),
+            border: document.getElementById('borderSlider'),
+            charcoal: document.getElementById('charcoalSlider'),
+            colorReduce: document.getElementById('colorReduceSlider')
+        };
+
+        const values = {
+            blur: document.getElementById('blurValue'),
+            threshold: document.getElementById('thresholdValue'),
+            border: document.getElementById('borderValue'),
+            charcoal: document.getElementById('charcoalValue'),
+            colorReduce: document.getElementById('colorReduceValue')
+        };
+
+        sliders.blur.addEventListener('input', (e) => {
+            values.blur.textContent = parseFloat(e.target.value).toFixed(1);
+            enableApplyButton();
+        });
+
+        sliders.threshold.addEventListener('input', (e) => {
+            values.threshold.textContent = e.target.value;
+            enableApplyButton();
+        });
+
+        sliders.border.addEventListener('input', (e) => {
+            values.border.textContent = e.target.value;
+            enableApplyButton();
+        });
+
+        sliders.charcoal.addEventListener('input', (e) => {
+            values.charcoal.textContent = parseFloat(e.target.value).toFixed(1);
+            enableApplyButton();
+        });
+
+        sliders.colorReduce.addEventListener('input', (e) => {
+            values.colorReduce.textContent = e.target.value;
+            enableApplyButton();
+        });
+
+        // File upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const uploadInfo = document.getElementById('uploadInfo');
+        const imageGallery = document.getElementById('imageGallery');
+        const galleryContainer = document.getElementById('galleryContainer');
+        const originalImage = document.getElementById('originalImage');
+        const originalContainer = document.getElementById('originalContainer');
+        const applyBtn = document.getElementById('applyBtn');
+
+        const MAX_IMAGES = 40;
+
+        const handleFilesSelect = (files) => {
+            const validFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+            
+            if (validFiles.length === 0) {
+                showStatus('Please select valid image files', 'error');
+                return;
+            }
+
+            // Check total images
+            if (uploadedFiles.length + validFiles.length > MAX_IMAGES) {
+                showStatus(`Maximum ${MAX_IMAGES} images allowed. You can upload ${MAX_IMAGES - uploadedFiles.length} more.`, 'error');
+                return;
+            }
+
+            // Add files and create thumbnails
+            validFiles.forEach((file, index) => {
+                const fileId = Date.now() + index;
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    uploadedFiles.push({
+                        id: fileId,
+                        file: file,
+                        name: file.name,
+                        dataUrl: e.target.result
+                    });
+
+                    // Create gallery thumbnail
+                    createGalleryThumbnail(fileId, file.name);
+
+                    // Auto-select first image
+                    if (uploadedFiles.length === 1) {
+                        selectImage(fileId);
+                    }
+
+                    // Update info
+                    updateUploadInfo();
+                };
+
+                reader.readAsDataURL(file);
+            });
+        };
+
+        const createGalleryThumbnail = (fileId, fileName) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'gallery-thumbnail';
+            thumbnail.id = `thumb-${fileId}`;
+            
+            const previewDiv = document.createElement('div');
+            previewDiv.className = 'gallery-thumbnail-preview';
+            
+            const img = document.createElement('img');
+            img.src = uploadedFiles.find(f => f.id === fileId)?.dataUrl;
+            
+            previewDiv.appendChild(img);
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'gallery-thumbnail-name';
+            nameDiv.textContent = fileName;
+            
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'gallery-thumbnail-remove';
+            removeBtn.textContent = '✕';
+            removeBtn.onclick = (e) => {
+                e.stopPropagation();
+                removeImage(fileId);
+            };
+            
+            thumbnail.appendChild(previewDiv);
+            thumbnail.appendChild(nameDiv);
+            thumbnail.appendChild(removeBtn);
+            thumbnail.onclick = () => selectImage(fileId);
+            
+            imageGallery.appendChild(thumbnail);
+            galleryContainer.style.display = 'block';
+        };
+
+        const selectImage = (fileId) => {
+            // Update active thumbnail
+            document.querySelectorAll('.gallery-thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            document.getElementById(`thumb-${fileId}`).classList.add('active');
+
+            // Update selected file
+            const imageData = uploadedFiles.find(img => img.id === fileId);
+            if (imageData) {
+                selectedFile = imageData.file;
+                originalImage.src = imageData.dataUrl;
+                originalImage.classList.add('active');
+                originalContainer.style.display = 'none';
+                currentResult = null;
+                resetResults();
+                
+                // Reset filter selection - deselect all radio buttons
+                document.querySelectorAll('input[name="continuousFilter"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                // Reset all filter groups
+                document.querySelectorAll('.filter-group[data-filter]').forEach(group => {
+                    group.classList.remove('active');
+                    const slider = group.querySelector('input[type="range"]');
+                    if (slider) slider.disabled = true;
+                });
+                
+                activeFilter = null;
+                const applyBtn = document.getElementById('applyBtn');
+                applyBtn.disabled = true;
+            }
+        };
+
+        const removeImage = (fileId) => {
+            uploadedFiles = uploadedFiles.filter(img => img.id !== fileId);
+            document.getElementById(`thumb-${fileId}`).remove();
+
+            if (uploadedFiles.length === 0) {
+                galleryContainer.style.display = 'none';
+                imageGallery.innerHTML = '';
+                selectedFile = null;
+                applyBtn.disabled = true;
+                originalImage.classList.remove('active');
+                originalContainer.style.display = 'flex';
+                updateUploadInfo();
+            } else if (selectedFile === uploadedFiles.find(img => img.id === fileId)?.file) {
+                // If removed image was selected, select first available
+                selectImage(uploadedFiles[0].id);
+            }
+
+            updateUploadInfo();
+        };
+
+        const updateUploadInfo = () => {
+            if (uploadedFiles.length === 0) {
+                uploadInfo.textContent = '';
+                uploadInfo.classList.remove('active');
+                return;
+            }
+
+            const totalSize = uploadedFiles.reduce((sum, img) => {
+                return sum + img.file.size;
+            }, 0);
+
+            uploadInfo.textContent = `✓ ${uploadedFiles.length} image${uploadedFiles.length > 1 ? 's' : ''} (${(totalSize / 1024).toFixed(2)} KB total) | Max: ${MAX_IMAGES}`;
+            uploadInfo.classList.add('active');
+        };
+
+        uploadArea.addEventListener('click', () => imageInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#667eea';
+            uploadArea.style.color = 'white';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.background = '#f8f9fa';
+            uploadArea.style.color = '#667eea';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '#f8f9fa';
+            uploadArea.style.color = '#667eea';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFilesSelect(files);
+            }
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFilesSelect(e.target.files);
+            }
+        });
+
+        const getDiscreteSettings = () => {
+            return {
+                colorize: document.getElementById('colorizeSelect').value,
+                colorspace: document.getElementById('colorspaceSelect').value,
+                annotate: {
+                    text: document.getElementById('annotateText').value,
+                    position: document.getElementById('annotatePosition').value,
+                    fontSize: document.getElementById('annotateFontSize').value
+                },
+                chop: {
+                    type: document.getElementById('chopType').value,
+                    value: parseInt(document.getElementById('chopValue').value)
+                }
+            };
+        };
+
+        // Apply filter
+        const applyBtn_element = document.getElementById('applyBtn');
+        applyBtn_element.addEventListener('click', async () => {
+            if (!selectedFile || !activeFilter || isProcessing) return;
+
+            let mutation, params;
+
+            // Get the active filter from radio selection
+            if (activeFilter === 'blur') {
+                mutation = 'blur';
+                params = { sigma: parseFloat(values.blur.textContent) };
+            } else if (activeFilter === 'threshold') {
+                mutation = 'black_threshold';
+                params = { percentage: parseInt(values.threshold.textContent) };
+            } else if (activeFilter === 'border') {
+                mutation = 'border';
+                params = { pixels: parseInt(values.border.textContent) };
+            } else if (activeFilter === 'charcoal') {
+                mutation = 'charcoal';
+                params = { radius: parseFloat(values.charcoal.textContent) };
+            } else if (activeFilter === 'colorReduce') {
+                mutation = 'color_reduce';
+                params = { colors: parseInt(values.colorReduce.textContent) };
+            } else {
+                showStatus('Please select a filter first', 'error');
+                return;
+            }
+
+            await applyMutation(mutation, params);
+        });
+
+        // Apply mutation via API
+        const applyMutation = async (mutation, params) => {
+            if (!selectedFile) return;
+
+            disableAllControls();
+            showStatus('Processing...', 'info');
+
+            const formData = new FormData();
+            formData.append('image', selectedFile);
+            formData.append('mutation', mutation);
+            formData.append('parameters', JSON.stringify(params));
+
+            try {
+                const response = await fetch('http://localhost:5000/api/mutate', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || 'Unknown error');
+                }
+
+                const data = await response.json();
+                if (!data.success) throw new Error(data.error);
+
+                // Display result
+                currentResult = data;
+                const resultImage = document.getElementById('resultImage');
+                const resultContainer = document.getElementById('resultContainer');
+
+                resultImage.src = data.result_url + '?t=' + Date.now();
+                resultImage.classList.add('active');
+                resultContainer.style.display = 'none';
+
+                document.getElementById('downloadBtn').disabled = false;
+                currentMutation = mutation;
+
+                showStatus(`✓ ${mutation} applied successfully!`, 'success');
+            } catch (err) {
+                showStatus(`Error: ${err.message}`, 'error');
+            } finally {
+                enableAllControls();
+            }
+        };
+
+        // Download result
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (currentResult) {
+                const link = document.createElement('a');
+                link.href = currentResult.download_url;
+                link.download = currentResult.download_filename;
+                link.click();
+            }
+        });
+
+        // Reset
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            resetResults();
+        });
+
+        const resetResults = () => {
+            const resultImage = document.getElementById('resultImage');
+            const resultContainer = document.getElementById('resultContainer');
+            resultImage.classList.remove('active');
+            resultContainer.style.display = 'flex';
+            document.getElementById('downloadBtn').disabled = true;
+            document.getElementById('statusBox').style.display = 'none';
+        };
+
+        // Show status message
+        const showStatus = (message, type = 'info') => {
+            const statusBox = document.getElementById('statusBox');
+            statusBox.textContent = message;
+            statusBox.className = 'info-box ' + type;
+            statusBox.style.display = 'block';
+            if (type === 'success') {
+                setTimeout(() => statusBox.style.display = 'none', 4000);
+            }
+        };
+    </script>
+</body>
+</html>
